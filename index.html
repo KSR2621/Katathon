@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katathon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .page { display: none; }
+        .page.active { display: block; }
+        .auth-section { display: none; }
+        .auth-section.active { display: block; }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .nav-link.active {
+            color: #ffffff;
+            border-bottom: 2px solid #6366f1;
+        }
+        #notification-modal {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="nav-link text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">Katathon</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                  <!-- Logged Out Links -->
+                <div id="logged-out-nav" class="space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
+                    <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
+                    <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
+                    <a href="#teams" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Teams</a>
+                    <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
+                    <a href="#student-login" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Student Login</a>
+                    <a href="#mentor-portal" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Mentor Portal</a>
+                </div>
+                <!-- Logged In Links -->
+                <div id="logged-in-nav" class="hidden space-x-8 items-center">
+                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
+                     <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
+                     <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
+                     <a href="#teams" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Teams</a>
+                     <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
+                </div>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+         <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2 bg-gray-800">
+             <!-- Links will be dynamically inserted here -->
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="text-center bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 rounded-lg p-12 md:p-24 shadow-2xl">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-white">Welcome to Katathon</h2>
+                <p class="text-indigo-200 text-lg mt-4 font-medium">Powered by Katalyst & TomTom</p>
+
+                <div id="countdown" class="mt-8 flex justify-center space-x-2 md:space-x-4 text-white">
+                    <div class="countdown-box p-4 rounded-lg w-24"><span id="days" class="text-4xl font-bold">00</span><span class="block text-sm">Days</span></div>
+                    <div class="countdown-box p-4 rounded-lg w-24"><span id="hours" class="text-4xl font-bold">00</span><span class="block text-sm">Hours</span></div>
+                    <div class="countdown-box p-4 rounded-lg w-24"><span id="minutes" class="text-4xl font-bold">00</span><span class="block text-sm">Minutes</span></div>
+                    <div class="countdown-box p-4 rounded-lg w-24"><span id="seconds" class="text-4xl font-bold">00</span><span class="block text-sm">Seconds</span></div>
+                </div>
+                 <a href="#registration" class="nav-link inline-block mt-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Register as a Student!</a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex items-center mb-4"><svg class="w-10 h-10 text-indigo-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><h3 class="text-2xl font-bold text-gray-800">About Katalyst</h3></div>
+                    <p class="text-gray-600">Katalyst is a unique non-profit initiative empowering young women from lower-income communities. Through a comprehensive 4-year program, we provide end-to-end support to help them pursue professional education and unleash their potential. This hackathon fosters innovation and technical skills among our bright students.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex items-center mb-4"><svg class="w-10 h-10 text-indigo-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><h3 class="text-2xl font-bold text-gray-800">About TomTom</h3></div>
+                    <p class="text-gray-600">TomTom is the leading independent location technology specialist, shaping mobility with highly accurate maps and navigation software. By collaborating with Katalyst, TomTom aims to inspire the next generation of engineers. We are excited to see the innovative solutions you will build to tackle real-world challenges.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Registration Page -->
+        <section id="registration" class="page">
+            <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-4 md:p-8">
+                <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Student Registration</h2>
+                    <p class="text-center text-gray-500 mb-8">Create your account to join the Katathon.</p>
+                    <form id="registration-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Full Name, UID, Email etc. -->
+                            <div class="relative">
+                                <label for="regFullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="regFullName" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Jane Doe" required>
+                            </div>
+                            <div class="relative">
+                                <label for="regUid" class="block text-sm font-medium text-gray-700 mb-1">UID</label>
+                                <input type="text" id="regUid" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Your Unique ID" required>
+                            </div>
+                            <div class="relative">
+                                <label for="regEmail" class="block text-sm font-medium text-gray-700 mb-1">Katalyst Email Id</label>
+                                <input type="email" id="regEmail" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="you@katalyst.com" required>
+                            </div>
+                            <div class="relative">
+                                <label for="regPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                <input type="password" id="regPassword" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Min. 6 characters" required>
+                            </div>
+                             <div class="relative">
+                                <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                                <input type="password" id="regConfirmPassword" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Re-enter password" required>
+                            </div>
+                            <!-- Other fields: contact, batch, stream, centre, college, cgpa -->
+                            <div>
+                                <label for="regContact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
+                                <input type="tel" id="regContact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                            </div>
+                            <div>
+                                <label for="regBatch" class="block text-sm font-medium text-gray-700 mb-1">Graduating Batch</label>
+                                <select id="regBatch" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                                    <option>2026</option>
+                                    <option>2027</option>
+                                </select>
+                            </div>
+                             <div>
+                                <label for="regStream" class="block text-sm font-medium text-gray-700 mb-1">Stream</label>
+                                <select id="regStream" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                                    <option>Automobile</option>
+                                    <option>Artificial Intelligence and Machine Learning</option>
+                                    <option>Computer Science</option>
+                                    <option>Data Science</option>
+                                    <option>Electronics and Communication</option>
+                                    <!-- Add all other stream options -->
+                                </select>
+                            </div>
+                             <div>
+                                <label for="regCentre" class="block text-sm font-medium text-gray-700 mb-1">Centre</label>
+                                <select id="regCentre" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                                    <option>Mumbai</option>
+                                    <option>Pune</option>
+                                    <option>Delhi</option>
+                                    <option>Bangalore</option>
+                                    <option>Hyderabad</option>
+                                    <option>Chennai</option>
+                                </select>
+                            </div>
+                             <div>
+                                <label for="regCollege" class="block text-sm font-medium text-gray-700 mb-1">College Name</label>
+                                <select id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                                    <option>College of Engineering, Pune (COEP)</option>
+                                    <option>Veermata Jijabai Technological Institute (VJTI), Mumbai</option>
+                                    <!-- Add more colleges -->
+                                </select>
+                            </div>
+                             <div>
+                                <label for="regCgpa" class="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
+                                <input type="number" step="0.01" id="regCgpa" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="w-full md:w-auto inline-flex justify-center py-3 px-10 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-gradient-to-r from-indigo-500 to-purple-600">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Login Page -->
+        <section id="student-login" class="page">
+            <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
+                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Student Login</h2>
+                 <form id="student-login-form">
+                     <div>
+                         <label for="studentLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                         <input type="email" id="studentLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                     </div>
+                     <div class="mt-6">
+                         <label for="studentLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                         <input type="password" id="studentLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                     </div>
+                      <div class="mt-8 text-center">
+                         <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
+                     </div>
+                 </form>
+            </div>
+        </section>
+        
+        <!-- Students Page -->
+        <section id="students" class="page">
+            <h2 class="text-4xl font-bold text-center mb-10">Registered Students</h2>
+            <div id="all-students-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <p class="text-center col-span-full">Loading students...</p>
+            </div>
+        </section>
+
+        <!-- Mentor Portal (Login/Signup) -->
+        <section id="mentor-portal" class="page">
+             <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
+                <div class="flex border-b mb-8">
+                    <button id="mentor-login-tab" class="flex-1 py-2 font-semibold text-center text-indigo-600 border-b-2 border-indigo-600">Login</button>
+                    <button id="mentor-signup-tab" class="flex-1 py-2 font-semibold text-center text-gray-500">Sign Up</button>
+                </div>
+                <!-- Mentor Login Form -->
+                <div id="mentor-login-section" class="auth-section active">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Login</h2>
+                    <form id="mentor-login-form">
+                        <div>
+                            <label for="mentorLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="mentorLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div class="mt-6">
+                            <label for="mentorLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="mentorLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Mentor Signup Form -->
+                <div id="mentor-signup-section" class="auth-section">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Sign Up</h2>
+                    <form id="mentor-signup-form">
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label for="mentorFullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="mentorFullName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                            </div>
+                            <div>
+                                <label for="mentorEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="mentorEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                            </div>
+                            <div>
+                                <label for="mentorPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                                <input type="password" id="mentorPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+             </div>
+        </section>
+
+        <!-- User Dashboard (for logged in users) -->
+        <section id="dashboard" class="page">
+            <h2 class="text-4xl font-bold text-center mb-4">Your Dashboard</h2>
+            <p id="welcome-message" class="text-center text-gray-600 mb-10">Welcome!</p>
+
+            <!-- Student's Team Management View -->
+            <div id="student-dashboard-view">
+                <div id="team-management-section" class="bg-white p-8 rounded-2xl shadow-lg mb-8"></div>
+                <div id="team-formation-lists" class="hidden grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">Invite Students to Your Team</h3>
+                        <div id="students-list" class="space-y-3 max-h-96 overflow-y-auto"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">Assign a Mentor to Your Team</h3>
+                        <div id="mentors-list" class="space-y-3 max-h-96 overflow-y-auto"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View of all teams (for both students and mentors) -->
+            <div id="all-teams-view" class="mt-12">
+                <h3 class="text-3xl font-bold text-center mb-8">All Formed Teams</h3>
+                <div id="dashboard-teams-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <p class="text-center col-span-full">Loading teams...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Problem Statements Page -->
+        <section id="problem-statements" class="page">
+            <h2 class="text-4xl font-bold text-center mb-10">Problem Statements</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <div class="bg-white p-6 rounded-lg shadow-md">Loading...</div>
+            </div>
+        </section>
+        
+        <!-- Teams Page -->
+        <section id="teams" class="page">
+            <h2 class="text-4xl font-bold text-center mb-10">Formed Teams</h2>
+             <div id="formed-teams-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <p class="text-center col-span-full">Loading teams...</p>
+            </div>
+        </section>
+        
+        <!-- Rules Page -->
+        <section id="rules" class="page">
+             <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
+                <!-- Rules content -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification Modal -->
+    <div id="notification-modal" class="fixed top-5 right-5 bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-2 pointer-events-none">
+        <p id="notification-message"></p>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, addDoc, onSnapshot, query, where, updateDoc, arrayUnion, arrayRemove, getDocs, writeBatch, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAy13jaKMhUBNuf7BsuH9fGWKKMbObQ4sI",
+            authDomain: "katathon-website.firebaseapp.com",
+            projectId: "katathon-website",
+            storageBucket: "katathon-website.firebasestorage.app",
+            messagingSenderId: "1079834464331",
+            appId: "1:1079834464331:web:ddcc16fc1d29a07d02bdce",
+            measurementId: "G-SSN9PSYF0Q"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUserData = null;
+        let userListener = null;
+        let teamListener = null;
+        let allTeamsListener = null;
+        
+        let allTeamsCache = [];
+
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const loggedOutNav = document.getElementById('logged-out-nav');
+        const loggedInNav = document.getElementById('logged-in-nav');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // --- UTILITY FUNCTIONS ---
+        function showPage(pageId) {
+            pages.forEach(page => page.classList.remove('active'));
+            const activePage = document.getElementById(pageId);
+            if (activePage) activePage.classList.add('active');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${pageId}`) link.classList.add('active');
+            });
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo(0, 0);
+
+            if (pageId === 'students') {
+                fetchAndDisplayAllStudents();
+            }
+        }
+
+        function showNotification(message, isError = false) {
+            const modal = document.getElementById('notification-modal');
+            const messageElement = document.getElementById('notification-message');
+            messageElement.textContent = message;
+            modal.className = `fixed top-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-2 ${isError ? 'bg-red-500' : 'bg-green-500'}`;
+            modal.classList.remove('opacity-0', 'translate-y-2');
+            setTimeout(() => modal.classList.add('opacity-0', 'translate-y-2'), 3000);
+        }
+
+        // --- AUTHENTICATION & DATA LISTENERS ---
+        onAuthStateChanged(auth, (user) => {
+            if (userListener) userListener();
+            if (teamListener) teamListener();
+
+            if (user) {
+                userListener = onSnapshot(doc(db, "users", user.uid), (userDoc) => {
+                    if (userDoc.exists()) {
+                        const wasJustCreated = !currentUserData;
+                        currentUserData = { uid: user.uid, ...userDoc.data() };
+                        updateUIAfterLogin();
+                        
+                        const currentPage = window.location.hash.substring(1);
+                        if (wasJustCreated && ['student-login', 'mentor-portal', 'registration'].includes(currentPage)) {
+                            showPage('dashboard');
+                        }
+                    } else {
+                        signOut(auth);
+                    }
+                });
+            } else {
+                currentUserData = null;
+                updateUIAfterLogout();
+            }
+        });
+
+        async function handleStudentRegistration(e) {
+            e.preventDefault();
+            const form = e.target;
+            const password = form.regPassword.value;
+            const confirmPassword = form.regConfirmPassword.value;
+            const email = form.regEmail.value;
+
+            if (password !== confirmPassword) {
+                showNotification("Passwords do not match.", true);
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                const userData = {
+                    fullName: form.regFullName.value,
+                    uid: form.regUid.value,
+                    email: email,
+                    contact: form.regContact.value,
+                    batch: form.regBatch.value,
+                    stream: form.regStream.value,
+                    centre: form.regCentre.value,
+                    college: form.regCollege.value,
+                    cgpa: form.regCgpa.value,
+                    role: 'student',
+                    teamId: null
+                };
+
+                await setDoc(doc(db, "users", user.uid), userData);
+                showNotification("Registration successful! Welcome.");
+                form.reset();
+            } catch (error) {
+                showNotification(error.message, true);
+            }
+        }
+        
+        async function handleStudentLogin(e) {
+            e.preventDefault();
+            const email = e.target.studentLoginEmail.value;
+            const password = e.target.studentLoginPassword.value;
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                showNotification("Login successful!");
+            } catch (error) {
+                showNotification(error.message, true);
+            }
+        }
+        
+        async function handleMentorSignup(e) {
+            e.preventDefault();
+            const form = e.target;
+            const email = form.mentorEmail.value;
+            const password = form.mentorPassword.value;
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                await setDoc(doc(db, "users", user.uid), {
+                    fullName: form.mentorFullName.value,
+                    email: email,
+                    role: 'mentor'
+                });
+                showNotification("Mentor account created successfully!");
+                form.reset();
+            } catch (error) {
+                showNotification(error.message, true);
+            }
+        }
+        
+        async function handleMentorLogin(e) {
+            e.preventDefault();
+            const email = e.target.mentorLoginEmail.value;
+            const password = e.target.mentorLoginPassword.value;
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                 showNotification("Login successful!");
+            } catch (error) {
+                showNotification(error.message, true);
+            }
+        }
+
+        // --- UI UPDATES ---
+        function updateUIAfterLogin() {
+            loggedOutNav.classList.add('hidden');
+            loggedInNav.classList.remove('hidden');
+            if (currentUserData) {
+                document.getElementById('welcome-message').textContent = `Welcome, ${currentUserData.fullName}!`;
+                setupDashboard();
+            }
+            updateMobileMenu();
+        }
+
+        function updateUIAfterLogout() {
+            if (teamListener) teamListener();
+            teamListener = null;
+
+            loggedInNav.classList.add('hidden');
+            loggedOutNav.classList.remove('hidden');
+            if (window.location.hash === '#dashboard') showPage('home');
+            updateMobileMenu();
+        }
+        
+        function updateMobileMenu() {
+            const loggedIn = !!auth.currentUser;
+            const links = loggedIn ?
+                `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                 <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
+                 <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
+                 <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
+                 <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>` :
+                `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                 <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
+                 <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                 <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
+                 <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
+                 <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login</a>
+                 <a href="#mentor-portal" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Mentor Portal</a>`;
+            mobileMenu.innerHTML = links;
+            attachNavListeners();
+        }
+
+        // --- DASHBOARD & TEAM LOGIC ---
+        function setupDashboard() {
+            if (teamListener) teamListener();
+            
+            const studentDashboard = document.getElementById('student-dashboard-view');
+            const allTeamsView = document.getElementById('all-teams-view');
+            
+            if (!currentUserData) return;
+            
+            allTeamsView.classList.remove('hidden');
+
+            if (currentUserData.role === 'student') {
+                studentDashboard.classList.remove('hidden');
+                const teamId = currentUserData.teamId;
+                
+                if (teamId) {
+                    teamListener = onSnapshot(doc(db, "teams", teamId), (teamDoc) => {
+                        if (teamDoc.exists()) {
+                            displayTeamInfo(teamDoc.id, teamDoc.data());
+                        } else {
+                            displayTeamCreation();
+                        }
+                    });
+                } else {
+                    displayTeamCreation();
+                }
+            } else if (currentUserData.role === 'mentor') {
+                 studentDashboard.classList.add('hidden');
+            }
+        }
+
+        function displayTeamCreation() {
+            const teamMgmt = document.getElementById('team-management-section');
+            teamMgmt.innerHTML = `
+                <h3 class="text-2xl font-bold mb-4 text-center">Team Management</h3>
+                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                    <p class="text-gray-600 mb-6">You are not in a team yet. Create one to get started!</p>
+                    <form id="create-team-form" class="flex flex-col sm:flex-row items-center gap-4 max-w-lg mx-auto">
+                        <input type="text" id="teamName" placeholder="Enter Your Team Name" class="flex-grow w-full border-gray-300 rounded-md shadow-sm" required>
+                        <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-indigo-700 transition w-full sm:w-auto">Create Team</button>
+                    </form>
+                </div>`;
+             document.getElementById('team-formation-lists').classList.add('hidden');
+            document.getElementById('create-team-form').addEventListener('submit', handleCreateTeam);
+        }
+
+        async function displayTeamInfo(teamId, teamData) {
+            const teamMgmt = document.getElementById('team-management-section');
+            const memberPromises = teamData.members.map(uid => getDoc(doc(db, "users", uid)));
+            const memberDocs = await Promise.all(memberPromises);
+            
+            let membersHTML = '';
+            memberDocs.forEach(doc => {
+                if (doc.exists()) {
+                    const member = { uid: doc.id, ...doc.data() };
+                    let removeButton = '';
+                    // Only leader can remove other members
+                    if (currentUserData && currentUserData.uid === teamData.leaderId && member.uid !== currentUserData.uid) {
+                        removeButton = `<button data-member-id="${member.uid}" class="remove-member-btn text-red-500 hover:text-red-700 text-xs ml-2">[Remove]</button>`;
+                    }
+                    membersHTML += `<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${member.fullName}${removeButton}</span>`;
+                }
+            });
+
+            let mentorName = 'Not assigned';
+            if(teamData.mentorId) {
+                const mentorDoc = await getDoc(doc(db, "users", teamData.mentorId));
+                if(mentorDoc.exists()) mentorName = mentorDoc.data().fullName;
+            }
+
+            // Main container HTML, which will be populated with action buttons via JS
+            teamMgmt.innerHTML = `
+                <h3 class="text-2xl font-bold mb-4 text-center">Team Management</h3>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div id="team-info-container" class="flex flex-col sm:flex-row justify-between items-start">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800">${teamData.name}</h4>
+                            <div class="text-gray-600 mt-2"><span class="font-semibold">Members:</span> ${membersHTML}</div>
+                            <p class="text-gray-600 mt-2"><span class="font-semibold">Mentor:</span> ${mentorName}</p>
+                        </div>
+                        <!-- Action buttons will be injected here for the leader -->
+                    </div>
+                </div>`;
+            
+            // Re-attach event listeners for the new remove buttons
+            document.querySelectorAll('.remove-member-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => handleRemoveMember(teamId, e.target.dataset.memberId));
+            });
+
+            // Add action buttons if the current user is the team leader
+            if (currentUserData && currentUserData.uid === teamData.leaderId) {
+                const teamInfoContainer = teamMgmt.querySelector('#team-info-container');
+                
+                const actionsContainer = document.createElement('div');
+                actionsContainer.className = 'mt-4 sm:mt-0 flex-shrink-0 flex items-center gap-2';
+                
+                // Add "Add Member" Button if team is not full
+                if (teamData.members.length < 4) {
+                    const addMemberButton = document.createElement('button');
+                    addMemberButton.className = 'bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-full transition text-sm';
+                    addMemberButton.textContent = 'Add Member';
+                    addMemberButton.onclick = () => {
+                        document.getElementById('team-formation-lists').classList.toggle('hidden');
+                    };
+                    actionsContainer.appendChild(addMemberButton);
+                }
+                
+                // Add "Delete Team" Button
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full transition text-sm';
+                deleteButton.textContent = 'Delete Team';
+                deleteButton.onclick = () => handleDeleteTeam(teamId, teamData.members);
+                actionsContainer.appendChild(deleteButton);
+                
+                if (teamInfoContainer) {
+                    teamInfoContainer.appendChild(actionsContainer);
+                }
+            }
+            
+            const formationList = document.getElementById('team-formation-lists');
+            // Prepare the invite/assign lists if the team isn't full, but keep them hidden.
+            if (teamData.members.length < 4) {
+                fetchAvailableUsers(teamId, teamData.members);
+                formationList.classList.add('hidden');
+            } else {
+                formationList.classList.add('hidden');
+            }
+        }
+
+        async function handleCreateTeam(e) {
+            e.preventDefault();
+            if (currentUserData && currentUserData.teamId) {
+                showNotification("You are already in a team.", true);
+                return;
+            }
+            const teamName = document.getElementById('teamName').value.trim();
+            if (!teamName) return;
+            try {
+                const teamData = { name: teamName, leaderId: currentUserData.uid, members: [currentUserData.uid], mentorId: null };
+                const teamRef = await addDoc(collection(db, "teams"), teamData);
+                await updateDoc(doc(db, "users", currentUserData.uid), { teamId: teamRef.id });
+                showNotification(`Team "${teamName}" created!`, false);
+            } catch (error) {
+                showNotification(error.message, true);
+            }
+        }
+        
+        async function handleDeleteTeam(teamId, memberIds) {
+            const batch = writeBatch(db);
+            try {
+                memberIds.forEach(userId => {
+                    const userRef = doc(db, "users", userId);
+                    batch.update(userRef, { teamId: null });
+                });
+                const teamRef = doc(db, "teams", teamId);
+                batch.delete(teamRef);
+                await batch.commit();
+                showNotification("Team deleted permanently.", false);
+            } catch (error) {
+                console.error("Error deleting team: ", error);
+                showNotification("Failed to delete team.", true);
+            }
+        }
+
+        async function handleRemoveMember(teamId, memberId) {
+             // A custom modal would be better
+            if (!confirm('Are you sure you want to remove this member from the team?')) {
+                return;
+            }
+            const batch = writeBatch(db);
+            try {
+                const teamRef = doc(db, "teams", teamId);
+                batch.update(teamRef, { members: arrayRemove(memberId) });
+
+                const userRef = doc(db, "users", memberId);
+                batch.update(userRef, { teamId: null });
+                
+                await batch.commit();
+                showNotification("Member removed successfully.", false);
+            } catch (error) {
+                console.error("Error removing member: ", error);
+                showNotification("Failed to remove member.", true);
+            }
+        }
+
+
+        async function fetchAvailableUsers(teamId, currentMembers) {
+            const studentsQuery = query(collection(db, "users"), where("role", "==", "student"), where("teamId", "==", null));
+            const studentsSnapshot = await getDocs(studentsQuery);
+            const studentsList = document.getElementById('students-list');
+            studentsList.innerHTML = '';
+            studentsSnapshot.forEach(doc => {
+                const student = { id: doc.id, ...doc.data() };
+                if (!currentMembers.includes(student.id)) {
+                    const el = document.createElement('div');
+                    el.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-md';
+                    el.innerHTML = `<span>${student.fullName}</span><button data-uid="${student.id}" class="invite-student-btn bg-green-500 text-white px-3 py-1 rounded-full text-sm hover:bg-green-600">Invite</button>`;
+                    studentsList.appendChild(el);
+                }
+            });
+            document.querySelectorAll('.invite-student-btn').forEach(btn => btn.addEventListener('click', (e) => handleInviteStudent(e, teamId)));
+
+            const mentorsQuery = query(collection(db, "users"), where("role", "==", "mentor"));
+            const mentorsSnapshot = await getDocs(mentorsQuery);
+            const mentorsList = document.getElementById('mentors-list');
+            mentorsList.innerHTML = '';
+            mentorsSnapshot.forEach(doc => {
+                 const mentor = { id: doc.id, ...doc.data() };
+                 const el = document.createElement('div');
+                 el.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-md';
+                 el.innerHTML = `<span>${mentor.fullName}</span><button data-uid="${mentor.id}" class="assign-mentor-btn bg-blue-500 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600">Assign</button>`;
+                 mentorsList.appendChild(el);
+            });
+            document.querySelectorAll('.assign-mentor-btn').forEach(btn => btn.addEventListener('click', (e) => handleAssignMentor(e, teamId)));
+        }
+
+        async function handleInviteStudent(e, teamId) {
+            const studentId = e.target.dataset.uid;
+            try {
+                await updateDoc(doc(db, "users", studentId), { teamId: teamId });
+                await updateDoc(doc(db, "teams", teamId), { members: arrayUnion(studentId) });
+                showNotification("Student added to team!", false);
+            } catch (error) {
+                showNotification(error.message, true);
+            }
+        }
+        
+        async function handleAssignMentor(e, teamId) {
+             const mentorId = e.target.dataset.uid;
+             try {
+                await updateDoc(doc(db, "teams", teamId), { mentorId: mentorId });
+                showNotification("Mentor assigned!", false);
+             } catch(error) {
+                  showNotification(error.message, true);
+             }
+        }
+        
+        async function fetchAndDisplayAllStudents() {
+            const container = document.getElementById('all-students-list');
+            container.innerHTML = '<p class="text-center col-span-full">Loading students...</p>';
+            try {
+                const q = query(collection(db, "users"), where("role", "==", "student"));
+                const querySnapshot = await getDocs(q);
+                if (querySnapshot.empty) {
+                    container.innerHTML = '<p class="text-center col-span-full">No students have registered yet.</p>';
+                    return;
+                }
+                container.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const student = doc.data();
+                    const card = document.createElement('div');
+                    card.className = 'bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300';
+                    card.innerHTML = `
+                        <h3 class="text-xl font-bold text-gray-800">${student.fullName}</h3>
+                        <p class="text-gray-600">${student.college}</p>
+                        <p class="text-indigo-500 font-semibold mt-2">${student.stream}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Error fetching students: ", error);
+                container.innerHTML = '<p class="text-center col-span-full text-red-500">Could not load students.</p>';
+            }
+        }
+
+        // --- TEAM DATA & RENDERING (REFACTORED) ---
+        
+        function listenAndCacheAllTeams() {
+            if (allTeamsListener) return;
+
+            const teamsQuery = collection(db, "teams");
+            allTeamsListener = onSnapshot(teamsQuery, async (snapshot) => {
+                const teamsPromises = snapshot.docs.map(async (teamDoc) => {
+                    const team = { id: teamDoc.id, ...teamDoc.data() };
+                    
+                    const memberPromises = team.members.map(uid => getDoc(doc(db, "users", uid)));
+                    const memberDocs = await Promise.all(memberPromises);
+                    team.memberNames = memberDocs.map(d => d.exists() ? d.data().fullName : 'Unknown').join(', ');
+                    
+                    if (team.mentorId) {
+                        const mentorDoc = await getDoc(doc(db, "users", team.mentorId));
+                        team.mentorName = mentorDoc.exists() ? mentorDoc.data().fullName : 'No Mentor Assigned';
+                    } else {
+                        team.mentorName = 'No Mentor Assigned';
+                    }
+                    return team;
+                });
+
+                allTeamsCache = await Promise.all(teamsPromises);
+                
+                renderPublicTeamsPage();
+                renderDashboardTeamsList();
+            }, (error) => {
+                console.error("Error listening to teams collection:", error);
+                document.getElementById('formed-teams-list').innerHTML = '<p class="text-center col-span-full text-red-500">Could not load teams.</p>';
+                document.getElementById('dashboard-teams-list').innerHTML = '<p class="text-center col-span-full text-red-500">Could not load teams.</p>';
+            });
+        }
+
+        function renderPublicTeamsPage() {
+            const container = document.getElementById('formed-teams-list');
+            if (container) renderTeamsHTML(container, allTeamsCache);
+        }
+
+        function renderDashboardTeamsList() {
+            const container = document.getElementById('dashboard-teams-list');
+            if(container) renderTeamsHTML(container, allTeamsCache);
+        }
+
+        function renderTeamsHTML(container, teams) {
+            if (!container) return; // Guard against calls on pages without the container
+            if (teams.length === 0) {
+                container.innerHTML = '<p class="text-center col-span-full">No teams have been formed yet.</p>';
+                return;
+            }
+            container.innerHTML = '';
+            teams.forEach(team => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-6 rounded-lg shadow-md flex flex-col justify-between';
+
+                const content = document.createElement('div');
+                content.innerHTML = `
+                    <h3 class="text-xl font-bold text-gray-800">${team.name}</h3>
+                    <p class="text-sm text-gray-500 mt-2">Members:</p>
+                    <p class="text-gray-700">${team.memberNames}</p>
+                    <p class="text-sm text-gray-500 mt-2">Mentor:</p>
+                    <p class="text-indigo-600 font-semibold">${team.mentorName}</p>
+                `;
+                card.appendChild(content);
+
+                // Add controls for the team leader
+                if (currentUserData && currentUserData.uid === team.leaderId) {
+                    const actionsContainer = document.createElement('div');
+                    actionsContainer.className = 'mt-4 pt-4 border-t border-gray-200 flex items-center gap-2 justify-end';
+
+                    // Add "Add Member" Button if team is not full
+                    if (team.members && team.members.length < 4) {
+                        const addMemberButton = document.createElement('button');
+                        addMemberButton.className = 'bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-full transition text-xs';
+                        addMemberButton.textContent = 'Add Member';
+                        addMemberButton.onclick = () => {
+                            showPage('dashboard');
+                        };
+                        actionsContainer.appendChild(addMemberButton);
+                    }
+                    
+                    // Add "Delete Team" Button
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-full transition text-xs';
+                    deleteButton.textContent = 'Delete Team';
+                    deleteButton.onclick = () => handleDeleteTeam(team.id, team.members);
+                    actionsContainer.appendChild(deleteButton);
+                    
+                    card.appendChild(actionsContainer);
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        // --- INITIALIZATION ---
+        function initializeEventListeners() {
+            document.getElementById('registration-form').addEventListener('submit', handleStudentRegistration);
+            document.getElementById('student-login-form').addEventListener('submit', handleStudentLogin);
+            document.getElementById('mentor-signup-form').addEventListener('submit', handleMentorSignup);
+            document.getElementById('mentor-login-form').addEventListener('submit', handleMentorLogin);
+            
+            document.getElementById('logout-button').addEventListener('click', () => signOut(auth));
+            document.getElementById('mobile-menu-button').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+            const mentorLoginTab = document.getElementById('mentor-login-tab');
+            const mentorSignupTab = document.getElementById('mentor-signup-tab');
+            mentorLoginTab.addEventListener('click', () => {
+                mentorLoginTab.classList.add('text-indigo-600', 'border-indigo-600');
+                mentorSignupTab.classList.remove('text-indigo-600', 'border-indigo-600');
+                document.getElementById('mentor-login-section').classList.add('active');
+                document.getElementById('mentor-signup-section').classList.remove('active');
+            });
+             mentorSignupTab.addEventListener('click', () => {
+                mentorSignupTab.classList.add('text-indigo-600', 'border-indigo-600');
+                mentorLoginTab.classList.remove('text-indigo-600', 'border-indigo-600');
+                document.getElementById('mentor-signup-section').classList.add('active');
+                document.getElementById('mentor-login-section').classList.remove('active');
+            });
+
+            attachNavListeners();
+        }
+        
+        function attachNavListeners() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = e.currentTarget.getAttribute('href').substring(1);
+                    showPage(pageId);
+                });
+            });
+            const mobileLogoutButton = document.getElementById('mobile-logout-button');
+            if (mobileLogoutButton) mobileLogoutButton.addEventListener('click', () => signOut(auth));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownDate = new Date("November 29, 2025 08:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                document.getElementById('days').innerText = String(Math.floor(distance/(1000*60*60*24))).padStart(2,'0');
+                document.getElementById('hours').innerText = String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+                document.getElementById('minutes').innerText = String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,'0');
+                document.getElementById('seconds').innerText = String(Math.floor((distance%(1000*60))/1000)).padStart(2,'0');
+            }, 1000);
+
+            initializeEventListeners();
+            const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
+            showPage(initialPage);
+            updateMobileMenu();
+            listenAndCacheAllTeams();
+        });
+    </script>
+</body>
+</html>
+
