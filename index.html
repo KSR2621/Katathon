@@ -39,7 +39,7 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="nav-link text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">Katathon</a>
             <div class="hidden md:flex space-x-8 items-center">
-                  <!-- Logged Out Links -->
+                    <!-- Logged Out Links -->
                 <div id="logged-out-nav" class="space-x-8">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
                     <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
@@ -51,11 +51,12 @@
                 </div>
                 <!-- Logged In Links -->
                 <div id="logged-in-nav" class="hidden space-x-8 items-center">
-                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
-                     <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
-                     <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
-                     <a href="#teams" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Teams</a>
-                     <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
+                      <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
+                      <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
+                      <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
+                      <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
+                      <a href="#teams" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Teams</a>
+                      <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
                 </div>
             </div>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
@@ -211,51 +212,51 @@
         <!-- Mentor Portal (Login/Signup) -->
         <section id="mentor-portal" class="page">
              <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
-                <div class="flex border-b mb-8">
-                    <button id="mentor-login-tab" class="flex-1 py-2 font-semibold text-center text-indigo-600 border-b-2 border-indigo-600">Login</button>
-                    <button id="mentor-signup-tab" class="flex-1 py-2 font-semibold text-center text-gray-500">Sign Up</button>
-                </div>
-                <!-- Mentor Login Form -->
-                <div id="mentor-login-section" class="auth-section active">
-                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Login</h2>
-                    <form id="mentor-login-form">
-                        <div>
-                            <label for="mentorLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                            <input type="email" id="mentorLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                        <div class="mt-6">
-                            <label for="mentorLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" id="mentorLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                        <div class="mt-8 text-center">
-                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- Mentor Signup Form -->
-                <div id="mentor-signup-section" class="auth-section">
-                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Sign Up</h2>
-                    <form id="mentor-signup-form">
-                        <div class="grid grid-cols-1 gap-6">
-                            <div>
-                                <label for="mentorFullName" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                <input type="text" id="mentorFullName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                            </div>
-                            <div>
-                                <label for="mentorEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                <input type="email" id="mentorEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                            </div>
-                            <div>
-                                <label for="mentorPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                                <input type="password" id="mentorPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                            </div>
-                        </div>
-                        <div class="mt-8 text-center">
-                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign Up</button>
-                        </div>
-                    </form>
-                </div>
-             </div>
+                 <div class="flex border-b mb-8">
+                     <button id="mentor-login-tab" class="flex-1 py-2 font-semibold text-center text-indigo-600 border-b-2 border-indigo-600">Login</button>
+                     <button id="mentor-signup-tab" class="flex-1 py-2 font-semibold text-center text-gray-500">Sign Up</button>
+                 </div>
+                 <!-- Mentor Login Form -->
+                 <div id="mentor-login-section" class="auth-section active">
+                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Login</h2>
+                     <form id="mentor-login-form">
+                         <div>
+                             <label for="mentorLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                             <input type="email" id="mentorLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                         </div>
+                         <div class="mt-6">
+                             <label for="mentorLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                             <input type="password" id="mentorLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                         </div>
+                         <div class="mt-8 text-center">
+                             <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
+                         </div>
+                     </form>
+                 </div>
+                 <!-- Mentor Signup Form -->
+                 <div id="mentor-signup-section" class="auth-section">
+                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Sign Up</h2>
+                     <form id="mentor-signup-form">
+                         <div class="grid grid-cols-1 gap-6">
+                             <div>
+                                 <label for="mentorFullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                 <input type="text" id="mentorFullName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                             </div>
+                             <div>
+                                 <label for="mentorEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                 <input type="email" id="mentorEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                             </div>
+                             <div>
+                                 <label for="mentorPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                                 <input type="password" id="mentorPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                             </div>
+                         </div>
+                         <div class="mt-8 text-center">
+                             <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign Up</button>
+                         </div>
+                     </form>
+                 </div>
+              </div>
         </section>
 
         <!-- User Dashboard (for logged in users) -->
@@ -277,6 +278,29 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Mentor's Problem Statement Management View -->
+            <div id="mentor-dashboard-view" class="hidden">
+                <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Manage Problem Statements</h3>
+                    <form id="add-problem-statement-form" class="mb-6 p-4 border rounded-lg bg-gray-50">
+                        <div class="mb-4">
+                            <label for="psTitle" class="block text-sm font-medium text-gray-700">Title</label>
+                            <input type="text" id="psTitle" placeholder="e.g., Smart City Traffic Solution" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="psDescription" class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea id="psDescription" rows="4" placeholder="Describe the problem in detail..." class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-indigo-700 transition">Add Statement</button>
+                    </form>
+                    <h4 class="text-xl font-bold mb-4">Existing Statements</h4>
+                    <div id="mentor-problem-statements-list" class="space-y-4">
+                        <!-- List will be populated by JS -->
+                        <p>Loading your problem statements...</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- View of all teams (for both students and mentors) -->
             <div id="all-teams-view" class="mt-12">
@@ -290,7 +314,7 @@
         <!-- Problem Statements Page -->
         <section id="problem-statements" class="page">
             <h2 class="text-4xl font-bold text-center mb-10">Problem Statements</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="public-problem-statements-list" class="space-y-8 max-w-4xl mx-auto">
                  <div class="bg-white p-6 rounded-lg shadow-md">Loading...</div>
             </div>
         </section>
@@ -307,7 +331,53 @@
         <section id="rules" class="page">
              <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
-                <!-- Rules content -->
+                <div class="space-y-6 text-gray-700">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">1. Team Formation</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Teams must consist of a minimum of 2 and a maximum of 4 members.</li>
+                            <li>All team members must be currently enrolled Katalyst students from the graduating batches of 2026 or 2027.</li>
+                            <li>Students must form their teams on the official Katathon portal before the hackathon begins.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">2. Project Development</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>All coding and development work must take place during the official hackathon timeframe.</li>
+                            <li>The use of open-source libraries, frameworks, and APIs is permitted and encouraged.</li>
+                            <li>Pre-existing projects or projects that have been worked on before the hackathon are not allowed. Your project must be a new creation.</li>
+                            <li>Teams must build a solution based on one of the official problem statements provided.</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">3. Submission Guidelines</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>All teams must submit their project before the final deadline. Late submissions will not be accepted.</li>
+                            <li>Submissions must include a link to a public code repository (e.g., GitHub).</li>
+                            <li>Each team must provide a short (maximum 3-minute) video demonstrating their project.</li>
+                            <li>A clear project description and instructions on how to run the application must be included in the repository's <code>README.md</code> file.</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">4. Judging Criteria</h3>
+                         <p>Projects will be judged based on the following criteria:</p>
+                        <ul class="list-disc list-inside space-y-1 mt-2">
+                            <li><strong>Innovation & Creativity:</strong> How original and creative is the solution?</li>
+                            <li><strong>Technical Complexity:</strong> How technically challenging was the project to implement?</li>
+                            <li><strong>Design & User Experience:</strong> Is the final product polished, easy to use, and visually appealing?</li>
+                            <li><strong>Impact & Feasibility:</strong> How well does the solution address the problem statement, and how practical is it?</li>
+                            <li><strong>Presentation:</strong> How clearly did the team present their project and its value?</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">5. Code of Conduct</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Respect:</strong> All participants, mentors, and organizers must be treated with respect. Harassment and discriminatory behavior will not be tolerated.</li>
+                            <li><strong>Integrity:</strong> All submitted work must be the original work of the team members. Plagiarism is strictly forbidden.</li>
+                            <li><strong>Collaboration:</strong> We encourage a collaborative and supportive environment. Help your fellow participants, but don't write their code for them.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -340,8 +410,10 @@
         let userListener = null;
         let teamListener = null;
         let allTeamsListener = null;
+        let problemStatementsListener = null;
         
         let allTeamsCache = [];
+        let showInviteListOnDashboardLoad = false;
 
         const pages = document.querySelectorAll('.page');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -507,19 +579,23 @@
         
         function updateMobileMenu() {
             const loggedIn = !!auth.currentUser;
-            const links = loggedIn ?
-                `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
-                 <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
-                 <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
-                 <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
-                 <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>` :
-                `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
-                 <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
-                 <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                 <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
-                 <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
-                 <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login</a>
-                 <a href="#mentor-portal" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Mentor Portal</a>`;
+            let links = '';
+             if (loggedIn) {
+                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                          <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
+                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                          <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
+                          <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
+                          <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
+             } else {
+                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                          <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
+                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                          <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
+                          <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
+                          <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login</a>
+                          <a href="#mentor-portal" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Mentor Portal</a>`;
+            }
             mobileMenu.innerHTML = links;
             attachNavListeners();
         }
@@ -529,6 +605,7 @@
             if (teamListener) teamListener();
             
             const studentDashboard = document.getElementById('student-dashboard-view');
+            const mentorDashboard = document.getElementById('mentor-dashboard-view');
             const allTeamsView = document.getElementById('all-teams-view');
             
             if (!currentUserData) return;
@@ -537,6 +614,7 @@
 
             if (currentUserData.role === 'student') {
                 studentDashboard.classList.remove('hidden');
+                mentorDashboard.classList.add('hidden');
                 const teamId = currentUserData.teamId;
                 
                 if (teamId) {
@@ -551,7 +629,8 @@
                     displayTeamCreation();
                 }
             } else if (currentUserData.role === 'mentor') {
-                 studentDashboard.classList.add('hidden');
+                studentDashboard.classList.add('hidden');
+                mentorDashboard.classList.remove('hidden');
             }
         }
 
@@ -644,10 +723,15 @@
             }
             
             const formationList = document.getElementById('team-formation-lists');
-            // Prepare the invite/assign lists if the team isn't full, but keep them hidden.
+            // Prepare the invite/assign lists if the team isn't full
             if (teamData.members.length < 4) {
                 fetchAvailableUsers(teamId, teamData.members);
-                formationList.classList.add('hidden');
+                if (showInviteListOnDashboardLoad) {
+                    formationList.classList.remove('hidden');
+                    showInviteListOnDashboardLoad = false; // Reset the flag
+                } else {
+                    formationList.classList.add('hidden');
+                }
             } else {
                 formationList.classList.add('hidden');
             }
@@ -672,27 +756,27 @@
         }
         
         async function handleDeleteTeam(teamId, memberIds) {
-            const batch = writeBatch(db);
             try {
+                await deleteDoc(doc(db, "teams", teamId));
+
+                const batch = writeBatch(db);
                 memberIds.forEach(userId => {
                     const userRef = doc(db, "users", userId);
                     batch.update(userRef, { teamId: null });
                 });
-                const teamRef = doc(db, "teams", teamId);
-                batch.delete(teamRef);
-                await batch.commit();
-                showNotification("Team deleted permanently.", false);
+                await batch.commit().catch(err => {
+                    console.warn("Could not clean up user profiles after team deletion. This might be due to security rules.", err);
+                });
+
+                showNotification("Team deleted successfully.", false);
+
             } catch (error) {
                 console.error("Error deleting team: ", error);
-                showNotification("Failed to delete team.", true);
+                showNotification("Failed to delete team. Check console for details.", true);
             }
         }
 
         async function handleRemoveMember(teamId, memberId) {
-             // A custom modal would be better
-            if (!confirm('Are you sure you want to remove this member from the team?')) {
-                return;
-            }
             const batch = writeBatch(db);
             try {
                 const teamRef = doc(db, "teams", teamId);
@@ -757,39 +841,80 @@
                 await updateDoc(doc(db, "teams", teamId), { mentorId: mentorId });
                 showNotification("Mentor assigned!", false);
              } catch(error) {
-                  showNotification(error.message, true);
+                   showNotification(error.message, true);
              }
         }
         
         async function fetchAndDisplayAllStudents() {
             const container = document.getElementById('all-students-list');
             container.innerHTML = '<p class="text-center col-span-full">Loading students...</p>';
+            
             try {
-                const q = query(collection(db, "users"), where("role", "==", "student"));
+                let isTeamLeader = false;
+                let teamData = null;
+
+                // Check if the current user is a team leader
+                if (currentUserData && currentUserData.teamId) {
+                    const teamDoc = await getDoc(doc(db, "teams", currentUserData.teamId));
+                    if (teamDoc.exists() && teamDoc.data().leaderId === currentUserData.uid) {
+                        isTeamLeader = true;
+                        teamData = teamDoc.data();
+                    }
+                }
+
+                // Modify query based on user's role
+                const q = isTeamLeader 
+                    ? query(collection(db, "users"), where("role", "==", "student"), where("teamId", "==", null))
+                    : query(collection(db, "users"), where("role", "==", "student"));
+                
                 const querySnapshot = await getDocs(q);
+
                 if (querySnapshot.empty) {
-                    container.innerHTML = '<p class="text-center col-span-full">No students have registered yet.</p>';
+                    container.innerHTML = `<p class="text-center col-span-full">${isTeamLeader ? 'No available students to invite.' : 'No students have registered yet.'}</p>`;
                     return;
                 }
+
                 container.innerHTML = '';
                 querySnapshot.forEach((doc) => {
-                    const student = doc.data();
+                    const student = {id: doc.id, ...doc.data()};
                     const card = document.createElement('div');
-                    card.className = 'bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300';
-                    card.innerHTML = `
-                        <h3 class="text-xl font-bold text-gray-800">${student.fullName}</h3>
-                        <p class="text-gray-600">${student.college}</p>
-                        <p class="text-indigo-500 font-semibold mt-2">${student.stream}</p>
+                    card.className = 'bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between';
+                    
+                    let cardContent = `
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">${student.fullName}</h3>
+                            <p class="text-gray-600">${student.college}</p>
+                            <p class="text-indigo-500 font-semibold mt-2">${student.stream}</p>
+                        </div>
                     `;
+
+                    // If user is a team leader and the team is not full, add an invite button
+                    if (isTeamLeader && teamData && teamData.members.length < 4) {
+                        cardContent += `
+                            <div class="mt-4 pt-4 border-t border-gray-200 text-right">
+                                <button data-uid="${student.id}" class="invite-student-btn-public bg-green-500 text-white px-4 py-1 rounded-full text-sm hover:bg-green-600 transition">Invite</button>
+                            </div>
+                        `;
+                    }
+                    
+                    card.innerHTML = cardContent;
                     container.appendChild(card);
                 });
+
+                // Add event listeners for the new invite buttons
+                if (isTeamLeader) {
+                    document.querySelectorAll('.invite-student-btn-public').forEach(btn => {
+                        btn.addEventListener('click', (e) => handleInviteStudent(e, currentUserData.teamId));
+                    });
+                }
+
             } catch (error) {
                 console.error("Error fetching students: ", error);
                 container.innerHTML = '<p class="text-center col-span-full text-red-500">Could not load students.</p>';
             }
         }
 
-        // --- TEAM DATA & RENDERING (REFACTORED) ---
+        // --- TEAM DATA & RENDERING ---
         
         function listenAndCacheAllTeams() {
             if (allTeamsListener) return;
@@ -834,7 +959,7 @@
         }
 
         function renderTeamsHTML(container, teams) {
-            if (!container) return; // Guard against calls on pages without the container
+            if (!container) return;
             if (teams.length === 0) {
                 container.innerHTML = '<p class="text-center col-span-full">No teams have been formed yet.</p>';
                 return;
@@ -843,6 +968,7 @@
             teams.forEach(team => {
                 const card = document.createElement('div');
                 card.className = 'bg-white p-6 rounded-lg shadow-md flex flex-col justify-between';
+                card.id = `team-card-${team.id}`;
 
                 const content = document.createElement('div');
                 content.innerHTML = `
@@ -853,24 +979,21 @@
                     <p class="text-indigo-600 font-semibold">${team.mentorName}</p>
                 `;
                 card.appendChild(content);
-
-                // Add controls for the team leader
+                
                 if (currentUserData && currentUserData.uid === team.leaderId) {
                     const actionsContainer = document.createElement('div');
                     actionsContainer.className = 'mt-4 pt-4 border-t border-gray-200 flex items-center gap-2 justify-end';
 
-                    // Add "Add Member" Button if team is not full
                     if (team.members && team.members.length < 4) {
                         const addMemberButton = document.createElement('button');
                         addMemberButton.className = 'bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-full transition text-xs';
                         addMemberButton.textContent = 'Add Member';
                         addMemberButton.onclick = () => {
-                            showPage('dashboard');
+                            showPage('students');
                         };
                         actionsContainer.appendChild(addMemberButton);
                     }
                     
-                    // Add "Delete Team" Button
                     const deleteButton = document.createElement('button');
                     deleteButton.className = 'bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-full transition text-xs';
                     deleteButton.textContent = 'Delete Team';
@@ -880,9 +1003,103 @@
                     card.appendChild(actionsContainer);
                 }
 
+
                 container.appendChild(card);
             });
         }
+        
+        // --- PROBLEM STATEMENTS LOGIC ---
+        async function handleAddProblemStatement(e) {
+            e.preventDefault();
+            if (!currentUserData || currentUserData.role !== 'mentor') return;
+            const form = e.target;
+            const title = form.psTitle.value;
+            const description = form.psDescription.value;
+            try {
+                await addDoc(collection(db, "problemStatements"), {
+                    title,
+                    description,
+                    mentorId: currentUserData.uid,
+                    mentorName: currentUserData.fullName
+                });
+                showNotification("Problem statement added successfully.", false);
+                form.reset();
+            } catch (error) {
+                console.error("Error adding problem statement:", error);
+                showNotification("Failed to add problem statement.", true);
+            }
+        }
+        
+        async function handleDeleteProblemStatement(statementId) {
+            try {
+                await deleteDoc(doc(db, "problemStatements", statementId));
+                showNotification("Problem statement deleted.", false);
+            } catch (error) {
+                console.error("Error deleting problem statement:", error);
+                showNotification("Failed to delete problem statement.", true);
+            }
+        }
+        
+        function listenAndDisplayProblemStatements() {
+            if (problemStatementsListener) return;
+            const q = collection(db, "problemStatements");
+            problemStatementsListener = onSnapshot(q, (snapshot) => {
+                const statements = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                renderPublicProblemStatements(statements);
+                renderMentorProblemStatements(statements);
+            }, (error) => {
+                console.error("Error fetching problem statements:", error);
+                 document.getElementById('public-problem-statements-list').innerHTML = '<p class="text-center text-red-500">Could not load problem statements.</p>';
+            });
+        }
+        
+        function renderPublicProblemStatements(statements) {
+             const container = document.getElementById('public-problem-statements-list');
+             if (!container) return;
+             if (statements.length === 0) {
+                 container.innerHTML = '<p class="text-center">No problem statements have been added yet.</p>';
+                 return;
+             }
+             container.innerHTML = '';
+             statements.forEach(statement => {
+                 const card = document.createElement('div');
+                 card.className = 'bg-white p-6 rounded-lg shadow-md';
+                 card.innerHTML = `
+                    <h3 class="text-2xl font-bold text-gray-800">${statement.title}</h3>
+                    <p class="text-gray-600 mt-2">${statement.description.replace(/\n/g, '<br>')}</p>
+                    <p class="text-sm text-gray-500 mt-4">Posted by: <span class="font-semibold text-indigo-600">${statement.mentorName}</span></p>
+                 `;
+                 container.appendChild(card);
+             });
+        }
+        
+        function renderMentorProblemStatements(statements) {
+             const container = document.getElementById('mentor-problem-statements-list');
+             if (!container || !currentUserData || currentUserData.role !== 'mentor') return;
+
+             const mentorStatements = statements.filter(s => s.mentorId === currentUserData.uid);
+             if (mentorStatements.length === 0) {
+                 container.innerHTML = '<p class="text-gray-500">You have not added any problem statements yet.</p>';
+                 return;
+             }
+             container.innerHTML = '';
+             mentorStatements.forEach(statement => {
+                 const item = document.createElement('div');
+                 item.className = 'flex justify-between items-center bg-gray-100 p-3 rounded-md';
+                 item.innerHTML = `
+                     <div>
+                         <p class="font-semibold">${statement.title}</p>
+                     </div>
+                     <button data-id="${statement.id}" class="delete-statement-btn bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600">Delete</button>
+                 `;
+                 container.appendChild(item);
+             });
+             
+             document.querySelectorAll('.delete-statement-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => handleDeleteProblemStatement(e.target.dataset.id));
+             });
+        }
+
 
         // --- INITIALIZATION ---
         function initializeEventListeners() {
@@ -890,6 +1107,7 @@
             document.getElementById('student-login-form').addEventListener('submit', handleStudentLogin);
             document.getElementById('mentor-signup-form').addEventListener('submit', handleMentorSignup);
             document.getElementById('mentor-login-form').addEventListener('submit', handleMentorLogin);
+            document.getElementById('add-problem-statement-form').addEventListener('submit', handleAddProblemStatement);
             
             document.getElementById('logout-button').addEventListener('click', () => signOut(auth));
             document.getElementById('mobile-menu-button').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
@@ -917,12 +1135,18 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const pageId = e.currentTarget.getAttribute('href').substring(1);
+                    history.pushState(null, '', `#${pageId}`);
                     showPage(pageId);
                 });
             });
             const mobileLogoutButton = document.getElementById('mobile-logout-button');
             if (mobileLogoutButton) mobileLogoutButton.addEventListener('click', () => signOut(auth));
         }
+        
+        window.addEventListener('popstate', () => {
+            const pageId = window.location.hash ? window.location.hash.substring(1) : 'home';
+            showPage(pageId);
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const countdownDate = new Date("November 29, 2025 08:00:00").getTime();
@@ -940,6 +1164,7 @@
             showPage(initialPage);
             updateMobileMenu();
             listenAndCacheAllTeams();
+            listenAndDisplayProblemStatements();
         });
     </script>
 </body>
