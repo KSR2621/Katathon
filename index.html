@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katathon</title>
+    <title>Katathon 5.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,51 +30,67 @@
         #notification-modal {
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
+        .problem-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Timeline Animation Styles */
+        .timeline-item {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .timeline-item.left {
+            transform: translateX(-50px);
+        }
+        .timeline-item.right {
+            transform: translateX(50px);
+        }
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <!-- Header -->
     <header class="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="nav-link text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">Katathon</a>
+           <a href="#home" class="text-2xl font-bold flex items-center">
+    <img src="Kadathon.png" alt="Katathon Logo" class="h-9 mr-2"> 
+</a>
             <div class="hidden md:flex space-x-8 items-center">
-                    <!-- Logged Out Links -->
                 <div id="logged-out-nav" class="space-x-8">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
-                    <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <a href="#teams" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Teams</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
-                    <a href="#student-login" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Student Login</a>
-                    <a href="#mentor-portal" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Mentor Portal</a>
+                    <a href="#idea-submission" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Submit Idea</a>
+                    <a href="#student-login" class="nav-link bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Student Login/Register</a>
                 </div>
-                <!-- Logged In Links -->
                 <div id="logged-in-nav" class="hidden space-x-8 items-center">
-                      <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
-                      <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
-                      <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                      <a href="#students" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Students</a>
-                      <a href="#teams" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Teams</a>
-                      <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
+                    <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
+                    <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
+                    <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
+                    <a href="#idea-submission" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Submit Idea</a>
+                    <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
                 </div>
             </div>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2 bg-gray-800">
-             <!-- Links will be dynamically inserted here -->
-        </div>
+            </div>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
-        <!-- Home Page -->
         <section id="home" class="page active">
             <div class="text-center bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 rounded-lg p-12 md:p-24 shadow-2xl">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-white">Welcome to Katathon</h2>
-                <p class="text-indigo-200 text-lg mt-4 font-medium">Powered by Katalyst & TomTom</p>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-white">Welcome to Katathon 5.0</h2>
+                <p class="text-indigo-200 text-lg mt-4 font-medium">Empowered by TomTom and Katalyst</p>
 
                 <div id="countdown" class="mt-8 flex justify-center space-x-2 md:space-x-4 text-white">
                     <div class="countdown-box p-4 rounded-lg w-24"><span id="days" class="text-4xl font-bold">00</span><span class="block text-sm">Days</span></div>
@@ -82,22 +98,114 @@
                     <div class="countdown-box p-4 rounded-lg w-24"><span id="minutes" class="text-4xl font-bold">00</span><span class="block text-sm">Minutes</span></div>
                     <div class="countdown-box p-4 rounded-lg w-24"><span id="seconds" class="text-4xl font-bold">00</span><span class="block text-sm">Seconds</span></div>
                 </div>
-                 <a href="#registration" class="nav-link inline-block mt-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Register as a Student!</a>
+                   <a href="#idea-submission" class="nav-link inline-block mt-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Submit Your Idea!</a>
             </div>
-
+            
             <div class="grid md:grid-cols-2 gap-8 mt-12">
                 <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="flex items-center mb-4"><svg class="w-10 h-10 text-indigo-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><h3 class="text-2xl font-bold text-gray-800">About Katalyst</h3></div>
-                    <p class="text-gray-600">Katalyst is a unique non-profit initiative empowering young women from lower-income communities. Through a comprehensive 4-year program, we provide end-to-end support to help them pursue professional education and unleash their potential. This hackathon fosters innovation and technical skills among our bright students.</p>
+                    <div class="flex items-center mb-4">
+                        <img src="katalyst.png" alt="Katalyst Logo" class="h-24 mr-4">
+                        <h3 class="text-2xl font-bold text-gray-800"></h3>
+                    </div>
+                    <p class="text-gray-600">This document outlines the standard process, format, and evaluation criteria for students participating in Katathon 5.0. It serves as a complete guide for team formation, timelines, submission formats, problem statements, and evaluation criteria.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="flex items-center mb-4"><svg class="w-10 h-10 text-indigo-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><h3 class="text-2xl font-bold text-gray-800">About TomTom</h3></div>
-                    <p class="text-gray-600">TomTom is the leading independent location technology specialist, shaping mobility with highly accurate maps and navigation software. By collaborating with Katalyst, TomTom aims to inspire the next generation of engineers. We are excited to see the innovative solutions you will build to tackle real-world challenges.</p>
+                    <div class="flex items-center mb-4">
+                        <img src="tomtom.png" alt="TomTom Logo" class="h-24 mr-4 object-contain">
+                        <h3 class="text-2xl font-bold text-gray-800"></h3>
+                    </div>
+                    <p class="text-gray-600">TomTom is the leading independent location technology specialist, shaping mobility with highly accurate maps and navigation software. By empowering Katathon 5.0, TomTom aims to inspire the next generation of engineers to build innovative solutions for real-world challenges.</p>
                 </div>
             </div>
+
+            <div id="timeline" class="mt-12 bg-white p-8 rounded-xl shadow-md">
+                <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Event Timeline</h3>
+                <div class="relative">
+                    <div class="absolute left-1/2 h-full w-0.5 bg-indigo-200" style="transform: translateX(-50%);"></div>
+                    <div class="space-y-12">
+                        <div class="flex justify-center items-center timeline-item left">
+                            <div class="w-5/12 text-right pr-8">
+                                <p class="text-lg font-semibold text-indigo-600">20th October 2025</p>
+                                <p class="text-gray-600">Participant Registration Opens</p>
+                            </div>
+                            <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                            <div class="w-5/12 pl-8"></div>
+                        </div>
+                           <div class="flex justify-center items-center timeline-item right">
+                               <div class="w-5/12 pr-8"></div>
+                                <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                                <div class="w-5/12 text-left pl-8">
+                                    <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
+                                    <p class="text-gray-600">Idea Submission Opens</p>
+                                </div>
+                            </div>
+                        <div class="flex justify-center items-center timeline-item left">
+                            <div class="w-5/12 text-right pr-8">
+                                <p class="text-lg font-semibold text-indigo-600">31st October 2025</p>
+                                <p class="text-gray-600">Team & Participant Registration Ends</p>
+                            </div>
+                            <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                            <div class="w-5/12 pl-8"></div>
+                        </div>
+                        <div class="flex justify-center items-center timeline-item right">
+                            <div class="w-5/12 pr-8"></div>
+                            <div class="w-10 h-10 bg-red-500 rounded-full z-10"></div>
+                            <div class="w-5/12 text-left pl-8">
+                                <p class="text-lg font-semibold text-red-600">7th November 2025 (10 PM)</p>
+                                <p class="text-gray-600 font-bold">Submission Deadline</p>
+                            </div>
+                        </div>
+                           <div class="flex justify-center items-center timeline-item left">
+                                <div class="w-5/12 text-right pr-8">
+                                    <p class="text-lg font-semibold text-indigo-600">24th November 2025</p>
+                                    <p class="text-gray-600">Shortlisted Ideas Announcement</p>
+                                </div>
+                                <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                                <div class="w-5/12 pl-8"></div>
+                            </div>
+                           <div class="flex justify-center items-center timeline-item right">
+                                <div class="w-5/12 pr-8"></div>
+                                <div class="w-10 h-10 bg-purple-500 rounded-full z-10"></div>
+                                <div class="w-5/12 text-left pl-8">
+                                    <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
+                                    <p class="text-gray-600 font-bold">Final Dev Day</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+               <div id="resources" class="mt-12 bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Helpful Resources</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                        <a href="https://developer.tomtom.com" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                            <h4 class="font-bold text-indigo-700 text-lg">TomTom Developer Portal</h4>
+                            <p class="text-sm text-gray-600 mt-2">Build mapping, navigation, and in‑vehicle experiences with minimal development effort.</p>
+                        </a>
+                        <a href="https://www.youtube.com/@TomTomDevelopers" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                            <h4 class="font-bold text-indigo-700 text-lg">TomTom Developer YouTube</h4>
+                            <p class="text-sm text-gray-600 mt-2">Watch examples, demos, and tutorials to learn how to use TomTom APIs effectively.</p>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PL2_n-rYwGz49I-pvL3u_Ie8p5-yS5lWyl" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                            <h4 class="font-bold text-indigo-700 text-lg">TomTom Tutorials Playlist</h4>
+                            <p class="text-sm text-gray-600 mt-2">Step-by-step tutorials for integrating TomTom Maps, Routes, and Search APIs.</p>
+                        </a>
+                        <a href="https://developer.tomtom.com/maps-sdk-web/functional-examples" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                            <h4 class="font-bold text-indigo-700 text-lg">Functional Examples</h4>
+                            <p class="text-sm text-gray-600 mt-2">Explore working examples to quickly implement TomTom features in your project.</p>
+                        </a>
+                           <a href="https://www.youtube.com/watch?v=sI2sYy727CQ" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                                <h4 class="font-bold text-indigo-700 text-lg">Add a Map to Your Website</h4>
+                                <p class="text-sm text-gray-600 mt-2">Watch a tutorial on basic map integration.</p>
+                            </a>
+                        <a href="https://www.youtube.com/watch?v=aGvY_2LUA4s" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                            <h4 class="font-bold text-indigo-700 text-lg">Integrate Weather API</h4>
+                            <p class="text-sm text-gray-600 mt-2">Learn how to combine OpenWeather API with TomTom Maps.</p>
+                        </a>
+                    </div>
+                </div>
         </section>
 
-        <!-- Student Registration Page -->
         <section id="registration" class="page">
             <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-4 md:p-8">
                 <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg">
@@ -105,28 +213,26 @@
                     <p class="text-center text-gray-500 mb-8">Create your account to join the Katathon.</p>
                     <form id="registration-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Full Name, UID, Email etc. -->
                             <div class="relative">
                                 <label for="regFullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" id="regFullName" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Jane Doe" required>
+                                <input type="text" id="regFullName" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Jane Doe" required>
                             </div>
                             <div class="relative">
                                 <label for="regUid" class="block text-sm font-medium text-gray-700 mb-1">UID</label>
-                                <input type="text" id="regUid" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Your Unique ID" required>
+                                <input type="text" id="regUid" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Your Unique ID" required>
                             </div>
                             <div class="relative">
-                                <label for="regEmail" class="block text-sm font-medium text-gray-700 mb-1">Katalyst Email Id</label>
-                                <input type="email" id="regEmail" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="you@katalyst.com" required>
+                                <label for="regEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Id</label>
+                                <input type="email" id="regEmail" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="you@example.com" required>
                             </div>
                             <div class="relative">
                                 <label for="regPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                                <input type="password" id="regPassword" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Min. 6 characters" required>
+                                <input type="password" id="regPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Min. 6 characters" required>
                             </div>
-                             <div class="relative">
+                               <div class="relative">
                                 <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                                <input type="password" id="regConfirmPassword" class="pl-10 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Re-enter password" required>
+                                <input type="password" id="regConfirmPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Re-enter password" required>
                             </div>
-                            <!-- Other fields: contact, batch, stream, centre, college, cgpa -->
                             <div>
                                 <label for="regContact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
                                 <input type="tel" id="regContact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
@@ -136,39 +242,22 @@
                                 <select id="regBatch" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                                     <option>2026</option>
                                     <option>2027</option>
+                                    <option>2028</option>
                                 </select>
                             </div>
-                             <div>
+                               <div>
                                 <label for="regStream" class="block text-sm font-medium text-gray-700 mb-1">Stream</label>
-                                <select id="regStream" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                    <option>Automobile</option>
-                                    <option>Artificial Intelligence and Machine Learning</option>
-                                    <option>Computer Science</option>
-                                    <option>Data Science</option>
-                                    <option>Electronics and Communication</option>
-                                    <!-- Add all other stream options -->
-                                </select>
+                                <input type="text" id="regStream" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="e.g., Computer Science" required>
                             </div>
-                             <div>
+                               <div>
                                 <label for="regCentre" class="block text-sm font-medium text-gray-700 mb-1">Centre</label>
-                                <select id="regCentre" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                    <option>Mumbai</option>
-                                    <option>Pune</option>
-                                    <option>Delhi</option>
-                                    <option>Bangalore</option>
-                                    <option>Hyderabad</option>
-                                    <option>Chennai</option>
-                                </select>
+                                <input type="text" id="regCentre" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="e.g., Pune" required>
                             </div>
-                             <div>
+                               <div>
                                 <label for="regCollege" class="block text-sm font-medium text-gray-700 mb-1">College Name</label>
-                                <select id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                    <option>College of Engineering, Pune (COEP)</option>
-                                    <option>Veermata Jijabai Technological Institute (VJTI), Mumbai</option>
-                                    <!-- Add more colleges -->
-                                </select>
+                                   <input type="text" id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="e.g., College of Engineering, Pune" required>
                             </div>
-                             <div>
+                               <div>
                                 <label for="regCgpa" class="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
                                 <input type="number" step="0.01" id="regCgpa" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                             </div>
@@ -181,208 +270,199 @@
             </div>
         </section>
 
-        <!-- Student Login Page -->
         <section id="student-login" class="page">
             <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
-                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Student Login</h2>
-                 <form id="student-login-form">
-                     <div>
-                         <label for="studentLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                         <input type="email" id="studentLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                     </div>
-                     <div class="mt-6">
-                         <label for="studentLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                         <input type="password" id="studentLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                     </div>
-                      <div class="mt-8 text-center">
-                         <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
-                     </div>
-                 </form>
+                   <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Student Login</h2>
+                   <form id="student-login-form">
+                       <div>
+                           <label for="studentLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                           <input type="email" id="studentLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                       </div>
+                       <div class="mt-6">
+                           <label for="studentLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                           <input type="password" id="studentLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                       </div>
+                        <div class="mt-8 text-center">
+                           <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
+                       </div>
+                   </form>
+                   <p class="text-center text-sm text-gray-600 mt-6">
+                       Don't have an account? <a href="#registration" class="nav-link font-medium text-indigo-600 hover:text-indigo-500">Register here</a>.
+                   </p>
             </div>
         </section>
         
-        <!-- Students Page -->
-        <section id="students" class="page">
-            <h2 class="text-4xl font-bold text-center mb-10">Registered Students</h2>
-            <div id="all-students-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <p class="text-center col-span-full">Loading students...</p>
-            </div>
-        </section>
-
-        <!-- Mentor Portal (Login/Signup) -->
-        <section id="mentor-portal" class="page">
-             <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
-                 <div class="flex border-b mb-8">
-                     <button id="mentor-login-tab" class="flex-1 py-2 font-semibold text-center text-indigo-600 border-b-2 border-indigo-600">Login</button>
-                     <button id="mentor-signup-tab" class="flex-1 py-2 font-semibold text-center text-gray-500">Sign Up</button>
-                 </div>
-                 <!-- Mentor Login Form -->
-                 <div id="mentor-login-section" class="auth-section active">
-                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Login</h2>
-                     <form id="mentor-login-form">
-                         <div>
-                             <label for="mentorLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                             <input type="email" id="mentorLoginEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                         </div>
-                         <div class="mt-6">
-                             <label for="mentorLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                             <input type="password" id="mentorLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                         </div>
-                         <div class="mt-8 text-center">
-                             <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
-                         </div>
-                     </form>
-                 </div>
-                 <!-- Mentor Signup Form -->
-                 <div id="mentor-signup-section" class="auth-section">
-                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Mentor Sign Up</h2>
-                     <form id="mentor-signup-form">
-                         <div class="grid grid-cols-1 gap-6">
-                             <div>
-                                 <label for="mentorFullName" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                 <input type="text" id="mentorFullName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                             </div>
-                             <div>
-                                 <label for="mentorEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                 <input type="email" id="mentorEmail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                             </div>
-                             <div>
-                                 <label for="mentorPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                                 <input type="password" id="mentorPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                             </div>
-                         </div>
-                         <div class="mt-8 text-center">
-                             <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign Up</button>
-                         </div>
-                     </form>
-                 </div>
-              </div>
-        </section>
-
-        <!-- User Dashboard (for logged in users) -->
         <section id="dashboard" class="page">
             <h2 class="text-4xl font-bold text-center mb-4">Your Dashboard</h2>
             <p id="welcome-message" class="text-center text-gray-600 mb-10">Welcome!</p>
 
-            <!-- Student's Team Management View -->
-            <div id="student-dashboard-view">
-                <div id="team-management-section" class="bg-white p-8 rounded-2xl shadow-lg mb-8"></div>
-                <div id="team-formation-lists" class="hidden grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4">Invite Students to Your Team</h3>
-                        <div id="students-list" class="space-y-3 max-h-96 overflow-y-auto"></div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4">Assign a Mentor to Your Team</h3>
-                        <div id="mentors-list" class="space-y-3 max-h-96 overflow-y-auto"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mentor's Problem Statement Management View -->
-            <div id="mentor-dashboard-view" class="hidden">
-                <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
-                    <h3 class="text-2xl font-bold mb-4">Manage Problem Statements</h3>
-                    <form id="add-problem-statement-form" class="mb-6 p-4 border rounded-lg bg-gray-50">
-                        <div class="mb-4">
-                            <label for="psTitle" class="block text-sm font-medium text-gray-700">Title</label>
-                            <input type="text" id="psTitle" placeholder="e.g., Smart City Traffic Solution" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="psDescription" class="block text-sm font-medium text-gray-700">Description</label>
-                            <textarea id="psDescription" rows="4" placeholder="Describe the problem in detail..." class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required></textarea>
-                        </div>
-                        <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-indigo-700 transition">Add Statement</button>
-                    </form>
-                    <h4 class="text-xl font-bold mb-4">Existing Statements</h4>
-                    <div id="mentor-problem-statements-list" class="space-y-4">
-                        <!-- List will be populated by JS -->
-                        <p>Loading your problem statements...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- View of all teams (for both students and mentors) -->
-            <div id="all-teams-view" class="mt-12">
-                <h3 class="text-3xl font-bold text-center mb-8">All Formed Teams</h3>
-                <div id="dashboard-teams-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <p class="text-center col-span-full">Loading teams...</p>
-                </div>
+            <div id="student-dashboard-view" class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                   <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800">Your Registered Details</h3>
+                   <div id="student-details-content" class="space-y-4">
+                       <p>Loading your details...</p>
+                   </div>
+                   <div class="text-center mt-8">
+                     <a href="#idea-submission" class="nav-link inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Go to Idea Submission</a>
+                   </div>
             </div>
         </section>
         
-        <!-- Problem Statements Page -->
         <section id="problem-statements" class="page">
             <h2 class="text-4xl font-bold text-center mb-10">Problem Statements</h2>
-            <div id="public-problem-statements-list" class="space-y-8 max-w-4xl mx-auto">
-                 <div class="bg-white p-6 rounded-lg shadow-md">Loading...</div>
-            </div>
-        </section>
-        
-        <!-- Teams Page -->
-        <section id="teams" class="page">
-            <h2 class="text-4xl font-bold text-center mb-10">Formed Teams</h2>
-             <div id="formed-teams-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                 <p class="text-center col-span-full">Loading teams...</p>
-            </div>
-        </section>
-        
-        <!-- Rules Page -->
-        <section id="rules" class="page">
-             <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
-                <div class="space-y-6 text-gray-700">
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">1. Team Formation</h3>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Teams must consist of a minimum of 2 and a maximum of 4 members.</li>
-                            <li>All team members must be currently enrolled Katalyst students from the graduating batches of 2026 or 2027.</li>
-                            <li>Students must form their teams on the official Katathon portal before the hackathon begins.</li>
-                        </ul>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 1: Community Maps</h3>
+                    <p class="text-gray-600 mb-6 max-w-3xl">Empower people and communities through maps that connect, inform, and inspire collaboration. This theme focuses on using mapping technology to solve local problems, improve accessibility, and enhance daily life.</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">MemoryMap – Personal Map of Memories <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 101</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                            <p class="mt-2 text-gray-700">Create an app that lets users mark and save personal memories—photos, notes, or short stories—on a map at specific locations. Each pinned spot becomes a “memory marker,” allowing users to revisit their past experiences through an interactive map.</p>
+                        </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">AccessMap – Mapping Accessibility <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 102</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                            <p class="mt-2 text-gray-700">Design a map-based application that helps people with disabilities find accessible routes and locations. The app can highlight places with ramps, lifts, or safe pedestrian routes, using open data or crowd-sourced inputs.</p>
+                        </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">CrowdGuard – Real-Time Incident Reporting <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 103</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Develop a map-based platform that allows users to report real-time incidents such as accidents, road closures, or safety hazards. The system can include categories and allow users to validate reports through upvotes or comments.</p>
+                        </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">FriendsNavigator – Group Navigation for Friends <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 104</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Create a navigation app that helps groups of friends travel to the same destination together. The app can show live locations of all group members, estimated arrival times, and suggest a common meeting point.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">2. Project Development</h3>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>All coding and development work must take place during the official hackathon timeframe.</li>
-                            <li>The use of open-source libraries, frameworks, and APIs is permitted and encouraged.</li>
-                            <li>Pre-existing projects or projects that have been worked on before the hackathon are not allowed. Your project must be a new creation.</li>
-                            <li>Teams must build a solution based on one of the official problem statements provided.</li>
-                        </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 2: Traffic Management & Smart Mobility</h3>
+                    <p class="text-gray-600 mb-6 max-w-3xl">Use geospatial intelligence to make cities move smarter. This theme focuses on optimizing traffic, improving safety, and promoting sustainable transport using real-time data and smart mapping.</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">ParkFinder – Smart Parking Locator <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 201</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                                <p class="mt-2 text-gray-700">Design an application that helps users find nearby parking spaces through an interactive map. Users can mark spots as “occupied” or “available,” making it easier for others to locate parking in busy areas.</p>
+                            </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">SafeWalk – Route Safety Companion <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 202</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Build an app that helps users choose the safest walking routes, especially during night hours. The app can use data such as street lighting, traffic density, and user-reported incidents to rate routes for safety.</p>
+                        </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">SmartSignals – Intelligent Traffic Light Management <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 203</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Develop a system that uses live traffic flow, congestion levels, or vehicle density to optimize traffic light timing dynamically. The project can simulate or visualize traffic signal changes on a map.</p>
+                        </div>
+                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">GeoSense – Area Insights from Movement Data <span class="text-sm font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Code: 204</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Hard</span></h4>
+                                <p class="mt-2 text-gray-700">Analyze location-based data (POIs, routes, traffic) to generate insights about urban areas. The solution could reveal patterns like “busiest between 6–8 PM,” or “green and quiet zones,” visualized on interactive maps.</p>
+                            </div>
                     </div>
-                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">3. Submission Guidelines</h3>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>All teams must submit their project before the final deadline. Late submissions will not be accepted.</li>
-                            <li>Submissions must include a link to a public code repository (e.g., GitHub).</li>
-                            <li>Each team must provide a short (maximum 3-minute) video demonstrating their project.</li>
-                            <li>A clear project description and instructions on how to run the application must be included in the repository's <code>README.md</code> file.</li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">4. Judging Criteria</h3>
-                         <p>Projects will be judged based on the following criteria:</p>
-                        <ul class="list-disc list-inside space-y-1 mt-2">
-                            <li><strong>Innovation & Creativity:</strong> How original and creative is the solution?</li>
-                            <li><strong>Technical Complexity:</strong> How technically challenging was the project to implement?</li>
-                            <li><strong>Design & User Experience:</strong> Is the final product polished, easy to use, and visually appealing?</li>
-                            <li><strong>Impact & Feasibility:</strong> How well does the solution address the problem statement, and how practical is it?</li>
-                            <li><strong>Presentation:</strong> How clearly did the team present their project and its value?</li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">5. Code of Conduct</h3>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><strong>Respect:</strong> All participants, mentors, and organizers must be treated with respect. Harassment and discriminatory behavior will not be tolerated.</li>
-                            <li><strong>Integrity:</strong> All submitted work must be the original work of the team members. Plagiarism is strictly forbidden.</li>
-                            <li><strong>Collaboration:</strong> We encourage a collaborative and supportive environment. Help your fellow participants, but don't write their code for them.</li>
-                        </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 3: Map Technology for Environmental Impact</h3>
+                    <p class="text-gray-600 mb-6 max-w-3xl">Harness mapping and geospatial data to monitor, preserve, and improve our environment. This theme encourages solutions for sustainability, awareness, and climate action through maps and data visualization.</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">AtmosMap – Intelligent Weather & Air Quality Map <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 301</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                                <p class="mt-2 text-gray-700">Build an interactive map that shows current, past, and forecasted weather along with air quality and pollution levels. Users can view data like temperature, rainfall, and AQI in an easy-to-understand map layer.</p>
+                            </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">WasteTrack – Smart Waste Management Map <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 302</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                            <p class="mt-2 text-gray-700">Build a map-based platform that tracks waste collection points, bins, and recycling centres. Allow users to report overflowing bins or illegal dumping through crowd-sourcing.</p>
+                        </div>
+                        <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700">GreenSpace – Urban Green Mapping <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 303</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Design a map that visualizes green areas, parks, tree cover, and open spaces in a city. Users can explore the environmental quality of neighbourhoods and identify areas needing green development.</p>
+                        </div>
+                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">Traffic & Environmental Impact Dashboard <span class="text-sm font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Code: 304</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Hard</span></h4>
+                                <p class="mt-2 text-gray-700">Build a platform that analyzes traffic patterns to understand environmental effects (air pollution, noise, fuel consumption). Visualize correlations between congestion hotspots and environmental degradation on a map.</p>
+                            </div>
                     </div>
                 </div>
             </div>
+        </section>
+        
+        <section id="idea-submission" class="page">
+               <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
+                    <p class="text-center text-gray-600 mb-8">Ready to submit your innovative idea? Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
+                       <div class="text-center">
+                            <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
+                        </div>
+                    <div class="mt-10 border-t pt-6">
+                           <h3 class="text-xl font-semibold text-gray-800 mb-2">Submission Format Reminder:</h3>
+                           <p class="text-gray-600 mb-4">Each team must submit a link to a single document (PDF, PPT, or DOC) via the form, with the following structure:</p>
+                           <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Emails.</li>
+                                <li><b>Problem Statement:</b> Selected problem code and title, with a brief explanation.</li>
+                                <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea, how it works, and its purpose.</li>
+                                <li><b>Technical Approach:</b> Tech stack, tools, APIs, datasets, and a simple architecture diagram.</li>
+                                <li><b>Impact & Feasibility:</b> Social/environmental impact and real-world scalability.</li>
+                                <li><b>Code Submission:</b> Publicly accessible GitHub repo or Google Drive link.</li>
+                                <li><b>Optional Bonus:</b> A short demo video (max 2 minutes) is highly encouraged.</li>
+                           </ul>
+                    </div>
+               </div>
+        </section>
+
+        <section id="rules" class="page">
+               <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules & Evaluation Criteria</h2>
+                    <div class="space-y-8 text-gray-700">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Students must participate in teams.</li>
+                                <li>A team can have up to <b>4 members</b>.</li>
+                                <li>Each team must have a unique name and nominate a team leader as the primary contact.</li>
+                                <li>Team formation is an offline process; teams must provide member information during the final submission.</li>
+                                <li>Each team must select a problem statement based on the given theme and problem code. (e.g., Theme 1, Problem 2 = Code 102).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Evaluation Criteria</h3>
+                            <p class="mb-4">All submissions will be evaluated by multiple judges. The final score will be the average of all judges’ evaluations.</p>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Criterion</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Weightage</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Innovation & Novelty</td>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-600">25% (25 points)</td>
+                                            <td class="px-6 py-4 text-sm text-gray-600">Originality and creativity of the idea.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Technical Design & Implementation</td>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-600">40% (40 points)</td>
+                                            <td class="px-6 py-4 text-sm text-gray-600">Technical depth, design, and execution quality.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Impact (Social/Environmental/User Value)</td>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-600">20% (20 points)</td>
+                                            <td class="px-6 py-4 text-sm text-gray-600">Real-world usefulness and positive contribution.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Design & Presentation</td>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-600">10% (10 points)</td>
+                                            <td class="px-6 py-4 text-sm text-gray-600">Clarity, user experience, and visual appeal.</td>
+                                        </tr>
+                                           <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Bonus Points</td>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-600">5% (5 points)</td>
+                                            <td class="px-6 py-4 text-sm text-gray-600">Awarded for working solutions or challenging problem selection.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+               </div>
         </section>
     </main>
 
-    <!-- Notification Modal -->
     <div id="notification-modal" class="fixed top-5 right-5 bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-2 pointer-events-none">
         <p id="notification-message"></p>
     </div>
@@ -390,7 +470,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, collection, addDoc, onSnapshot, query, where, updateDoc, arrayUnion, arrayRemove, getDocs, writeBatch, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAy13jaKMhUBNuf7BsuH9fGWKKMbObQ4sI",
@@ -408,13 +488,7 @@
 
         let currentUserData = null;
         let userListener = null;
-        let teamListener = null;
-        let allTeamsListener = null;
-        let problemStatementsListener = null;
         
-        let allTeamsCache = [];
-        let showInviteListOnDashboardLoad = false;
-
         const pages = document.querySelectorAll('.page');
         const navLinks = document.querySelectorAll('.nav-link');
         const loggedOutNav = document.getElementById('logged-out-nav');
@@ -423,6 +497,15 @@
 
         // --- UTILITY FUNCTIONS ---
         function showPage(pageId) {
+            // NEW: Check for restricted page access
+            if (pageId === 'idea-submission' && !auth.currentUser) {
+                showNotification("Please log in to submit an idea.", true);
+                // Redirect to login page
+                history.pushState(null, '', '#student-login');
+                showPage('student-login'); 
+                return; 
+            }
+
             pages.forEach(page => page.classList.remove('active'));
             const activePage = document.getElementById(pageId);
             if (activePage) activePage.classList.add('active');
@@ -433,10 +516,6 @@
             });
             document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo(0, 0);
-
-            if (pageId === 'students') {
-                fetchAndDisplayAllStudents();
-            }
         }
 
         function showNotification(message, isError = false) {
@@ -444,14 +523,21 @@
             const messageElement = document.getElementById('notification-message');
             messageElement.textContent = message;
             modal.className = `fixed top-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-2 ${isError ? 'bg-red-500' : 'bg-green-500'}`;
-            modal.classList.remove('opacity-0', 'translate-y-2');
-            setTimeout(() => modal.classList.add('opacity-0', 'translate-y-2'), 3000);
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'translate-y-2');
+                modal.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-100', 'translate-y-0');
+                modal.classList.add('opacity-0', 'translate-y-2');
+            }, 3000);
         }
 
         // --- AUTHENTICATION & DATA LISTENERS ---
         onAuthStateChanged(auth, (user) => {
             if (userListener) userListener();
-            if (teamListener) teamListener();
 
             if (user) {
                 userListener = onSnapshot(doc(db, "users", user.uid), (userDoc) => {
@@ -461,7 +547,7 @@
                         updateUIAfterLogin();
                         
                         const currentPage = window.location.hash.substring(1);
-                        if (wasJustCreated && ['student-login', 'mentor-portal', 'registration'].includes(currentPage)) {
+                        if (wasJustCreated && ['student-login', 'registration'].includes(currentPage)) {
                             showPage('dashboard');
                         }
                     } else {
@@ -500,8 +586,7 @@
                     centre: form.regCentre.value,
                     college: form.regCollege.value,
                     cgpa: form.regCgpa.value,
-                    role: 'student',
-                    teamId: null
+                    role: 'student'
                 };
 
                 await setDoc(doc(db, "users", user.uid), userData);
@@ -524,53 +609,18 @@
             }
         }
         
-        async function handleMentorSignup(e) {
-            e.preventDefault();
-            const form = e.target;
-            const email = form.mentorEmail.value;
-            const password = form.mentorPassword.value;
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                await setDoc(doc(db, "users", user.uid), {
-                    fullName: form.mentorFullName.value,
-                    email: email,
-                    role: 'mentor'
-                });
-                showNotification("Mentor account created successfully!");
-                form.reset();
-            } catch (error) {
-                showNotification(error.message, true);
-            }
-        }
-        
-        async function handleMentorLogin(e) {
-            e.preventDefault();
-            const email = e.target.mentorLoginEmail.value;
-            const password = e.target.mentorLoginPassword.value;
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                 showNotification("Login successful!");
-            } catch (error) {
-                showNotification(error.message, true);
-            }
-        }
-
         // --- UI UPDATES ---
         function updateUIAfterLogin() {
             loggedOutNav.classList.add('hidden');
             loggedInNav.classList.remove('hidden');
             if (currentUserData) {
                 document.getElementById('welcome-message').textContent = `Welcome, ${currentUserData.fullName}!`;
-                setupDashboard();
+                renderStudentDashboard();
             }
             updateMobileMenu();
         }
 
         function updateUIAfterLogout() {
-            if (teamListener) teamListener();
-            teamListener = null;
-
             loggedInNav.classList.add('hidden');
             loggedOutNav.classList.remove('hidden');
             if (window.location.hash === '#dashboard') showPage('home');
@@ -580,559 +630,55 @@
         function updateMobileMenu() {
             const loggedIn = !!auth.currentUser;
             let links = '';
-             if (loggedIn) {
-                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
-                          <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
-                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                          <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
-                          <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
-                          <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
-             } else {
-                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
-                          <a href="#students" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Students</a>
-                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                          <a href="#teams" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Teams</a>
-                          <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
-                          <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login</a>
-                          <a href="#mentor-portal" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Mentor Portal</a>`;
+               if (loggedIn) {
+                   links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                               <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
+                               <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                               <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
+                               <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
+                               <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
+               } else {
+                   links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                               <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                               <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
+                               <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
+                               <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login/Register</a>`;
             }
             mobileMenu.innerHTML = links;
             attachNavListeners();
         }
 
-        // --- DASHBOARD & TEAM LOGIC ---
-        function setupDashboard() {
-            if (teamListener) teamListener();
-            
-            const studentDashboard = document.getElementById('student-dashboard-view');
-            const mentorDashboard = document.getElementById('mentor-dashboard-view');
-            const allTeamsView = document.getElementById('all-teams-view');
-            
+        // --- DASHBOARD & STUDENT DETAIL LOGIC ---
+        function renderStudentDashboard() {
             if (!currentUserData) return;
-            
-            allTeamsView.classList.remove('hidden');
-
-            if (currentUserData.role === 'student') {
-                studentDashboard.classList.remove('hidden');
-                mentorDashboard.classList.add('hidden');
-                const teamId = currentUserData.teamId;
-                
-                if (teamId) {
-                    teamListener = onSnapshot(doc(db, "teams", teamId), (teamDoc) => {
-                        if (teamDoc.exists()) {
-                            displayTeamInfo(teamDoc.id, teamDoc.data());
-                        } else {
-                            displayTeamCreation();
-                        }
-                    });
-                } else {
-                    displayTeamCreation();
-                }
-            } else if (currentUserData.role === 'mentor') {
-                studentDashboard.classList.add('hidden');
-                mentorDashboard.classList.remove('hidden');
-            }
+            const container = document.getElementById('student-details-content');
+            container.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                    <div><strong class="text-gray-500">Full Name:</strong> <span class="text-gray-800">${currentUserData.fullName}</span></div>
+                    <div><strong class="text-gray-500">UID:</strong> <span class="text-gray-800">${currentUserData.uid}</span></div>
+                    <div><strong class="text-gray-500">Email:</strong> <span class="text-gray-800">${currentUserData.email}</span></div>
+                    <div><strong class="text-gray-500">Contact:</strong> <span class="text-gray-800">${currentUserData.contact}</span></div>
+                    <div><strong class="text-gray-500">College:</strong> <span class="text-gray-800">${currentUserData.college}</span></div>
+                    <div><strong class="text-gray-500">Stream:</strong> <span class="text-gray-800">${currentUserData.stream}</span></div>
+                    <div><strong class="text-gray-500">Batch:</strong> <span class="text-gray-800">${currentUserData.batch}</span></div>
+                    <div><strong class="text-gray-500">CGPA:</strong> <span class="text-gray-800">${currentUserData.cgpa}</span></div>
+                </div>
+            `;
         }
-
-        function displayTeamCreation() {
-            const teamMgmt = document.getElementById('team-management-section');
-            teamMgmt.innerHTML = `
-                <h3 class="text-2xl font-bold mb-4 text-center">Team Management</h3>
-                <div class="text-center bg-gray-50 p-6 rounded-lg">
-                    <p class="text-gray-600 mb-6">You are not in a team yet. Create one to get started!</p>
-                    <form id="create-team-form" class="flex flex-col sm:flex-row items-center gap-4 max-w-lg mx-auto">
-                        <input type="text" id="teamName" placeholder="Enter Your Team Name" class="flex-grow w-full border-gray-300 rounded-md shadow-sm" required>
-                        <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-indigo-700 transition w-full sm:w-auto">Create Team</button>
-                    </form>
-                </div>`;
-             document.getElementById('team-formation-lists').classList.add('hidden');
-            document.getElementById('create-team-form').addEventListener('submit', handleCreateTeam);
-        }
-
-        async function displayTeamInfo(teamId, teamData) {
-            const teamMgmt = document.getElementById('team-management-section');
-            const memberPromises = teamData.members.map(uid => getDoc(doc(db, "users", uid)));
-            const memberDocs = await Promise.all(memberPromises);
-            
-            let membersHTML = '';
-            memberDocs.forEach(doc => {
-                if (doc.exists()) {
-                    const member = { uid: doc.id, ...doc.data() };
-                    let removeButton = '';
-                    // Only leader can remove other members
-                    if (currentUserData && currentUserData.uid === teamData.leaderId && member.uid !== currentUserData.uid) {
-                        removeButton = `<button data-member-id="${member.uid}" class="remove-member-btn text-red-500 hover:text-red-700 text-xs ml-2">[Remove]</button>`;
-                    }
-                    membersHTML += `<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${member.fullName}${removeButton}</span>`;
-                }
-            });
-
-            let mentorName = 'Not assigned';
-            if(teamData.mentorId) {
-                const mentorDoc = await getDoc(doc(db, "users", teamData.mentorId));
-                if(mentorDoc.exists()) mentorName = mentorDoc.data().fullName;
-            }
-
-            // Main container HTML, which will be populated with action buttons via JS
-            teamMgmt.innerHTML = `
-                <h3 class="text-2xl font-bold mb-4 text-center">Team Management</h3>
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <div id="team-info-container" class="flex flex-col sm:flex-row justify-between items-start">
-                        <div>
-                            <h4 class="text-xl font-bold text-gray-800">${teamData.name}</h4>
-                            <div class="text-gray-600 mt-2"><span class="font-semibold">Members:</span> ${membersHTML}</div>
-                            <p class="text-gray-600 mt-2"><span class="font-semibold">Mentor:</span> ${mentorName}</p>
-                        </div>
-                        <!-- Action buttons will be injected here for the leader -->
-                    </div>
-                </div>`;
-            
-            // Re-attach event listeners for the new remove buttons
-            document.querySelectorAll('.remove-member-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => handleRemoveMember(teamId, e.target.dataset.memberId));
-            });
-
-            // Add action buttons if the current user is the team leader
-            if (currentUserData && currentUserData.uid === teamData.leaderId) {
-                const teamInfoContainer = teamMgmt.querySelector('#team-info-container');
-                
-                const actionsContainer = document.createElement('div');
-                actionsContainer.className = 'mt-4 sm:mt-0 flex-shrink-0 flex items-center gap-2';
-                
-                // Add "Add Member" Button if team is not full
-                if (teamData.members.length < 4) {
-                    const addMemberButton = document.createElement('button');
-                    addMemberButton.className = 'bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-full transition text-sm';
-                    addMemberButton.textContent = 'Add Member';
-                    addMemberButton.onclick = () => {
-                        document.getElementById('team-formation-lists').classList.toggle('hidden');
-                    };
-                    actionsContainer.appendChild(addMemberButton);
-                }
-                
-                // Add "Delete Team" Button
-                const deleteButton = document.createElement('button');
-                deleteButton.className = 'bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full transition text-sm';
-                deleteButton.textContent = 'Delete Team';
-                deleteButton.onclick = () => handleDeleteTeam(teamId, teamData.members);
-                actionsContainer.appendChild(deleteButton);
-                
-                if (teamInfoContainer) {
-                    teamInfoContainer.appendChild(actionsContainer);
-                }
-            }
-            
-            const formationList = document.getElementById('team-formation-lists');
-            // Prepare the invite/assign lists if the team isn't full
-            if (teamData.members.length < 4) {
-                fetchAvailableUsers(teamId, teamData.members);
-                if (showInviteListOnDashboardLoad) {
-                    formationList.classList.remove('hidden');
-                    showInviteListOnDashboardLoad = false; // Reset the flag
-                } else {
-                    formationList.classList.add('hidden');
-                }
-            } else {
-                formationList.classList.add('hidden');
-            }
-        }
-
-        async function handleCreateTeam(e) {
-            e.preventDefault();
-            if (currentUserData && currentUserData.teamId) {
-                showNotification("You are already in a team.", true);
-                return;
-            }
-            const teamName = document.getElementById('teamName').value.trim();
-            if (!teamName) return;
-            try {
-                const teamData = { name: teamName, leaderId: currentUserData.uid, members: [currentUserData.uid], mentorId: null };
-                const teamRef = await addDoc(collection(db, "teams"), teamData);
-                await updateDoc(doc(db, "users", currentUserData.uid), { teamId: teamRef.id });
-                showNotification(`Team "${teamName}" created!`, false);
-            } catch (error) {
-                showNotification(error.message, true);
-            }
-        }
-        
-        async function handleDeleteTeam(teamId, memberIds) {
-            try {
-                await deleteDoc(doc(db, "teams", teamId));
-
-                const batch = writeBatch(db);
-                memberIds.forEach(userId => {
-                    const userRef = doc(db, "users", userId);
-                    batch.update(userRef, { teamId: null });
-                });
-                await batch.commit().catch(err => {
-                    console.warn("Could not clean up user profiles after team deletion. This might be due to security rules.", err);
-                });
-
-                showNotification("Team deleted successfully.", false);
-
-            } catch (error) {
-                console.error("Error deleting team: ", error);
-                showNotification("Failed to delete team. Check console for details.", true);
-            }
-        }
-
-        async function handleRemoveMember(teamId, memberId) {
-            const batch = writeBatch(db);
-            try {
-                const teamRef = doc(db, "teams", teamId);
-                batch.update(teamRef, { members: arrayRemove(memberId) });
-
-                const userRef = doc(db, "users", memberId);
-                batch.update(userRef, { teamId: null });
-                
-                await batch.commit();
-                showNotification("Member removed successfully.", false);
-            } catch (error) {
-                console.error("Error removing member: ", error);
-                showNotification("Failed to remove member.", true);
-            }
-        }
-
-
-        async function fetchAvailableUsers(teamId, currentMembers) {
-            const studentsQuery = query(collection(db, "users"), where("role", "==", "student"), where("teamId", "==", null));
-            const studentsSnapshot = await getDocs(studentsQuery);
-            const studentsList = document.getElementById('students-list');
-            studentsList.innerHTML = '';
-            studentsSnapshot.forEach(doc => {
-                const student = { id: doc.id, ...doc.data() };
-                if (!currentMembers.includes(student.id)) {
-                    const el = document.createElement('div');
-                    el.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-md';
-                    el.innerHTML = `<span>${student.fullName}</span><button data-uid="${student.id}" class="invite-student-btn bg-green-500 text-white px-3 py-1 rounded-full text-sm hover:bg-green-600">Invite</button>`;
-                    studentsList.appendChild(el);
-                }
-            });
-            document.querySelectorAll('.invite-student-btn').forEach(btn => btn.addEventListener('click', (e) => handleInviteStudent(e, teamId)));
-
-            const mentorsQuery = query(collection(db, "users"), where("role", "==", "mentor"));
-            const mentorsSnapshot = await getDocs(mentorsQuery);
-            const mentorsList = document.getElementById('mentors-list');
-            mentorsList.innerHTML = '';
-            mentorsSnapshot.forEach(doc => {
-                 const mentor = { id: doc.id, ...doc.data() };
-                 const el = document.createElement('div');
-                 el.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-md';
-                 el.innerHTML = `<span>${mentor.fullName}</span><button data-uid="${mentor.id}" class="assign-mentor-btn bg-blue-500 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600">Assign</button>`;
-                 mentorsList.appendChild(el);
-            });
-            document.querySelectorAll('.assign-mentor-btn').forEach(btn => btn.addEventListener('click', (e) => handleAssignMentor(e, teamId)));
-        }
-
-        async function handleInviteStudent(e, teamId) {
-            const studentId = e.target.dataset.uid;
-            try {
-                await updateDoc(doc(db, "users", studentId), { teamId: teamId });
-                await updateDoc(doc(db, "teams", teamId), { members: arrayUnion(studentId) });
-                showNotification("Student added to team!", false);
-            } catch (error) {
-                showNotification(error.message, true);
-            }
-        }
-        
-        async function handleAssignMentor(e, teamId) {
-             const mentorId = e.target.dataset.uid;
-             try {
-                await updateDoc(doc(db, "teams", teamId), { mentorId: mentorId });
-                showNotification("Mentor assigned!", false);
-             } catch(error) {
-                   showNotification(error.message, true);
-             }
-        }
-        
-        async function fetchAndDisplayAllStudents() {
-            const container = document.getElementById('all-students-list');
-            container.innerHTML = '<p class="text-center col-span-full">Loading students...</p>';
-            
-            try {
-                let isTeamLeader = false;
-                let teamData = null;
-
-                // Check if the current user is a team leader
-                if (currentUserData && currentUserData.teamId) {
-                    const teamDoc = await getDoc(doc(db, "teams", currentUserData.teamId));
-                    if (teamDoc.exists() && teamDoc.data().leaderId === currentUserData.uid) {
-                        isTeamLeader = true;
-                        teamData = teamDoc.data();
-                    }
-                }
-
-                // Modify query based on user's role
-                const q = isTeamLeader 
-                    ? query(collection(db, "users"), where("role", "==", "student"), where("teamId", "==", null))
-                    : query(collection(db, "users"), where("role", "==", "student"));
-                
-                const querySnapshot = await getDocs(q);
-
-                if (querySnapshot.empty) {
-                    container.innerHTML = `<p class="text-center col-span-full">${isTeamLeader ? 'No available students to invite.' : 'No students have registered yet.'}</p>`;
-                    return;
-                }
-
-                container.innerHTML = '';
-                querySnapshot.forEach((doc) => {
-                    const student = {id: doc.id, ...doc.data()};
-                    const card = document.createElement('div');
-                    card.className = 'bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between';
-                    
-                    let cardContent = `
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800">${student.fullName}</h3>
-                            <p class="text-gray-600">${student.college}</p>
-                            <p class="text-indigo-500 font-semibold mt-2">${student.stream}</p>
-                        </div>
-                    `;
-
-                    // If user is a team leader and the team is not full, add an invite button
-                    if (isTeamLeader && teamData && teamData.members.length < 4) {
-                        cardContent += `
-                            <div class="mt-4 pt-4 border-t border-gray-200 text-right">
-                                <button data-uid="${student.id}" class="invite-student-btn-public bg-green-500 text-white px-4 py-1 rounded-full text-sm hover:bg-green-600 transition">Invite</button>
-                            </div>
-                        `;
-                    }
-                    
-                    card.innerHTML = cardContent;
-                    container.appendChild(card);
-                });
-
-                // Add event listeners for the new invite buttons
-                if (isTeamLeader) {
-                    document.querySelectorAll('.invite-student-btn-public').forEach(btn => {
-                        btn.addEventListener('click', (e) => handleInviteStudent(e, currentUserData.teamId));
-                    });
-                }
-
-            } catch (error) {
-                console.error("Error fetching students: ", error);
-                container.innerHTML = '<p class="text-center col-span-full text-red-500">Could not load students.</p>';
-            }
-        }
-
-        // --- TEAM DATA & RENDERING ---
-        
-        function listenAndCacheAllTeams() {
-            if (allTeamsListener) return;
-
-            const teamsQuery = collection(db, "teams");
-            allTeamsListener = onSnapshot(teamsQuery, async (snapshot) => {
-                const teamsPromises = snapshot.docs.map(async (teamDoc) => {
-                    const team = { id: teamDoc.id, ...teamDoc.data() };
-                    
-                    const memberPromises = team.members.map(uid => getDoc(doc(db, "users", uid)));
-                    const memberDocs = await Promise.all(memberPromises);
-                    team.memberNames = memberDocs.map(d => d.exists() ? d.data().fullName : 'Unknown').join(', ');
-                    
-                    if (team.mentorId) {
-                        const mentorDoc = await getDoc(doc(db, "users", team.mentorId));
-                        team.mentorName = mentorDoc.exists() ? mentorDoc.data().fullName : 'No Mentor Assigned';
-                    } else {
-                        team.mentorName = 'No Mentor Assigned';
-                    }
-                    return team;
-                });
-
-                allTeamsCache = await Promise.all(teamsPromises);
-                
-                renderPublicTeamsPage();
-                renderDashboardTeamsList();
-            }, (error) => {
-                console.error("Error listening to teams collection:", error);
-                document.getElementById('formed-teams-list').innerHTML = '<p class="text-center col-span-full text-red-500">Could not load teams.</p>';
-                document.getElementById('dashboard-teams-list').innerHTML = '<p class="text-center col-span-full text-red-500">Could not load teams.</p>';
-            });
-        }
-
-        function renderPublicTeamsPage() {
-            const container = document.getElementById('formed-teams-list');
-            if (container) renderTeamsHTML(container, allTeamsCache);
-        }
-
-        function renderDashboardTeamsList() {
-            const container = document.getElementById('dashboard-teams-list');
-            if(container) renderTeamsHTML(container, allTeamsCache);
-        }
-
-        function renderTeamsHTML(container, teams) {
-            if (!container) return;
-            if (teams.length === 0) {
-                container.innerHTML = '<p class="text-center col-span-full">No teams have been formed yet.</p>';
-                return;
-            }
-            container.innerHTML = '';
-            teams.forEach(team => {
-                const card = document.createElement('div');
-                card.className = 'bg-white p-6 rounded-lg shadow-md flex flex-col justify-between';
-                card.id = `team-card-${team.id}`;
-
-                const content = document.createElement('div');
-                content.innerHTML = `
-                    <h3 class="text-xl font-bold text-gray-800">${team.name}</h3>
-                    <p class="text-sm text-gray-500 mt-2">Members:</p>
-                    <p class="text-gray-700">${team.memberNames}</p>
-                    <p class="text-sm text-gray-500 mt-2">Mentor:</p>
-                    <p class="text-indigo-600 font-semibold">${team.mentorName}</p>
-                `;
-                card.appendChild(content);
-                
-                if (currentUserData && currentUserData.uid === team.leaderId) {
-                    const actionsContainer = document.createElement('div');
-                    actionsContainer.className = 'mt-4 pt-4 border-t border-gray-200 flex items-center gap-2 justify-end';
-
-                    if (team.members && team.members.length < 4) {
-                        const addMemberButton = document.createElement('button');
-                        addMemberButton.className = 'bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-full transition text-xs';
-                        addMemberButton.textContent = 'Add Member';
-                        addMemberButton.onclick = () => {
-                            showPage('students');
-                        };
-                        actionsContainer.appendChild(addMemberButton);
-                    }
-                    
-                    const deleteButton = document.createElement('button');
-                    deleteButton.className = 'bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-full transition text-xs';
-                    deleteButton.textContent = 'Delete Team';
-                    deleteButton.onclick = () => handleDeleteTeam(team.id, team.members);
-                    actionsContainer.appendChild(deleteButton);
-                    
-                    card.appendChild(actionsContainer);
-                }
-
-
-                container.appendChild(card);
-            });
-        }
-        
-        // --- PROBLEM STATEMENTS LOGIC ---
-        async function handleAddProblemStatement(e) {
-            e.preventDefault();
-            if (!currentUserData || currentUserData.role !== 'mentor') return;
-            const form = e.target;
-            const title = form.psTitle.value;
-            const description = form.psDescription.value;
-            try {
-                await addDoc(collection(db, "problemStatements"), {
-                    title,
-                    description,
-                    mentorId: currentUserData.uid,
-                    mentorName: currentUserData.fullName
-                });
-                showNotification("Problem statement added successfully.", false);
-                form.reset();
-            } catch (error) {
-                console.error("Error adding problem statement:", error);
-                showNotification("Failed to add problem statement.", true);
-            }
-        }
-        
-        async function handleDeleteProblemStatement(statementId) {
-            try {
-                await deleteDoc(doc(db, "problemStatements", statementId));
-                showNotification("Problem statement deleted.", false);
-            } catch (error) {
-                console.error("Error deleting problem statement:", error);
-                showNotification("Failed to delete problem statement.", true);
-            }
-        }
-        
-        function listenAndDisplayProblemStatements() {
-            if (problemStatementsListener) return;
-            const q = collection(db, "problemStatements");
-            problemStatementsListener = onSnapshot(q, (snapshot) => {
-                const statements = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                renderPublicProblemStatements(statements);
-                renderMentorProblemStatements(statements);
-            }, (error) => {
-                console.error("Error fetching problem statements:", error);
-                 document.getElementById('public-problem-statements-list').innerHTML = '<p class="text-center text-red-500">Could not load problem statements.</p>';
-            });
-        }
-        
-        function renderPublicProblemStatements(statements) {
-             const container = document.getElementById('public-problem-statements-list');
-             if (!container) return;
-             if (statements.length === 0) {
-                 container.innerHTML = '<p class="text-center">No problem statements have been added yet.</p>';
-                 return;
-             }
-             container.innerHTML = '';
-             statements.forEach(statement => {
-                 const card = document.createElement('div');
-                 card.className = 'bg-white p-6 rounded-lg shadow-md';
-                 card.innerHTML = `
-                    <h3 class="text-2xl font-bold text-gray-800">${statement.title}</h3>
-                    <p class="text-gray-600 mt-2">${statement.description.replace(/\n/g, '<br>')}</p>
-                    <p class="text-sm text-gray-500 mt-4">Posted by: <span class="font-semibold text-indigo-600">${statement.mentorName}</span></p>
-                 `;
-                 container.appendChild(card);
-             });
-        }
-        
-        function renderMentorProblemStatements(statements) {
-             const container = document.getElementById('mentor-problem-statements-list');
-             if (!container || !currentUserData || currentUserData.role !== 'mentor') return;
-
-             const mentorStatements = statements.filter(s => s.mentorId === currentUserData.uid);
-             if (mentorStatements.length === 0) {
-                 container.innerHTML = '<p class="text-gray-500">You have not added any problem statements yet.</p>';
-                 return;
-             }
-             container.innerHTML = '';
-             mentorStatements.forEach(statement => {
-                 const item = document.createElement('div');
-                 item.className = 'flex justify-between items-center bg-gray-100 p-3 rounded-md';
-                 item.innerHTML = `
-                     <div>
-                         <p class="font-semibold">${statement.title}</p>
-                     </div>
-                     <button data-id="${statement.id}" class="delete-statement-btn bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600">Delete</button>
-                 `;
-                 container.appendChild(item);
-             });
-             
-             document.querySelectorAll('.delete-statement-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => handleDeleteProblemStatement(e.target.dataset.id));
-             });
-        }
-
 
         // --- INITIALIZATION ---
         function initializeEventListeners() {
             document.getElementById('registration-form').addEventListener('submit', handleStudentRegistration);
             document.getElementById('student-login-form').addEventListener('submit', handleStudentLogin);
-            document.getElementById('mentor-signup-form').addEventListener('submit', handleMentorSignup);
-            document.getElementById('mentor-login-form').addEventListener('submit', handleMentorLogin);
-            document.getElementById('add-problem-statement-form').addEventListener('submit', handleAddProblemStatement);
-            
             document.getElementById('logout-button').addEventListener('click', () => signOut(auth));
             document.getElementById('mobile-menu-button').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-            const mentorLoginTab = document.getElementById('mentor-login-tab');
-            const mentorSignupTab = document.getElementById('mentor-signup-tab');
-            mentorLoginTab.addEventListener('click', () => {
-                mentorLoginTab.classList.add('text-indigo-600', 'border-indigo-600');
-                mentorSignupTab.classList.remove('text-indigo-600', 'border-indigo-600');
-                document.getElementById('mentor-login-section').classList.add('active');
-                document.getElementById('mentor-signup-section').classList.remove('active');
-            });
-             mentorSignupTab.addEventListener('click', () => {
-                mentorSignupTab.classList.add('text-indigo-600', 'border-indigo-600');
-                mentorLoginTab.classList.remove('text-indigo-600', 'border-indigo-600');
-                document.getElementById('mentor-signup-section').classList.add('active');
-                document.getElementById('mentor-login-section').classList.remove('active');
-            });
-
             attachNavListeners();
         }
         
         function attachNavListeners() {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
+                    if (link.id === 'mobile-logout-button') return;
                     e.preventDefault();
                     const pageId = e.currentTarget.getAttribute('href').substring(1);
                     history.pushState(null, '', `#${pageId}`);
@@ -1163,10 +709,22 @@
             const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
             showPage(initialPage);
             updateMobileMenu();
-            listenAndCacheAllTeams();
-            listenAndDisplayProblemStatements();
+
+            // Timeline Animation Logic
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
         });
     </script>
 </body>
 </html>
-
