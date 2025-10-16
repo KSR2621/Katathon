@@ -59,14 +59,14 @@
     <header class="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
            <a href="#home" class="text-2xl font-bold flex items-center">
-    <img src="Kadathon.png" alt="Katathon Logo" class="h-9 mr-2"> 
+    <img src="Kadathon.png" alt="Katathon Logo" class="h-9 mr-2">
 </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <div id="logged-out-nav" class="space-x-8">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <a href="#idea-submission" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Submit Idea</a>
+                    <!-- Changed: Removed "Submit Idea" for logged out users -->
                     <a href="#student-login" class="nav-link bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Student Login/Register</a>
                 </div>
                 <div id="logged-in-nav" class="hidden space-x-8 items-center">
@@ -83,7 +83,8 @@
             </button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2 bg-gray-800">
-            </div>
+            <!-- Mobile menu content dynamically updated by JS -->
+        </div>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
@@ -98,7 +99,16 @@
                     <div class="countdown-box p-4 rounded-lg w-24"><span id="minutes" class="text-4xl font-bold">00</span><span class="block text-sm">Minutes</span></div>
                     <div class="countdown-box p-4 rounded-lg w-24"><span id="seconds" class="text-4xl font-bold">00</span><span class="block text-sm">Seconds</span></div>
                 </div>
-                    <a href="#idea-submission" class="nav-link inline-block mt-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Submit Your Idea!</a>
+                
+                <!-- Total Registrations Display -->
+                <div class="mt-10 text-center">
+                    <div class="inline-block bg-white/20 backdrop-blur-sm py-4 px-6 rounded-xl">
+                        <p class="text-lg font-medium text-indigo-200">Total Innovators Registered</p>
+                        <p id="home-registration-count" class="text-5xl font-extrabold text-white mt-1">0</p>
+                    </div>
+                </div>
+
+                <a id="home-cta-button" href="#registration" class="nav-link inline-block mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Register Now!</a>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 mt-12">
@@ -107,7 +117,7 @@
                         <img src="katalyst.png" alt="Katalyst Logo" class="h-24 mr-4">
                         <h3 class="text-2xl font-bold text-gray-800"></h3>
                     </div>
-                    <p class="text-gray-600">Katalyst India is an award-winning NGO that stands for the economic empowerment of women. Our initiative definitively prepares young women for leadership roles, thereby creating a wider talent pool for India Inc and helping bridge the gender divide. Beneficiaries of our initiatives—our ‘Katalysts’—are capable, valuable talent, eager to shape their own future as well as the world’s.</p>
+                    <p class="text-gray-600">Katalyst India is an award-winning NGO that stands for the economic empowerment of women. Our initiative definitively prepares young women for leadership roles, thereby creating a wider talent pool for India Inc and helping bridge the gender divide. Beneficiaries of our initiatives—our ‘Katalysts’—are capable, valuable talent, eager to shape their own future as well&nbsp;as&nbsp;the&nbsp;world’s.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="flex items-center mb-4">
@@ -133,11 +143,11 @@
                         </div>
                            <div class="flex justify-center items-center timeline-item right">
                                <div class="w-5/12 pr-8"></div>
-                                 <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                                 <div class="w-5/12 text-left pl-8">
-                                     <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
-                                     <p class="text-gray-600">Idea Submission Opens</p>
-                                 </div>
+                                   <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                                   <div class="w-5/12 text-left pl-8">
+                                       <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
+                                       <p class="text-gray-600">Idea Submission Opens</p>
+                                   </div>
                             </div>
                         <div class="flex justify-center items-center timeline-item left">
                             <div class="w-5/12 text-right pr-8">
@@ -156,20 +166,20 @@
                             </div>
                         </div>
                            <div class="flex justify-center items-center timeline-item left">
-                                 <div class="w-5/12 text-right pr-8">
-                                     <p class="text-lg font-semibold text-indigo-600">24th November 2025</p>
-                                     <p class="text-gray-600">Shortlisted Ideas Announcement</p>
-                                 </div>
-                                 <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                                 <div class="w-5/12 pl-8"></div>
+                                   <div class="w-5/12 text-right pr-8">
+                                       <p class="text-lg font-semibold text-indigo-600">24th November 2025</p>
+                                       <p class="text-gray-600">Shortlisted Ideas Announcement</p>
+                                   </div>
+                                   <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                                   <div class="w-5/12 pl-8"></div>
                             </div>
                            <div class="flex justify-center items-center timeline-item right">
-                                 <div class="w-5/12 pr-8"></div>
-                                 <div class="w-10 h-10 bg-purple-500 rounded-full z-10"></div>
-                                 <div class="w-5/12 text-left pl-8">
-                                     <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
-                                     <p class="text-gray-600 font-bold">Final Dev Day</p>
-                                 </div>
+                                   <div class="w-5/12 pr-8"></div>
+                                   <div class="w-10 h-10 bg-purple-500 rounded-full z-10"></div>
+                                   <div class="w-5/12 text-left pl-8">
+                                       <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
+                                       <p class="text-gray-600 font-bold">Final Dev Day</p>
+                                   </div>
                             </div>
                     </div>
                 </div>
@@ -194,9 +204,9 @@
                             <h4 class="font-bold text-indigo-700 text-lg">Functional Examples</h4>
                             <p class="text-sm text-gray-600 mt-2">Explore working examples to quickly implement TomTom features in your project.</p>
                         </a>
-                           <a href="https://www.youtube.com/watch?v=sI2sYy727CQ" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
-                                 <h4 class="font-bold text-indigo-700 text-lg">Add a Map to Your Website</h4>
-                                 <p class="text-sm text-gray-600 mt-2">Watch a tutorial on basic map integration.</p>
+                            <a href="https://www.youtube.com/watch?v=sI2sYy727CQ" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
+                                <h4 class="font-bold text-indigo-700 text-lg">Add a Map to Your Website</h4>
+                                <p class="text-sm text-gray-600 mt-2">Watch a tutorial on basic map integration.</p>
                             </a>
                         <a href="https://www.youtube.com/watch?v=aGvY_2LUA4s" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
                             <h4 class="font-bold text-indigo-700 text-lg">Integrate Weather API</h4>
@@ -230,8 +240,8 @@
                                 <input type="password" id="regPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Min. 6 characters" required>
                             </div>
                                <div class="relative">
-                                 <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                                 <input type="password" id="regConfirmPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Re-enter password" required>
+                                   <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                                   <input type="password" id="regConfirmPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Re-enter password" required>
                             </div>
                             <div>
                                 <label for="regContact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
@@ -257,15 +267,15 @@
                                     <!-- Options will be populated by JavaScript -->
                                 </select>
                             </div>
-                            <div>
-                                <label for="regCollege" class="block text-sm font-medium text-gray-700 mb-1">College Name</label>
-                                 <select id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                     <!-- Options will be populated by JavaScript -->
-                                 </select>
+                               <div>
+                                   <label for="regCollege" class="block text-sm font-medium text-gray-700 mb-1">College Name</label>
+                                       <select id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                                           <!-- Options will be populated by JavaScript -->
+                                       </select>
                             </div>
                                <div>
-                                 <label for="regCgpa" class="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
-                                 <input type="number" step="0.01" id="regCgpa" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                                   <label for="regCgpa" class="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
+                                   <input type="number" step="0.01" id="regCgpa" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                             </div>
                         </div>
                         <div class="mt-8 text-center">
@@ -288,9 +298,9 @@
                             <label for="studentLoginPassword" class="block text-sm font-medium text-gray-700">Password</label>
                             <input type="password" id="studentLoginPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                         </div>
-                         <div class="mt-8 text-center">
-                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
-                        </div>
+                           <div class="mt-8 text-center">
+                               <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
+                           </div>
                    </form>
                    <p class="text-center text-sm text-gray-600 mt-6">
                         Don't have an account? <a href="#registration" class="nav-link font-medium text-indigo-600 hover:text-indigo-500">Register here</a>.
@@ -311,11 +321,47 @@
                        <a href="#idea-submission" class="nav-link inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Go to Idea Submission</a>
                    </div>
             </div>
+
+            <!-- Admin View -->
+            <div id="admin-dashboard-view" class="hidden max-w-7xl mx-auto mt-8">
+                 <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800">Admin Panel</h3>
+                    <div class="bg-indigo-50 p-6 rounded-lg text-center mb-8">
+                        <p class="text-lg font-medium text-gray-600">Total Student Registrations</p>
+                        <p id="registration-count" class="text-5xl font-bold text-indigo-600 mt-2">0</p>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Registered Students</h3>
+                        <div class="overflow-x-auto bg-white rounded-lg shadow">
+                            <table class="min-w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">UID</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">College</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stream</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Centre</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Batch</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CGPA</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="student-list-table" class="bg-white divide-y divide-gray-200">
+                                    <!-- Student data will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section id="rules" class="page">
                <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules</h2>
+                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules</h2>
                     <div class="space-y-8 text-gray-700">
                         <div>
                             <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
@@ -326,6 +372,48 @@
                                 <li>Team formation is an offline process; teams must provide member information during the final submission.</li>
                                 <li>Each team must select a problem statement based on the given theme and problem code. (e.g., Theme 1, Problem 2 = Code 102).</li>
                             </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Evaluation Criteria</h3>
+                            <p class="mb-4">All submissions will be evaluated by multiple judges. The final score will be the average of all judges’ evaluations.</p>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full bg-white rounded-lg shadow-sm">
+                                    <thead>
+                                        <tr class="bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            <th class="py-3 px-4 rounded-tl-lg">Criterion</th>
+                                            <th class="py-3 px-4">Weightage</th>
+                                            <th class="py-3 px-4 rounded-tr-lg">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Innovation & Novelty</td>
+                                            <td class="py-3 px-4">25% (25 points)</td>
+                                            <td class="py-3 px-4">Originality and creativity of the idea.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Technical Design & Implementation</td>
+                                            <td class="py-3 px-4">40% (40 points)</td>
+                                            <td class="py-3 px-4">Technical depth, design, and execution quality.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Impact (Social/Environmental/User Value)</td>
+                                            <td class="py-3 px-4">20% (20 points)</td>
+                                            <td class="py-3 px-4">Real-world usefulness and positive contribution.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Design & Presentation</td>
+                                            <td class="py-3 px-4">10% (10 points)</td>
+                                            <td class="py-3 px-4">Clarity, user experience, and visual appeal.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800 rounded-bl-lg">Bonus Points</td>
+                                            <td class="py-3 px-4">5% (5 points)</td>
+                                            <td class="py-3 px-4 rounded-br-lg">Awarded for working solutions or challenging problem selection.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                </div>
@@ -339,20 +427,20 @@
                     <p class="text-gray-600 mb-6 max-w-3xl">Empower people and communities through maps that connect, inform, and inspire collaboration. This theme focuses on using mapping technology to solve local problems, improve accessibility, and enhance daily life.</p>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">MemoryMap – Personal Map of Memories <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 101</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
-                            <p class="mt-2 text-gray-700">Create an app that lets users mark and save personal memories—photos, notes, or short stories—on a map at specific locations. Each pinned spot becomes a “memory marker,” allowing users to revisit their past experiences through an interactive map.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">MemoryMap: Personal Map of Memories <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 101</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                            <p class="mt-2 text-gray-700">Create an app that lets users mark and save personal memories—photos, notes, or short stories—on a map at specific locations. Each pinned spot becomes a “memory marker,” allowing users to revisit their past experiences through an interactive map. Idea should focus on basic map integration, location tagging, and multimedia storage or linking. The problem can be expanded to include features like sharing memories with friends or creating themed memory trails.</p>
                         </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">AccessMap – Mapping Accessibility <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 102</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
-                            <p class="mt-2 text-gray-700">Design a map-based application that helps people with disabilities find accessible routes and locations. The app can highlight places with ramps, lifts, or safe pedestrian routes, using open data or crowd-sourced inputs.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">AccessMap: Mapping Accessibility <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 102</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                            <p class="mt-2 text-gray-700">Design a map-based application that helps people with disabilities find accessible routes and locations. The app can highlight places with ramps, lifts, tactile paths, or safe pedestrian routes. Students can use open data or crowd-sourced inputs to build a user-friendly accessibility map that makes cities more inclusive. The concept can be extended by adding accessible route navigation or campus-based accessibility mapping.</p>
                         </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">CrowdGuard – Real-Time Incident Reporting <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 103</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
-                            <p class="mt-2 text-gray-700">Develop a map-based platform that allows users to report real-time incidents such as accidents, road closures, or safety hazards. The system can include categories and allow users to validate reports through upvotes or comments.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">CrowdGuard: Real-Time Incident Reporting <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 103</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Develop a map-based platform that allows users to report real-time incidents such as accidents, road closures, or safety hazards. Each report should appear as a marker on the map for others nearby to view. The system can include categories like traffic, safety, or civic issues, and allow users to validate reports through upvotes or comments. The project focuses on crowd-sourced data collection, live map updates, and reliability checks to improve community safety.</p>
                         </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">FriendsNavigator – Group Navigation for Friends <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 104</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
-                            <p class="mt-2 text-gray-700">Create a navigation app that helps groups of friends travel to the same destination together. The app can show live locations of all group members, estimated arrival times, and suggest a common meeting point.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">FriendsNavigator: Group Navigation for Friends <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 104</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Create a navigation app that helps groups of friends travel to the same destination together. The app can show live locations of all group members, estimated arrival times, and suggest a common meeting point. It can also alert users if someone takes a different route or is delayed. The idea focuses on real-time location sharing, route tracking, and synchronization.</p>
                         </div>
                     </div>
                 </div>
@@ -360,21 +448,21 @@
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 2: Traffic Management & Smart Mobility</h3>
                     <p class="text-gray-600 mb-6 max-w-3xl">Use geospatial intelligence to make cities move smarter. This theme focuses on optimizing traffic, improving safety, and promoting sustainable transport using real-time data and smart mapping.</p>
                     <div class="grid md:grid-cols-2 gap-8">
-                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                                 <h4 class="text-xl font-bold text-indigo-700">ParkFinder – Smart Parking Locator <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 201</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
-                                 <p class="mt-2 text-gray-700">Design an application that helps users find nearby parking spaces through an interactive map. Users can mark spots as “occupied” or “available,” making it easier for others to locate parking in busy areas.</p>
+                            <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">ParkFinder: Smart Parking Locator <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 201</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                                <p class="mt-2 text-gray-700">Design an application that helps users find nearby parking spaces through an interactive map. Users can mark parking spots as “occupied” or “available.” The system can display parking zones, availability, and simple navigation to the selected spot. This problem can be expanded to include live sensor data, parking fee estimation, or predictive availability.</p>
                             </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">SafeWalk – Route Safety Companion <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 202</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
-                            <p class="mt-2 text-gray-700">Build an app that helps users choose the safest walking routes, especially during night hours. The app can use data such as street lighting, traffic density, and user-reported incidents to rate routes for safety.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">SafeWalk: Route Safety Companion <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 202</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Build an application that helps users choose the safest walking or travel routes, especially during night hours. The app can use data such as street lighting, traffic density, and user-reported incidents to rate routes for safety. It can also alert users if they enter a low-safety area. The concept can be extended with real-time alerts, location sharing with trusted contacts, or police integration.</p>
                         </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">SmartSignals – Intelligent Traffic Light Management <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 203</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
-                            <p class="mt-2 text-gray-700">Develop a system that uses live traffic flow, congestion levels, or vehicle density to optimize traffic light timing dynamically. The project can simulate or visualize traffic signal changes on a map.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">SmartSignals: Intelligent Traffic Light Management <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 203</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Develop a system that uses live traffic flow, congestion levels, or vehicle density data to optimize traffic light timing dynamically. The project can simulate or visualize traffic signal changes on a map interface. This can be expanded to include AI-based traffic prediction, integration with smart city infrastructure, or emergency vehicle prioritization.</p>
                         </div>
-                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                                 <h4 class="text-xl font-bold text-indigo-700">GeoSense – Area Insights from Movement Data <span class="text-sm font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Code: 204</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Hard</span></h4>
-                                 <p class="mt-2 text-gray-700">Analyze location-based data (POIs, routes, traffic) to generate insights about urban areas. The solution could reveal patterns like “busiest between 6–8 PM,” or “green and quiet zones,” visualized on interactive maps.</p>
+                            <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">GeoSense: Area Insights from Movement and Traffic Data <span class="text-sm font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Code: 204</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Hard</span></h4>
+                                <p class="mt-2 text-gray-700">Analyze location-based data such as POIs, routes, traffic, and mobility patterns to generate insights about urban areas. The solution could reveal patterns like “busiest between 6–8 PM” or “quiet zones for evening walks.” Teams can build dashboards or interactive maps with heatmaps and predictive analytics.</p>
                             </div>
                     </div>
                 </div>
@@ -382,21 +470,21 @@
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 3: Map Technology for Environmental Impact</h3>
                     <p class="text-gray-600 mb-6 max-w-3xl">Harness mapping and geospatial data to monitor, preserve, and improve our environment. This theme encourages solutions for sustainability, awareness, and climate action through maps and data visualization.</p>
                     <div class="grid md:grid-cols-2 gap-8">
-                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                                 <h4 class="text-xl font-bold text-indigo-700">AtmosMap – Intelligent Weather & Air Quality Map <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 301</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
-                                 <p class="mt-2 text-gray-700">Build an interactive map that shows current, past, and forecasted weather along with air quality and pollution levels. Users can view data like temperature, rainfall, and AQI in an easy-to-understand map layer.</p>
+                            <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">AtmosMap: Intelligent Weather & Air Quality Map <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 301</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                                <p class="mt-2 text-gray-700">Build an interactive map that shows current, past, and forecasted weather along with air quality and pollution levels. Users should be able to view temperature, rainfall, wind, and AQI data. This can be expanded to include AI-based weather predictions or personalized recommendations for safe outdoor activities.</p>
                             </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">WasteTrack – Smart Waste Management Map <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 302</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
-                            <p class="mt-2 text-gray-700">Build a map-based platform that tracks waste collection points, bins, and recycling centres. Allow users to report overflowing bins or illegal dumping through crowd-sourcing.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">WasteTrack: Smart Waste Management Map <span class="text-sm font-medium bg-green-100 text-green-800 py-1 px-2 rounded-full">Code: 302</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Easy</span></h4>
+                            <p class="mt-2 text-gray-700">Build a map-based platform that tracks waste collection points, bins, and recycling centers, and allows users to report overflowing bins or illegal dumping. Data can be crowd-sourced so others can benefit. The problem can be expanded to include route optimization for waste collection, gamified recycling, or IoT sensor integration.</p>
                         </div>
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-bold text-indigo-700">GreenSpace – Urban Green Mapping <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 303</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
-                            <p class="mt-2 text-gray-700">Design a map that visualizes green areas, parks, tree cover, and open spaces in a city. Users can explore the environmental quality of neighbourhoods and identify areas needing green development.</p>
+                            <h4 class="text-xl font-bold text-indigo-700">GreenSpace: Urban Green Mapping <span class="text-sm font-medium bg-yellow-100 text-yellow-800 py-1 px-2 rounded-full">Code: 303</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Medium</span></h4>
+                            <p class="mt-2 text-gray-700">Design a map that visualizes green areas, parks, tree cover, and open spaces in a city. Users can explore environmental quality and identify areas needing green development. The problem can be expanded to include pollution overlays, heat maps for “urban heat islands,” or citizen-driven green initiatives.</p>
                         </div>
-                           <div class="problem-card bg-white p-6 rounded-lg shadow-md">
-                                 <h4 class="text-xl font-bold text-indigo-700">Traffic & Environmental Impact Dashboard <span class="text-sm font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Code: 304</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Hard</span></h4>
-                                 <p class="mt-2 text-gray-700">Build a platform that analyzes traffic patterns to understand environmental effects (air pollution, noise, fuel consumption). Visualize correlations between congestion hotspots and environmental degradation on a map.</p>
+                            <div class="problem-card bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-xl font-bold text-indigo-700">Traffic & Environmental Impact: Geo-Intelligence Dashboard <span class="text-sm font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Code: 304</span> <span class="text-sm font-medium bg-gray-100 text-gray-800 py-1 px-2 rounded-full">Hard</span></h4>
+                                <p class="mt-2 text-gray-700">Build a platform that analyzes traffic patterns and mobility data to understand how traffic affects the environment, including air pollution, noise, and fuel consumption. Visualize correlations between congestion hotspots and environmental degradation. The project can be expanded with predictive analytics for city planning or sustainable transport optimization.</p>
                             </div>
                     </div>
                 </div>
@@ -407,21 +495,21 @@
                <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
                     <p class="text-center text-gray-600 mb-8">Ready to submit your innovative idea? Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
-                        <div class="text-center">
-                            <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
-                        </div>
+                               <div class="text-center">
+                                   <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
+                               </div>
                     <div class="mt-10 border-t pt-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Submission Format Reminder:</h3>
-                            <p class="text-gray-600 mb-4">Each team must submit a link to a single document (PDF, PPT, or DOC) via the form, with the following structure:</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-700">
-                                <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Emails.</li>
-                                <li><b>Problem Statement:</b> Selected problem code and title, with a brief explanation.</li>
-                                <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea, how it works, and its purpose.</li>
-                                <li><b>Technical Approach:</b> Tech stack, tools, APIs, datasets, and a simple architecture diagram.</li>
-                                <li><b>Impact & Feasibility:</b> Social/environmental impact and real-world scalability.</li>
-                                <li><b>Code Submission:</b> Publicly accessible GitHub repo or Google Drive link.</li>
-                                <li><b>Optional Bonus:</b> A short demo video (max 2 minutes) is highly encouraged.</li>
-                           </ul>
+                               <h3 class="text-xl font-semibold text-gray-800 mb-2">Submission Format Reminder:</h3>
+                               <p class="text-gray-600 mb-4">Each team must submit a link to a single document (PDF, PPT, or DOC) via the form, with the following structure:</p>
+                               <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                   <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Emails.</li>
+                                   <li><b>Problem Statement:</b> Selected problem code and title, with a brief explanation.</li>
+                                   <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea, how it works, and its purpose.</li>
+                                   <li><b>Technical Approach:</b> Tech stack, tools, APIs, datasets, and a simple architecture diagram.</li>
+                                   <li><b>Impact & Feasibility:</b> Social/environmental impact and real-world scalability.</li>
+                                   <li><b>Code Submission:</b> Publicly accessible GitHub repo or Google Drive link.</li>
+                                   <li><b>Optional Bonus:</b> A short demo video (max 2 minutes) is highly encouraged.</li>
+                               </ul>
                     </div>
                </div>
         </section>
@@ -435,7 +523,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, query, where, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAy13jaKMhUBNuf7BsuH9fGWKKMbObQ4sI",
@@ -453,6 +541,7 @@
 
         let currentUserData = null;
         let userListener = null;
+        let registrationCountListener = null;
 
         // --- Dropdown Data ---
         const streams = ["Automobile", "Artificial Intellegence and Machine Learning", "Biochemical and Biotechnology", "Biomedical", "Biotechnology", "Chemical", "Civil", "Computer Science", "Software Engineering", "Data Science", "Electrical", "Electronics and Communication", "Electrical and Electronic", "Electronics", "Information Technology", "Information Science", "Mechanical", "Metallurgical", "Production", "Textile", "Aerospace", "Agricultural", "Environmental", "Industrial", "Marine", "Materials Science", "Mining", "Nuclear", "Petroleum", "Robotics Engineering", "Instrumentation", "Electrical Engineering", "Computer Engineering", "Electronics and Instrumentation", "Electronics & Telecommunication", "Civil Engineering", "Electronics Engineering", "Artificial Intelligence and Machine Learning", "Computer Engineering(Data science)", "Information Science and Engineering", "Instrumentation Engineering", "Electronics and communication engineering", "Information Science of Engineering", "Industrial Engineering and Management", "Electronics & Communication", "Electrical and electronics engineering", "Mechanical Engineering", "Digital Transformation", "Industrial Engineering", "Geo Informatics", "Ceramic Technology", "Printing and packaging technology", "Biomedical Engineering", "Chemical Engineering", "AI & ML", "Artificial Intelligence", "Electronic and Computer science", "AI/ML", "AI/DS"];
@@ -472,16 +561,15 @@
         const loggedOutNav = document.getElementById('logged-out-nav');
         const loggedInNav = document.getElementById('logged-in-nav');
         const mobileMenu = document.getElementById('mobile-menu');
+        const homeCtaButton = document.getElementById('home-cta-button'); 
 
         // --- UTILITY FUNCTIONS ---
         function showPage(pageId) {
-            // NEW: Check for restricted page access
             if (pageId === 'idea-submission' && !auth.currentUser) {
                 showNotification("Please log in to submit an idea.", true);
-                // Redirect to login page
                 history.pushState(null, '', '#student-login');
-                showPage('student-login'); 
-                return; 
+                showPage('student-login');
+                return;
             }
 
             pages.forEach(page => page.classList.remove('active'));
@@ -518,20 +606,36 @@
             if (userListener) userListener();
 
             if (user) {
-                userListener = onSnapshot(doc(db, "users", user.uid), (userDoc) => {
-                    if (userDoc.exists()) {
-                        const wasJustCreated = !currentUserData;
-                        currentUserData = { uid: user.uid, ...userDoc.data() };
-                        updateUIAfterLogin();
-                        
-                        const currentPage = window.location.hash.substring(1);
-                        if (wasJustCreated && ['student-login', 'registration'].includes(currentPage)) {
-                            showPage('dashboard');
-                        }
-                    } else {
-                        signOut(auth);
+                 // Special admin check
+                if (user.email === 'admin@gmail.com') {
+                    currentUserData = { 
+                        uid: user.uid,
+                        fullName: 'Admin', 
+                        email: 'admin@gmail.com',
+                        role: 'admin' 
+                    };
+                    updateUIAfterLogin();
+                    const currentPage = window.location.hash.substring(1);
+                    if (['student-login', 'registration'].includes(currentPage)) {
+                        showPage('dashboard');
                     }
-                });
+                } else {
+                    // Regular user logic
+                    userListener = onSnapshot(doc(db, "users", user.uid), (userDoc) => {
+                        if (userDoc.exists()) {
+                            const wasJustCreated = !currentUserData;
+                            currentUserData = { uid: user.uid, ...userDoc.data() };
+                            updateUIAfterLogin();
+                            
+                            const currentPage = window.location.hash.substring(1);
+                            if (wasJustCreated && ['student-login', 'registration'].includes(currentPage)) {
+                                showPage('dashboard');
+                            }
+                        } else {
+                            signOut(auth); // If student doc doesn't exist, log out.
+                        }
+                    });
+                }
             } else {
                 currentUserData = null;
                 updateUIAfterLogout();
@@ -564,7 +668,7 @@
                     centre: form.regCentre.value,
                     college: form.regCollege.value,
                     cgpa: form.regCgpa.value,
-                    role: 'student'
+                    role: 'student' // Default role for new users
                 };
 
                 await setDoc(doc(db, "users", user.uid), userData);
@@ -583,7 +687,22 @@
                 await signInWithEmailAndPassword(auth, email, password);
                 showNotification("Login successful!");
             } catch (error) {
-                showNotification(error.message, true);
+                if (email === 'admin@gmail.com' && password === '12345678' && (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential')) {
+                    try {
+                        await createUserWithEmailAndPassword(auth, email, password);
+                        showNotification("Admin account created. Welcome!");
+                    } catch (createError) {
+                        if (createError.code === 'auth/email-already-in-use') {
+                             signInWithEmailAndPassword(auth, email, password)
+                                .then(() => showNotification("Login successful!"))
+                                .catch(err => showNotification(err.message, true));
+                        } else {
+                            showNotification(`Admin creation/login failed: ${createError.message}`, true);
+                        }
+                    }
+                } else {
+                    showNotification(error.message, true);
+                }
             }
         }
         
@@ -591,9 +710,22 @@
         function updateUIAfterLogin() {
             loggedOutNav.classList.add('hidden');
             loggedInNav.classList.remove('hidden');
+            if (homeCtaButton) {
+                homeCtaButton.textContent = 'Submit Your Idea!';
+                homeCtaButton.href = '#idea-submission';
+            }
             if (currentUserData) {
                 document.getElementById('welcome-message').textContent = `Welcome, ${currentUserData.fullName}!`;
-                renderStudentDashboard();
+                
+                if (currentUserData.role === 'admin') {
+                    document.getElementById('student-dashboard-view').classList.add('hidden');
+                    document.getElementById('admin-dashboard-view').classList.remove('hidden');
+                    displayAllStudents(); 
+                } else {
+                    renderStudentDashboard();
+                    document.getElementById('student-dashboard-view').classList.remove('hidden');
+                    document.getElementById('admin-dashboard-view').classList.add('hidden');
+                }
             }
             updateMobileMenu();
         }
@@ -601,7 +733,15 @@
         function updateUIAfterLogout() {
             loggedInNav.classList.add('hidden');
             loggedOutNav.classList.remove('hidden');
-            if (window.location.hash === '#dashboard') showPage('home');
+            if (homeCtaButton) {
+                homeCtaButton.textContent = 'Register Now!';
+                homeCtaButton.href = '#registration';
+            }
+            document.getElementById('admin-dashboard-view').classList.add('hidden');
+            if (window.location.hash.startsWith('#dashboard')) {
+                 showPage('home');
+                 history.pushState(null, '', '#home');
+            }
             updateMobileMenu();
         }
         
@@ -610,17 +750,16 @@
             let links = '';
                if (loggedIn) {
                     links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
-                                 <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
-                                 <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
-                                 <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                                 <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
-                                 <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
+                                         <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
+                                         <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
+                                         <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                                         <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
+                                         <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
                } else {
                     links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
-                                 <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
-                                 <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                                 <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
-                                 <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login/Register</a>`;
+                                         <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
+                                         <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
+                                         <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login/Register</a>`;
             }
             mobileMenu.innerHTML = links;
             attachNavListeners();
@@ -643,11 +782,102 @@
                 </div>
             `;
         }
+
+        // --- ADMIN SPECIFIC LOGIC ---
+        async function displayAllStudents() {
+            const studentListTable = document.getElementById('student-list-table');
+            if (!studentListTable) return;
+
+            try {
+                const usersCollection = collection(db, "users");
+                const q = query(usersCollection, where("role", "==", "student"));
+                const querySnapshot = await getDocs(q);
+                
+                let tableRows = '';
+                querySnapshot.forEach((doc) => {
+                    const student = doc.data();
+                    tableRows += `
+                        <tr id="student-row-${doc.id}">
+                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${student.fullName || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.uid || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.email || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.contact || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.college || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.stream || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.centre || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.batch || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.cgpa || 'N/A'}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <button data-id="${doc.id}" class="delete-student-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-full text-xs">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                if(tableRows === '') {
+                    studentListTable.innerHTML = '<tr><td colspan="10" class="text-center py-4">No students have registered yet.</td></tr>';
+                } else {
+                    studentListTable.innerHTML = tableRows;
+                }
+
+            } catch (error) {
+                console.error("Error fetching student list: ", error);
+                showNotification("Could not fetch student list.", true);
+                studentListTable.innerHTML = '<tr><td colspan="10" class="text-center py-4 text-red-500">Error loading student data.</td></tr>';
+            }
+        }
+        
+        async function handleDeleteStudent(studentId) {
+            if (!studentId) return;
+            try {
+                // This only deletes the Firestore document. Deleting the Firebase Auth user
+                // requires admin privileges and is typically done via a backend Cloud Function for security reasons.
+                // For this client-side demo, we are only removing the database record.
+                const userDocRef = doc(db, "users", studentId);
+                await deleteDoc(userDocRef);
+                showNotification("Student record deleted successfully.");
+                
+                // Refresh the table view
+                const rowToRemove = document.getElementById(`student-row-${studentId}`);
+                if(rowToRemove) rowToRemove.remove();
+                
+                // Update registration count
+                listenForRegistrationCount();
+
+            } catch (error) {
+                console.error("Error deleting student: ", error);
+                showNotification("Failed to delete student record.", true);
+            }
+        }
+
+
+        function listenForRegistrationCount() {
+            if (registrationCountListener) {
+                registrationCountListener();
+            }
+            const usersCollection = collection(db, "users");
+            registrationCountListener = onSnapshot(usersCollection, (snapshot) => {
+                const count = snapshot.docs.filter(doc => doc.data().role !== 'admin').length;
+                const adminCountElement = document.getElementById('registration-count');
+                const homeCountElement = document.getElementById('home-registration-count');
+                if (adminCountElement) {
+                    adminCountElement.textContent = count;
+                }
+                if (homeCountElement) {
+                    homeCountElement.textContent = count;
+                }
+            }, (error) => {
+                console.error("Error fetching registration count: ", error);
+                showNotification("Could not fetch registration count.", true);
+            });
+        }
         
         // --- DROPDOWN POPULATION LOGIC ---
         function populateStreams() {
             const streamSelect = document.getElementById('regStream');
-            streams.forEach(stream => {
+            streams.sort().forEach(stream => {
                 const option = document.createElement('option');
                 option.value = stream;
                 option.textContent = stream;
@@ -657,7 +887,7 @@
 
         function populateCentres() {
             const centreSelect = document.getElementById('regCentre');
-            Object.keys(collegesByCenter).forEach(centre => {
+            Object.keys(collegesByCenter).sort().forEach(centre => {
                 const option = document.createElement('option');
                 option.value = centre;
                 option.textContent = centre;
@@ -669,14 +899,13 @@
             const collegeSelect = document.getElementById('regCollege');
             collegeSelect.innerHTML = ''; // Clear existing options
             const colleges = collegesByCenter[center] || [];
-            colleges.forEach(college => {
+            colleges.sort().forEach(college => {
                 const option = document.createElement('option');
                 option.value = college;
                 option.textContent = college;
                 collegeSelect.appendChild(option);
             });
         }
-
 
         // --- INITIALIZATION ---
         function initializeEventListeners() {
@@ -685,11 +914,21 @@
             document.getElementById('logout-button').addEventListener('click', () => signOut(auth));
             document.getElementById('mobile-menu-button').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
             
-            // Event listener for centre dropdown
             const centreSelect = document.getElementById('regCentre');
             centreSelect.addEventListener('change', (e) => {
                 populateColleges(e.target.value);
             });
+
+            // Event delegation for delete buttons
+            const studentTable = document.getElementById('student-list-table');
+            if (studentTable) {
+                studentTable.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('delete-student-btn')) {
+                        const studentId = e.target.dataset.id;
+                        handleDeleteStudent(studentId);
+                    }
+                });
+            }
 
             attachNavListeners();
         }
@@ -697,7 +936,10 @@
         function attachNavListeners() {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
-                    if (link.id === 'mobile-logout-button') return;
+                    if (link.id === 'mobile-logout-button') {
+                        signOut(auth);
+                        return;
+                    }
                     e.preventDefault();
                     const pageId = e.currentTarget.getAttribute('href').substring(1);
                     history.pushState(null, '', `#${pageId}`);
@@ -718,27 +960,26 @@
             setInterval(() => {
                 const now = new Date().getTime();
                 const distance = countdownDate - now;
-                document.getElementById('days').innerText = String(Math.floor(distance/(1000*60*60*24))).padStart(2,'0');
-                document.getElementById('hours').innerText = String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
-                document.getElementById('minutes').innerText = String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,'0');
-                document.getElementById('seconds').innerText = String(Math.floor((distance%(1000*60))/1000)).padStart(2,'0');
+                if(distance > 0) {
+                    document.getElementById('days').innerText = String(Math.floor(distance/(1000*60*60*24))).padStart(2,'0');
+                    document.getElementById('hours').innerText = String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+                    document.getElementById('minutes').innerText = String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,'0');
+                    document.getElementById('seconds').innerText = String(Math.floor((distance%(1000*60))/1000)).padStart(2,'0');
+                }
             }, 1000);
 
+            listenForRegistrationCount();
             initializeEventListeners();
             const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
             
-            // Populate dropdowns on load
             populateStreams();
             populateCentres();
-            // Populate colleges for the default selected center
-            const defaultCenter = document.getElementById('regCentre').value;
+            const defaultCenter = document.getElementById('regCentre').value || Object.keys(collegesByCenter).sort()[0];
             populateColleges(defaultCenter);
-
 
             showPage(initialPage);
             updateMobileMenu();
 
-            // Timeline Animation Logic
             const timelineItems = document.querySelectorAll('.timeline-item');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -747,7 +988,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 }); 
+            }, { threshold: 0.1 });
 
             timelineItems.forEach(item => {
                 observer.observe(item);
