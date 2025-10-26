@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Added libraries for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -58,15 +61,15 @@
 
     <header class="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-           <a href="#home" class="text-2xl font-bold flex items-center">
-    <img src="Kadathon.png" alt="Katathon Logo" class="h-9 mr-2">
-</a>
+            <!-- Change 6: Increased logo size from h-9 to h-12 -->
+            <a href="#home" class="text-2xl font-bold flex items-center">
+                <img src="Kadathon.png" alt="Katathon Logo" class="h-12 mr-2">
+            </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <div id="logged-out-nav" class="space-x-8">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <!-- Changed: Removed "Submit Idea" for logged out users -->
                     <a href="#student-login" class="nav-link bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Student Login/Register</a>
                 </div>
                 <div id="logged-in-nav" class="hidden space-x-8 items-center">
@@ -128,6 +131,7 @@
                 </div>
             </div>
 
+            <!-- Change 1: Updated Timeline -->
             <div id="timeline" class="mt-12 bg-white p-8 rounded-xl shadow-md">
                 <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Event Timeline</h3>
                 <div class="relative">
@@ -136,23 +140,23 @@
                         <div class="flex justify-center items-center timeline-item left">
                             <div class="w-5/12 text-right pr-8">
                                 <p class="text-lg font-semibold text-indigo-600">20th October 2025</p>
-                                <p class="text-gray-600">Participant Registration Opens</p>
+                                <p class="text-gray-600">Individual Registration Opens</p>
                             </div>
                             <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
                             <div class="w-5/12 pl-8"></div>
                         </div>
                           <div class="flex justify-center items-center timeline-item right">
                                 <div class="w-5/12 pr-8"></div>
-                                    <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                                    <div class="w-5/12 text-left pl-8">
-                                          <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
-                                          <p class="text-gray-600">Problem statement selection starts</p>
-                                    </div>
+                                  <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
+                                  <div class="w-5/12 text-left pl-8">
+                                        <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
+                                        <p class="text-gray-600">Team Idea Submission Opens</p>
+                                  </div>
                             </div>
                         <div class="flex justify-center items-center timeline-item left">
                             <div class="w-5/12 text-right pr-8">
                                 <p class="text-lg font-semibold text-indigo-600">31st October 2025</p>
-                                <p class="text-gray-600">Team & Participant Registration Ends</p>
+                                <p class="text-gray-600">Individual Registration Closes</p>
                             </div>
                             <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
                             <div class="w-5/12 pl-8"></div>
@@ -162,13 +166,13 @@
                             <div class="w-10 h-10 bg-red-500 rounded-full z-10"></div>
                             <div class="w-5/12 text-left pl-8">
                                 <p class="text-lg font-semibold text-red-600">7th November 2025 (10 PM)</p>
-                                <p class="text-gray-600 font-bold">Submission Deadline</p>
+                                <p class="text-gray-600 font-bold">Team Idea Submission Deadline</p>
                             </div>
                         </div>
                             <div class="flex justify-center items-center timeline-item left">
                                   <div class="w-5/12 text-right pr-8">
-                                          <p class="text-lg font-semibold text-indigo-600">19th November 2025</p>
-                                          <p class="text-gray-600">Shortlisted Ideas Announcement</p>
+                                        <p class="text-lg font-semibold text-indigo-600">19th November 2025</p>
+                                        <p class="text-gray-600">Shortlisted Ideas Announcement</p>
                                   </div>
                                   <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
                                   <div class="w-5/12 pl-8"></div>
@@ -177,15 +181,15 @@
                                   <div class="w-5/12 pr-8"></div>
                                   <div class="w-10 h-10 bg-purple-500 rounded-full z-10"></div>
                                   <div class="w-5/12 text-left pl-8">
-                                          <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
-                                          <p class="text-gray-600 font-bold">Final Dev Day</p>
+                                        <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
+                                        <p class="text-gray-600 font-bold">Final Dev Day</p>
                                   </div>
                             </div>
                     </div>
                 </div>
             </div>
 
-               <div id="resources" class="mt-12 bg-white p-8 rounded-xl shadow-md">
+                <div id="resources" class="mt-12 bg-white p-8 rounded-xl shadow-md">
                     <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Helpful Resources</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
                         <a href="https://developer.tomtom.com" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
@@ -228,20 +232,23 @@
             <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-4 md:p-8">
                 <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg">
                     <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Student Registration</h2>
-                    <p class="text-center text-gray-500 mb-8">Create your account to join the Katathon.</p>
+                    <p class="text-center text-gray-500 mb-8">Create your account to join the Katathon. All fields are mandatory.</p>
+                    
+                    <!-- Change 2 & 3: Updated Registration Form Labels, Placeholders, and mandatory fields -->
                     <form id="registration-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="relative">
-                                <label for="regFullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <label for="regFullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name (as per Katalyst Record)</label>
                                 <input type="text" id="regFullName" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Jane Doe" required>
                             </div>
                             <div class="relative">
-                                <label for="regUid" class="block text-sm font-medium text-gray-700 mb-1">UID</label>
-                                <input type="text" id="regUid" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Your Unique ID" required>
+                                <label for="regUid" class="block text-sm font-medium text-gray-700 mb-1">Katalyst UID</label>
+                                <input type="text" id="regUid" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Your Katalyst UID" required>
                             </div>
                             <div class="relative">
-                                <label for="regEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Id</label>
-                                <input type="email" id="regEmail" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="you@example.com" required>
+                                <label for="regEmail" class="block text-sm font-medium text-gray-700 mb-1">Katalyst Mail ID</label>
+                                <input type="email" id="regEmail" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="yourname@katalyst.org" required pattern=".+@katalyst\.org">
+                                <p class="text-xs text-gray-500 mt-1">Must be your official @katalyst.org email.</p>
                             </div>
                             <div class="relative">
                                 <label for="regPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
@@ -260,7 +267,6 @@
                                 <select id="regBatch" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                                     <option>2026</option>
                                     <option>2027</option>
-                                    <!-- Removed 2028 option -->
                                 </select>
                             </div>
                             <div>
@@ -275,16 +281,17 @@
                                     <!-- Options will be populated by JavaScript -->
                                 </select>
                             </div>
-                              <div>
+                                <div>
                                     <label for="regCollege" class="block text-sm font-medium text-gray-700 mb-1">College Name</label>
                                       <select id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                                           <!-- Options will be populated by JavaScript -->
+                                          <!-- Change 4: "Others" option will be added by JS -->
                                       </select>
-                              </div>
-                              <div>
+                                </div>
+                                <div>
                                     <label for="regCgpa" class="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
                                     <input type="number" step="0.01" id="regCgpa" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                              </div>
+                                </div>
                         </div>
                         <div class="mt-8 text-center">
                             <button type="submit" class="w-full md:w-auto inline-flex justify-center py-3 px-10 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-gradient-to-r from-indigo-500 to-purple-600">Register</button>
@@ -346,7 +353,7 @@
                                    <thead class="bg-gray-50">
                                        <tr>
                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">UID</th>
+                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Katalyst UID</th>
                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">College</th>
@@ -368,67 +375,97 @@
         </section>
         
         <section id="rules" class="page">
-               <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                           <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules</h2>
-                           <div class="space-y-8 text-gray-700">
-                               <div>
-                                   <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
-                                   <ul class="list-disc list-inside space-y-2">
-                                       <li>Students must participate in teams.</li>
-                                       <li>Group size should be a minimum of <b>3 members</b> and a maximum of <b>4 members</b>.</li>
-                                       <li>Each team must have a unique name and nominate a team leader as the primary contact.</li>
-                                       <li>Team formation is an offline process; teams must provide member information during the final submission.</li>
-                                       <li>Each team must select a problem statement based on the given theme and problem code. (e.g., Theme 1, Problem 2 = Code 102).</li>
-                                   </ul>
-                               </div>
-                               <div>
-                                   <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Evaluation Criteria</h3>
-                                   <p class="mb-4">All submissions will be evaluated by multiple judges. The final score will be the average of all judges’ evaluations.</p>
-                                   <div class="overflow-x-auto">
-                                       <table class="min-w-full bg-white rounded-lg shadow-sm">
-                                           <thead>
-                                               <tr class="bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                   <th class="py-3 px-4 rounded-tl-lg">Criterion</th>
-                                                   <th class="py-3 px-4">Weightage</th>
-                                                   <th class="py-3 px-4 rounded-tr-lg">Description</th>
-                                               </tr>
-                                           </thead>
-                                           <tbody class="divide-y divide-gray-200">
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Innovation & Novelty</td>
-                                                   <td class="py-3 px-4">25% (25 points)</td>
-                                                   <td class="py-3 px-4">Originality and creativity of the idea.</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Technical Design & Implementation</td>
-                                                   <td class="py-3 px-4">40% (40 points)</td>
-                                                   <td class="py-3 px-4">Technical depth, design, and execution quality.</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Impact (Social/Environmental/User Value)</td>
-                                                   <td class="py-3 px-4">20% (20 points)</td>
-                                                   <td class="py-3 px-4">Real-world usefulness and positive contribution.</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Design & Presentation</td>
-                                                   <td class="py-3 px-4">10% (10 points)</td>
-                                                   <td class="py-3 px-4">Clarity, user experience, and visual appeal.</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800 rounded-bl-lg">Bonus Points</td>
-                                                   <td class="py-3 px-4">5% (5 points)</td>
-                                                   <td class="py-3 px-4 rounded-br-lg">Awarded for working solutions or challenging problem selection.</td>
-                                               </tr>
-                                           </tbody>
-                                       </table>
-                                   </div>
-                               </div>
-                           </div>
-               </div>
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
+                            <div class="space-y-8 text-gray-700">
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
+                                    <ul class="list-disc list-inside space-y-2">
+                                        <li>Students must participate in teams.</li>
+                                        <li>Group size should be a minimum of <b>3 members</b> and a maximum of <b>4 members</b>.</li>
+                                        <li>Each team must have a unique name and nominate a team leader as the primary contact.</li>
+                                        <li>Team formation is an offline process; teams must provide member information during the final submission.</li>
+                                        <li>Each team must select a problem statement based on the given theme and problem code. (e.g., Theme 1, Problem 2 = Code 102).</li>
+                                        <!-- Change 8: Added Diversity Bonus -->
+                                        <li><b>Diversity Bonus:</b> Teams with members from different centres and/or batches will receive bonus points, as specified in the evaluation criteria.</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Change 7: Clarified Evaluation Criteria -->
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Evaluation Criteria</h3>
+                                    <p class="mb-4">All submissions will be evaluated by judges on a 100-point scale. Judges will score each criterion (e.g., using a 1-5 point scale, where 1=Needs Improvement and 5=Excellent), which is then converted to the weighted score below. The final score will be the average of all judges’ evaluations.</p>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full bg-white rounded-lg shadow-sm">
+                                            <thead>
+                                                <tr class="bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                    <th class="py-3 px-4 rounded-tl-lg">Criterion</th>
+                                                    <th class="py-3 px-4">Weightage</th>
+                                                    <th class="py-3 px-4 rounded-tr-lg">Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-200">
+                                                <tr>
+                                                    <td class="py-3 px-4 font-medium text-gray-800">Innovation & Novelty</td>
+                                                    <td class="py-3 px-4">25% (25 points)</td>
+                                                    <td class="py-3 px-4">Originality and creativity of the idea.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-3 px-4 font-medium text-gray-800">Technical Design & Implementation</td>
+                                                    <td class="py-3 px-4">40% (40 points)</td>
+                                                    <td class="py-3 px-4">Technical depth, design, and execution quality.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-3 px-4 font-medium text-gray-800">Impact (Social/Environmental/User Value)</td>
+                                                    <td class="py-3 px-4">20% (20 points)</td>
+                                                    <td class="py-3 px-4">Real-world usefulness and positive contribution.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-3 px-4 font-medium text-gray-800">Design & Presentation</td>
+                                                    <td class="py-3 px-4">10% (10 points)</td>
+                                                    <td class="py-3 px-4">Clarity, user experience, and visual appeal.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-3 px-4 font-medium text-gray-800 rounded-bl-lg">Bonus Points</td>
+                                                    <td class="py-3 px-4">5% (5 points)</td>
+                                                    <!-- Change 8: Updated Bonus Description -->
+                                                    <td class="py-3 px-4 rounded-br-lg">Awarded for working solutions, challenging problem selection, and cross-centre/batch teams.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <!-- Change 9: Added SOP/Submission Guidelines -->
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Submission Guidelines (SOP)</h3>
+                                    <p class="mb-4">Teams are required to submit their idea based on the parameters below. This is the main submission for the shortlisting process. Only one submission per team is required.</p>
+                                    <p class="font-semibold mb-2">Submission Document (PDF, PPT, or DOC) Must Include:</p>
+                                    <ul class="list-disc list-inside space-y-2">
+                                        <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Katalyst UIDs.</li>
+                                        <li><b>Problem Statement:</b> Selected problem code and title.</li>
+                                        <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea.</li>
+                                        <li><b>Technical Approach:</b> Tech stack, APIs, and a simple architecture diagram.</li>
+                                        <li><b>Impact & Feasibility:</b> Social/environmental impact and scalability.</li>
+                                        <li><b>Code/Repo Link:</b> Publicly accessible GitHub repo or Drive link.</li>
+                                        <li><b>Optional Bonus:</b> A short demo video (max 2 minutes) is highly encouraged.</li>
+                                    </ul>
+                                    <p class="mt-4">Please see the <a href="#idea-submission" class="nav-link text-indigo-600 font-medium">Submit Idea</a> page for the official submission link. The deadline is <b>7th November 2025 (10 PM)</b>.</p>
+                                </div>
+                            </div>
+                </div>
         </section>
         
         <section id="problem-statements" class="page">
-            <h2 class="text-4xl font-bold text-center mb-10">Problem Statements</h2>
+            <h2 class="text-4xl font-bold text-center mb-6">Problem Statements</h2>
+            
+            <!-- Change 5: Added PDF Download Button -->
+            <div class="text-center mb-10">
+                <button id="download-problems-pdf" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
+                    Download Problem Statements (PDF)
+                </button>
+            </div>
+            
             <div class="space-y-12">
                 <div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 1: Community Maps</h3>
@@ -500,26 +537,26 @@
         </section>
         
         <section id="idea-submission" class="page">
-               <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                       <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
-                       <p class="text-center text-gray-600 mb-8">Ready to submit your innovative idea? Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
-                               <div class="text-center">
-                                       <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
-                               </div>
-                       <div class="mt-10 border-t pt-6">
-                               <h3 class="text-xl font-semibold text-gray-800 mb-2">Submission Format Reminder:</h3>
-                               <p class="text-gray-600 mb-4">Each team must submit a link to a single document (PDF, PPT, or DOC) via the form, with the following structure:</p>
-                               <ul class="list-disc list-inside space-y-2 text-gray-700">
-                                       <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Emails.</li>
-                                       <li><b>Problem Statement:</b> Selected problem code and title, with a brief explanation.</li>
-                                       <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea, how it works, and its purpose.</li>
-                                       <li><b>Technical Approach:</b> Tech stack, tools, APIs, datasets, and a simple architecture diagram.</li>
-                                       <li><b>Impact & Feasibility:</b> Social/environmental impact and real-world scalability.</li>
-                                       <li><b>Code Submission:</b> Publicly accessible GitHub repo or Google Drive link.</li>
-                                       <li><b>Optional Bonus:</b> A short demo video (max 2 minutes) is highly encouraged.</li>
-                               </ul>
-                       </div>
-               </div>
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
+                            <p class="text-center text-gray-600 mb-8">Ready to submit your innovative idea? Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
+                                  <div class="text-center">
+                                        <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
+                                  </div>
+                            <div class="mt-10 border-t pt-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Submission Format Reminder:</h3>
+                                <p class="text-gray-600 mb-4">Each team must submit a link to a single document (PDF, PPT, or DOC) via the form, with the following structure:</p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                        <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Emails.</li>
+                                        <li><b>Problem Statement:</b> Selected problem code and title, with a brief explanation.</li>
+                                        <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea, how it works, and its purpose.</li>
+                                        <li><b>Technical Approach:</b> Tech stack, tools, APIs, datasets, and a simple architecture diagram.</li>
+                                        <li><b>Impact & Feasibility:</b> Social/environmental impact and real-world scalability.</li>
+                                        <li><b>Code Submission:</b> Publicly accessible GitHub repo or Google Drive link.</li>
+                                        <li><b>Optional Bonus:</b> A short demo video (max 2 minutes) is highly encouraged.</li>
+                                </ul>
+                            </div>
+                </div>
         </section>
 
     </main>
@@ -552,7 +589,8 @@
         let registrationCountListener = null;
 
         // --- Dropdown Data ---
-        const streams = ["Automobile", "Artificial Intellegence and Machine Learning", "Biochemical and Biotechnology", "Biomedical", "Biotechnology", "Chemical", "Civil", "Computer Science", "Software Engineering", "Data Science", "Electrical", "Electronics and Communication", "Electrical and Electronic", "Electronics", "Information Technology", "Information Science", "Mechanical", "Metallurgical", "Production", "Textile", "Aerospace", "Agricultural", "Environmental", "Industrial", "Marine", "Materials Science", "Mining", "Nuclear", "Petroleum", "Robotics Engineering", "Instrumentation", "Electrical Engineering", "Computer Engineering", "Electronics and Instrumentation", "Electronics & Telecommunication", "Civil Engineering", "Electronics Engineering", "Artificial Intelligence and Machine Learning", "Computer Engineering(Data science)", "Information Science and Engineering", "Instrumentation Engineering", "Electronics and communication engineering", "Information Science of Engineering", "Industrial Engineering and Management", "Electronics & Communication", "Electrical and electronics engineering", "Mechanical Engineering", "Digital Transformation", "Industrial Engineering", "Geo Informatics", "Ceramic Technology", "Printing and packaging technology", "Biomedical Engineering", "Chemical Engineering", "AI & ML", "Artificial Intelligence", "Electronic and Computer science", "AI/ML", "AI/DS"];
+        // Change 10: Added "Other" to streams
+        const streams = ["Automobile", "Artificial Intellegence and Machine Learning", "Biochemical and Biotechnology", "Biomedical", "Biotechnology", "Chemical", "Civil", "Computer Science", "Software Engineering", "Data Science", "Electrical", "Electronics and Communication", "Electrical and Electronic", "Electronics", "Information Technology", "Information Science", "Mechanical", "Metallurgical", "Production", "Textile", "Aerospace", "Agricultural", "Environmental", "Industrial", "Marine", "Materials Science", "Mining", "Nuclear", "Petroleum", "Robotics Engineering", "Instrumentation", "Electrical Engineering", "Computer Engineering", "Electronics and Instrumentation", "Electronics & Telecommunication", "Civil Engineering", "Electronics Engineering", "Artificial Intelligence and Machine Learning", "Computer Engineering(Data science)", "Information Science and Engineering", "Instrumentation Engineering", "Electronics and communication engineering", "Information Science of Engineering", "Industrial Engineering and Management", "Electronics & Communication", "Electrical and electronics engineering", "Mechanical Engineering", "Digital Transformation", "Industrial Engineering", "Geo Informatics", "Ceramic Technology", "Printing and packaging technology", "Biomedical Engineering", "Chemical Engineering", "AI & ML", "Artificial Intelligence", "Electronic and Computer science", "AI/ML", "AI/DS", "Other"];
         
         const collegesByCenter = {
             "Mumbai": ["Atharva College of Engineering (ACE)", "Chatrapati Shivaji Maharaj University (CSMU)", "Don Bosco Institute of Technology (DBIT Mumbai)", "Dwarkadas Jivanlal Sanghvi College of Engineering (DJ Sanghvi)", "Fr. Conceicao Rodrigues College of Engineering (FRCRCE)", "Manjara Trust Ragiv Gandhi Institute of Technology (MTRGIT)", "Sardar Patel Institute of Technology (SPIT)", "Shivram Samajik Vikas Sansthan Engineering College (SSVPS)", "Xavier Institute of Engineering (XIE)", "Usha Mittal Institute of Technology (UMIT)", "Vidyalankar Institute of Technology (VIT Mumbai)", "Annasaheb Chudaman Patil College of Engineering (ACPC)", "Vastnadada Patil College of Engineering (PVPPCOE)", "Bharati Vidyapeeth College of Engineering (BVCOM)", "Saraswati College of Engineering kharghar ICT (SCOEM)", "M.H. Saboo Siddik College of Engineering (MHSSCE)", "Veermata Jijabai Technological Institute (VJIT)", "Lokmanya Tilak College of Engineering (LTCE)", "Rajiv Gandhi Institute of Technology (RGIT)"],
@@ -560,8 +598,7 @@
             "Delhi": ["Amity School of Engineering and Technology (ASET)", "Bharati Vidyapeeth's College of Engineering (BVCOE Delhi)", "Delhi Technological University (DTU)", "Guru Gobind Singh Indraprastha University (GGSIPU)", "Indira Gandhi Delhi Technical University for Women (IGDTUW)", "Indraprastha Institute of Information Technology (IIIT Delhi)", "Indian Institute of Technology Delhi (IIT Delhi)", "Jamia Millia Islamia (JMI)", "Jagannath Institute of Management Sciences (JIMS)", "Jawaharlal Nehru University (JNU)", "Maharaja Agrasen Institute of Technology (MAIT)", "Maharaja Surajmal Institute of Technology (MSIT)", "Netaji Subhas University of Technology (NSUT)", "The NorthCap University (NCU)", "National Institute of Technology Delhi (NIT Delhi)", "University of Delhi (DU)", "University School of Information, Communication and Technology (USICT)"],
             "Bangalore": ["Acharya Institute of Technology (AIT Bangalore)", "Amrita School of Engineering (ASE)", "Atria Institute of Technology (AIT)", "B.M.S. College of Engineering (BMSCE)", "Bangalore Institute ofTechnology (BIT)", "CMR Institute of Technology (CMRIT)", "Christ University (CU)", "Dayananda Sagar College of Engineering (DSCE)", "Dr. Ambedkar Institute of Technology (Dr. AIT)", "East West Institute of Technology (EWIT)", "Global Academy of Technology (GAT)", "Indian Institute of Science (IISc Bangalore)", "International Institute of Information Technology, Bangalore (IIITB)", "M. S. Ramaiah Institute of Technology (MSRIT)", "MVJ College of Engineering (MVJCE)", "New Horizon College of Engineering (NHCE)", "Nitte Meenakshi Institute of Technology (NMIT)", "PES University (PESU)", "Presidency University (PU)", "R.V. College of Engineering (RVCE)", "Reva University (RU)", "RNS Institute of Technology (RNSIT)", "Ramaiah Institute of Technology (RIT)", "Rashtriya Vidhyalaya College of Engineering (RVCOE)", "Rama Nagappa Shetty Institute of Technology (RNSIT)", "Rashtreeya Vidyalaya College of Engineering (RV)", "Saptagiri College of Engineering (SC)", "Siddaganga Institute of Technology (SIT)", "Sri Krishna Institute of Technology (SKSIT)", "Sir Mokshagundam Visvesvaraya Institute of Technology (SMVIT)", "Sri Venkateshwara College of Engineering (SVCT)", "Bhageerathi Bai Narayana Rao Maanay Institute of Technology (BNMIT)", "Vijaya vittala Institute of Technology (VVIT)", "Vivekananda Institute of Technology (VIT Banglore)", "ACS College of Engineering (ACSCE)", "Sri Krishnarajendra Silver Jubilee Technological Institute (SKSJTI)", "HKBK College of Engineering (HKBK)", "Sai Vidya Institute of Technology (SVIT)"],
             "Chennai": ["College of Engineering, Guindy, Anna University (CEG)", "Rajalakshmi Engineering College (REC)", "Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology", "Velammal Engineering College (VEC)", "Vellore Institute of Technology (VIT Chennai)", "Sri Venkateswara College of Engineering (SVCE)", "SSN College of Engineering (SSNCE)", "Sathyabama Institute of Science and Technology (SIST)", "Saveetha Engineering College (SEC)", "RMK Engineering College (RMKEC)", "Panimalar Engineering College (PEC)", "Meenakshi Sundararajan Engineering College (MSEC)", "Loyola-ICAM College of Engineering and Technology (LICET)", "KCG College of Technology (KCGCT)", "Jerusalem College of Engineering (JCE)", "Indian Institute of Technology Madras (IIT Madras)", "Hindustan Institute of Technology and Science (HITS)", "Easwari Engineering College (EEC)", "Crescent School of Engineering (CSE)", "B.S. Abdur Rahman Crescent Institute of Science and Technology (BSAU)", "Anand Institute of Higher Technology (AIHT)", "Agni College of Technology (ACT)"],
-            "Hyderabad": [] // No colleges listed for Hyderabad in the provided file
-            // Removed Nagpur
+            "Hyderabad": [] // No colleges listed, "Others" will be added by JS
         };
 
         const pages = document.querySelectorAll('.page');
@@ -661,6 +698,12 @@
                 showNotification("Passwords do not match.", true);
                 return;
             }
+            
+            // Change 2: Validate email format
+            if (!email.endsWith('@katalyst.org')) {
+                showNotification("Please use your official @katalyst.org email.", true);
+                return;
+            }
 
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -668,7 +711,7 @@
 
                 const userData = {
                     fullName: form.regFullName.value,
-                    uid: form.regUid.value,
+                    uid: form.regUid.value, // This is Katalyst UID, not Firebase auth UID
                     email: email,
                     contact: form.regContact.value,
                     batch: form.regBatch.value,
@@ -679,9 +722,10 @@
                     role: 'student' // Default role for new users
                 };
 
-                await setDoc(doc(db, "users", user.uid), userData);
+                await setDoc(doc(db, "users", user.uid), userData); // Use Firebase auth UID as document ID
                 showNotification("Registration successful! Welcome.");
                 form.reset();
+                populateColleges(document.getElementById('regCentre').value); // Repopulate default colleges
             } catch (error) {
                 showNotification(error.message, true);
             }
@@ -756,15 +800,15 @@
         function updateMobileMenu() {
             const loggedIn = !!auth.currentUser;
             let links = '';
-               if (loggedIn) {
-                     links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                  if (loggedIn) {
+                        links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
                                  <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
                                  <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
                                  <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
                                  <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
                                  <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
-               } else {
-                     links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
+                  } else {
+                        links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
                                  <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
                                  <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
                                  <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login/Register</a>`;
@@ -780,7 +824,7 @@
             container.innerHTML = `
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                     <div><strong class="text-gray-500">Full Name:</strong> <span class="text-gray-800">${currentUserData.fullName}</span></div>
-                    <div><strong class="text-gray-500">UID:</strong> <span class="text-gray-800">${currentUserData.uid}</span></div>
+                    <div><strong class="text-gray-500">Katalyst UID:</strong> <span class="text-gray-800">${currentUserData.uid}</span></div>
                     <div><strong class="text-gray-500">Email:</strong> <span class="text-gray-800">${currentUserData.email}</span></div>
                     <div><strong class="text-gray-500">Contact:</strong> <span class="text-gray-800">${currentUserData.contact}</span></div>
                     <div><strong class="text-gray-500">College:</strong> <span class="text-gray-800">${currentUserData.college}</span></div>
@@ -885,6 +929,7 @@
         // --- DROPDOWN POPULATION LOGIC ---
         function populateStreams() {
             const streamSelect = document.getElementById('regStream');
+            streamSelect.innerHTML = ''; // Clear existing
             streams.sort().forEach(stream => {
                 const option = document.createElement('option');
                 option.value = stream;
@@ -895,6 +940,7 @@
 
         function populateCentres() {
             const centreSelect = document.getElementById('regCentre');
+            centreSelect.innerHTML = ''; // Clear existing
             Object.keys(collegesByCenter).sort().forEach(centre => {
                 const option = document.createElement('option');
                 option.value = centre;
@@ -903,6 +949,7 @@
             });
         }
 
+        // Change 4: Added "Others" option for colleges
         function populateColleges(center) {
             const collegeSelect = document.getElementById('regCollege');
             collegeSelect.innerHTML = ''; // Clear existing options
@@ -913,7 +960,69 @@
                 option.textContent = college;
                 collegeSelect.appendChild(option);
             });
+            // Add "Others" option
+            const otherOption = document.createElement('option');
+            otherOption.value = 'Other';
+            otherOption.textContent = 'Other';
+            collegeSelect.appendChild(otherOption);
         }
+        
+        // Change 5: PDF Generation Function
+        function generateProblemsPDF() {
+            const { jsPDF } = window.jspdf;
+            const problemsSection = document.getElementById('problem-statements');
+            
+            // Temporarily hide the button so it's not in the PDF
+            const downloadButton = document.getElementById('download-problems-pdf');
+            downloadButton.style.display = 'none';
+            showNotification("Generating PDF... Please wait.");
+
+            html2canvas(problemsSection, {
+                scale: 2, // Improve resolution
+                windowWidth: problemsSection.scrollWidth,
+                windowHeight: problemsSection.scrollHeight
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                const imgProps = pdf.getImageProperties(imgData);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                
+                const imgWidth = imgProps.width;
+                const imgHeight = imgProps.height;
+                
+                // Calculate ratio to fit width
+                const ratio = pdfWidth / imgWidth;
+                const scaledHeight = imgHeight * ratio;
+                
+                let heightLeft = scaledHeight;
+                let position = 0;
+                
+                // Add first page
+                pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, scaledHeight);
+                heightLeft -= pdfHeight;
+
+                // Add new pages if content overflows
+                while (heightLeft > 0) {
+                    position = -heightLeft;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, scaledHeight);
+                    heightLeft -= pdfHeight;
+                }
+                
+                pdf.save('Katathon-5.0-Problem-Statements.pdf');
+                
+                // Show the button again
+                downloadButton.style.display = 'block';
+            }).catch(e => {
+                showNotification("Failed to generate PDF.", true);
+                console.error(e);
+                // Ensure button is shown again even if it fails
+                downloadButton.style.display = 'block';
+            });
+        }
+
 
         // --- INITIALIZATION ---
         function initializeEventListeners() {
@@ -921,6 +1030,9 @@
             document.getElementById('student-login-form').addEventListener('submit', handleStudentLogin);
             document.getElementById('logout-button').addEventListener('click', () => signOut(auth));
             document.getElementById('mobile-menu-button').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            
+            // Add listener for PDF download button
+            document.getElementById('download-problems-pdf').addEventListener('click', generateProblemsPDF);
             
             const centreSelect = document.getElementById('regCentre');
             centreSelect.addEventListener('change', (e) => {
@@ -933,7 +1045,9 @@
                 studentTable.addEventListener('click', (e) => {
                     if (e.target.classList.contains('delete-student-btn')) {
                         const studentId = e.target.dataset.id;
-                        handleDeleteStudent(studentId);
+                        if (confirm('Are you sure you want to delete this student record? This action cannot be undone.')) {
+                            handleDeleteStudent(studentId);
+                        }
                     }
                 });
             }
@@ -946,6 +1060,10 @@
                 link.addEventListener('click', (e) => {
                     if (link.id === 'mobile-logout-button') {
                         signOut(auth);
+                        return;
+                    }
+                    // Check if it's an external link
+                    if (link.target === '_blank') {
                         return;
                     }
                     e.preventDefault();
