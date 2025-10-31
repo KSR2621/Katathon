@@ -45,32 +45,45 @@
             opacity: 0;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+        /* Default mobile animation is from bottom */
+        .timeline-item {
+            transform: translateY(30px);
+        }
         .timeline-item.left {
-            transform: translateX(-50px);
+            transform: translateY(30px);
         }
         .timeline-item.right {
-            transform: translateX(50px);
+            transform: translateY(30px);
+        }
+        /* Desktop animation from sides */
+        @media (min-width: 768px) {
+            .timeline-item.left {
+                transform: translateX(-50px);
+            }
+            .timeline-item.right {
+                transform: translateX(50px);
+            }
         }
         .timeline-item.is-visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) translateY(0);
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
     <header class="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Increased logo size -->
+        <nav class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+            <!-- Adjusted logo size for mobile -->
             <a href="#home" class="text-2xl font-bold flex items-center">
-                <img src="Kadathon.png" alt="Katathon Logo" class="h-14 mr-2"  onerror="this.onerror=null; this.src='https://placehold.co/100x56/eeeeee/cccccc?text=Logo';">
+                <img src="Kadathon.png" alt="Katathon Logo" class="h-12 md:h-14 mr-2"  onerror="this.onerror=null; this.src='https://placehold.co/100x56/eeeeee/cccccc?text=Logo';">
             </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <div id="logged-out-nav" class="space-x-8">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <a href="#student-login" class="nav-link bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Student Login/Register</a>
+                    <a href="#student-login" class="nav-link bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Student Login</a>
                 </div>
                 <div id="logged-in-nav" class="hidden space-x-8 items-center">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
@@ -85,128 +98,146 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2 bg-gray-800">
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-800">
             <!-- Mobile menu content dynamically updated by JS -->
         </div>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
         <section id="home" class="page active">
-            <div class="text-center bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 rounded-lg p-12 md:p-24 shadow-2xl">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-white">Welcome to Katathon 5.0</h2>
+            <!-- Responsive hero section -->
+            <div class="text-center bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 rounded-lg p-8 md:p-16 lg:p-24 shadow-2xl">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white">Welcome to Katathon 5.0</h2>
                 <p class="text-indigo-200 text-lg mt-4 font-medium">Powered by TomTom</p>
 
+                <!-- Responsive countdown timer -->
                 <div id="countdown" class="mt-8 flex justify-center space-x-2 md:space-x-4 text-white">
-                    <div class="countdown-box p-4 rounded-lg w-24"><span id="days" class="text-4xl font-bold">00</span><span class="block text-sm">Days</span></div>
-                    <div class="countdown-box p-4 rounded-lg w-24"><span id="hours" class="text-4xl font-bold">00</span><span class="block text-sm">Hours</span></div>
-                    <div class="countdown-box p-4 rounded-lg w-24"><span id="minutes" class="text-4xl font-bold">00</span><span class="block text-sm">Minutes</span></div>
-                    <div class="countdown-box p-4 rounded-lg w-24"><span id="seconds" class="text-4xl font-bold">00</span><span class="block text-sm">Seconds</span></div>
+                    <div class="countdown-box p-3 md:p-4 rounded-lg w-20 md:w-24"><span id="days" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs md:text-sm">Days</span></div>
+                    <div class="countdown-box p-3 md:p-4 rounded-lg w-20 md:w-24"><span id="hours" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs md:text-sm">Hours</span></div>
+                    <div class="countdown-box p-3 md:p-4 rounded-lg w-20 md:w-24"><span id="minutes" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs md:text-sm">Minutes</span></div>
+                    <div class="countdown-box p-3 md:p-4 rounded-lg w-20 md:w-24"><span id="seconds" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs md:text-sm">Seconds</span></div>
                 </div>
                 
-                <!-- Total Registrations Display -->
+                <!-- Responsive Total Registrations Display -->
                 <div class="mt-10 text-center">
-                    <div class="inline-block bg-white/20 backdrop-blur-sm py-4 px-6 rounded-xl">
-                        <p class="text-lg font-medium text-indigo-200">Total Innovators Registered</p>
-                        <p id="home-registration-count" class="text-5xl font-extrabold text-white mt-1">0</p>
+                    <div class="inline-block bg-white/20 backdrop-blur-sm py-3 px-5 md:py-4 md:px-6 rounded-xl">
+                        <p class="text-base md:text-lg font-medium text-indigo-200">Total Innovators Registered</p>
+                        <p id="home-registration-count" class="text-4xl md:text-5xl font-extrabold text-white mt-1">0</p>
                     </div>
                 </div>
 
-                <a id="home-cta-button" href="#registration" class="nav-link inline-block mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Register Now!</a>
+                <p class="text-yellow-300 text-base md:text-lg mt-10 font-semibold">Registrations are now closed. Thank you for your interest!</p>
+                <a id="home-cta-button" href="#problem-statements" class="nav-link inline-block mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 md:py-4 md:px-10 rounded-full text-base md:text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">View Problem Statements</a>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 mt-12">
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="katalyst.png" alt="Katalyst Logo" class="h-24 mr-4" onerror="this.onerror=null; this.src='https://placehold.co/100x96/eeeeee/cccccc?text=Katalyst';">
-                        <h3 class="text-2xl font-bold text-gray-800"></h3>
+                        <img src="katalyst.png" alt="Katalyst Logo" class="h-20 md:h-24 mr-4" onerror="this.onerror=null; this.src='https://placehold.co/100x96/eeeeee/cccccc?text=Katalyst';">
                     </div>
                     <p class="text-gray-600">Katalyst India is an award-winning NGO that stands for the economic empowerment of women. Our initiative definitively prepares young women for leadership roles, thereby creating a wider talent pool for India Inc and helping bridge the gender divide. Beneficiaries of our initiatives—our ‘Katalysts’—are capable, valuable talent, eager to shape their own future as well&nbsp;as&nbsp;the&nbsp;world’s.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="tomtom.png" alt="TomTom Logo" class="h-24 mr-4 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x96/eeeeee/cccccc?text=TomTom';">
-                        <h3 class="text-2xl font-bold text-gray-800"></h3>
+                        <img src="tomtom.png" alt="TomTom Logo" class="h-20 md:h-24 mr-4 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x96/eeeeee/cccccc?text=TomTom';">
                     </div>
                     <p class="text-gray-600">TomTom is the leading independent location technology specialist, shaping mobility with highly accurate maps and navigation software. By empowering Katathon 5.0, TomTom aims to inspire the next generation of engineers to build innovative solutions for real-world challenges.</p>
                 </div>
             </div>
 
-            <!-- Updated Timeline -->
-            <div id="timeline" class="mt-12 bg-white p-8 rounded-xl shadow-md">
+            <!-- === MOBILE-FRIENDLY TIMELINE === -->
+            <div id="timeline" class="mt-12 bg-white p-6 md:p-8 rounded-xl shadow-md">
                 <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Event Timeline</h3>
                 <div class="relative">
-                    <div class="absolute left-1/2 h-full w-0.5 bg-indigo-200" style="transform: translateX(-50%);"></div>
+                    <!-- Vertical line: positioned left on mobile, center on desktop -->
+                    <div class="absolute h-full w-0.5 bg-indigo-200 left-5 md:left-1/2 md:-translate-x-1/2"></div>
                     <div class="space-y-12">
-                        <div class="flex justify-center items-center timeline-item left">
-                            <div class="w-5/12 text-right pr-8">
-                                <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
-                                <p class="text-gray-600">Registration Opens</p>
-                            </div>
-                            <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                            <div class="w-5/12 pl-8"></div>
-                        </div>
-                          <div class="flex justify-center items-center timeline-item right">
-                                <div class="w-5/12 pr-8"></div>
-                                  <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                                  <div class="w-5/12 text-left pl-8">
-                                      <p class="text-lg font-semibold text-indigo-600">29th October 2025</p>
-                                      <p class="text-gray-600">Individual Registration Closes</p>
-                                  </div>
-                            </div>
-                        <div class="flex justify-center items-center timeline-item left">
-                            <div class="w-5/12 text-right pr-8">
-                                <p class="text-lg font-semibold text-indigo-600">29th October 2025 onwards</p>
-                                <p class="text-gray-600">Team Formation</p>
-                            </div>
-                            <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                            <div class="w-5/12 pl-8"></div>
-                        </div>
-                        <div class="flex justify-center items-center timeline-item right">
-                            <div class="w-5/12 pr-8"></div>
-                            <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                            <div class="w-5/12 text-left pl-8">
-                                <p class="text-lg font-semibold text-indigo-600">3rd November 2025</p>
-                                <p class="text-gray-600">Team Formation & Problem Statement Selection Closes</p>
+                        <!-- Timeline Item -->
+                        <div class="relative timeline-item left">
+                            <div class="md:flex items-center md:justify-normal">
+                                <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                    <p class="text-lg font-semibold text-indigo-600">27th October 2025</p>
+                                    <p class="text-gray-600">Registration Opens</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full z-10"></div>
                             </div>
                         </div>
-                        <div class="flex justify-center items-center timeline-item left">
-                             <div class="w-5/12 text-right pr-8">
-                                 <p class="text-lg font-semibold text-red-600">10th November 2025</p>
-                                 <p class="text-gray-600 font-bold">SOP Submission Deadline</p>
-                             </div>
-                             <div class="w-10 h-10 bg-red-500 rounded-full z-10"></div>
-                             <div class="w-5/12 pl-8"></div>
-                         </div>
-                        <div class="flex justify-center items-center timeline-item right">
-                                <div class="w-5/12 pr-8"></div>
-                                <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                                <div class="w-5/12 text-left pl-8">
+                        <!-- Timeline Item -->
+                        <div class="relative timeline-item right">
+                            <div class="md:flex items-center md:flex-row-reverse">
+                                <div class="w-full md:w-1/2 md:pl-8 text-left">
+                                    <p class="text-lg font-semibold text-indigo-600">29th October 2025</p>
+                                    <p class="text-gray-600">Individual Registration Closes</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full z-10"></div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="relative timeline-item left">
+                             <div class="md:flex items-center">
+                                <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                    <p class="text-lg font-semibold text-indigo-600">29th October 2025 onwards</p>
+                                    <p class="text-gray-600">Team Formation</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full z-10"></div>
+                            </div>
+                        </div>
+                         <!-- Timeline Item -->
+                        <div class="relative timeline-item right">
+                            <div class="md:flex items-center md:flex-row-reverse">
+                                <div class="w-full md:w-1/2 md:pl-8 text-left">
+                                    <p class="text-lg font-semibold text-indigo-600">3rd November 2025</p>
+                                    <p class="text-gray-600">Team Formation & Problem Statement Selection Closes</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full z-10"></div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item (Deadline) -->
+                        <div class="relative timeline-item left">
+                             <div class="md:flex items-center">
+                                <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                    <p class="text-lg font-semibold text-red-600">10th November 2025</p>
+                                    <p class="text-gray-600 font-bold">SOP Submission Deadline</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-red-500 rounded-full z-10"></div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="relative timeline-item right">
+                            <div class="md:flex items-center md:flex-row-reverse">
+                                <div class="w-full md:w-1/2 md:pl-8 text-left">
                                     <p class="text-lg font-semibold text-indigo-600">19th November 2025</p>
                                     <p class="text-gray-600">Shortlisted SOP Announcement</p>
                                 </div>
-                          </div>
-                          <div class="flex justify-center items-center timeline-item left">
-                               <div class="w-5/12 text-right pr-8">
-                                   <p class="text-lg font-semibold text-indigo-600">20th - 22nd November 2025</p>
-                                   <p class="text-gray-600">Tech Mentors Allocation</p>
-                               </div>
-                               <div class="w-10 h-10 bg-indigo-500 rounded-full z-10"></div>
-                               <div class="w-5/12 pl-8"></div>
-                           </div>
-                        <div class="flex justify-center items-center timeline-item right">
-                            <div class="w-5/12 pr-8"></div>
-                            <div class="w-10 h-10 bg-purple-500 rounded-full z-10"></div>
-                            <div class="w-5/12 text-left pl-8">
-                                <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
-                                <p class="text-gray-600 font-bold">Final Dev Day</p>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full z-10"></div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="relative timeline-item left">
+                             <div class="md:flex items-center">
+                                <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                    <p class="text-lg font-semibold text-indigo-600">20th - 22nd November 2025</p>
+                                    <p class="text-gray-600">Tech Mentors Allocation</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full z-10"></div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item (Final Day) -->
+                        <div class="relative timeline-item right">
+                            <div class="md:flex items-center md:flex-row-reverse">
+                                <div class="w-full md:w-1/2 md:pl-8 text-left">
+                                    <p class="text-lg font-semibold text-purple-600">29th & 30th November 2025</p>
+                                    <p class="text-gray-600 font-bold">Final Dev Day</p>
+                                </div>
+                                <div class="absolute top-1 -left-1.5 md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-purple-500 rounded-full z-10"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-                <div id="resources" class="mt-12 bg-white p-8 rounded-xl shadow-md">
-                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Helpful Resources</h3>
+                <div id="resources" class="mt-12 bg-white p-6 md:p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-8">Helpful Resources</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
                         <a href="https://developer.tomtom.com" target="_blank" class="block p-6 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition">
                             <h4 class="font-bold text-indigo-700 text-lg">TomTom Developer Portal</h4>
@@ -246,80 +277,22 @@
 
         <section id="registration" class="page">
             <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-4 md:p-8">
-                <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg">
-                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Student Registration</h2>
-                    <p class="text-center text-gray-500 mb-8">Create your account to join the Katathon. All fields are mandatory.</p>
-                    
-                    <!-- Updated Registration Form -->
-                    <form id="registration-form">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="relative">
-                                <label for="regFullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name (as per Katalyst Record)</label>
-                                <input type="text" id="regFullName" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Jane Doe" required>
-                            </div>
-                            <div class="relative">
-                                <label for="regUid" class="block text-sm font-medium text-gray-700 mb-1">Katalyst UID</label>
-                                <input type="text" id="regUid" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Your Katalyst UID" required>
-                            </div>
-                            <div class="relative">
-                                <label for="regEmail" class="block text-sm font-medium text-gray-700 mb-1">Katalyst Mail ID</label>
-                                <!-- Updated placeholder and pattern for email -->
-                                <input type="email" id="regEmail" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="yourname@katalystindia.org" required pattern=".+@katalystindia\.org">
-                                <p class="text-xs text-gray-500 mt-1">Must be your official @katalystindia.org email.</p>
-                            </div>
-                            <div class="relative">
-                                <label for="regPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                                <input type="password" id="regPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Min. 6 characters" required>
-                            </div>
-                                <div class="relative">
-                                    <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                                    <input type="password" id="regConfirmPassword" class="pl-4 mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Re-enter password" required>
-                                </div>
-                            <div>
-                                <label for="regContact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
-                                <input type="tel" id="regContact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                            </div>
-                            <div>
-                                <label for="regBatch" class="block text-sm font-medium text-gray-700 mb-1">Graduating Batch</label>
-                                <select id="regBatch" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                    <option>2026</option>
-                                    <option>2027</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="regStream" class="block text-sm font-medium text-gray-700 mb-1">Stream</label>
-                                <select id="regStream" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                    <!-- Options will be populated by JavaScript -->
-                                </select>
-                            </div>
-                            <div>
-                                <label for="regCentre" class="block text-sm font-medium text-gray-700 mb-1">Centre</label>
-                                <select id="regCentre" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                    <!-- Options will be populated by JavaScript -->
-                                </select>
-                            </div>
-                                <div>
-                                    <label for="regCollege" class="block text-sm font-medium text-gray-700 mb-1">College Name</label>
-                                     <select id="regCollege" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                         <!-- Options will be populated by JavaScript -->
-                                     </select>
-                                </div>
-                                <div>
-                                    <label for="regCgpa" class="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
-                                    <input type="number" step="0.01" id="regCgpa" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                                </div>
-                        </div>
-                        <div class="mt-8 text-center">
-                            <button type="submit" class="w-full md:w-auto inline-flex justify-center py-3 px-10 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-gradient-to-r from-indigo-500 to-purple-600">Register</button>
-                        </div>
-                    </form>
+                <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Registrations Are Closed</h2>
+                    <p class="text-gray-600 text-lg mb-6">Thank you for your overwhelming interest in Katathon 5.0!</p>
+                    <p class="text-gray-500">Individual registrations have now concluded. We look forward to seeing the innovative ideas from our registered participants.</p>
+                    <div class="mt-8">
+                        <a href="#student-login" class="nav-link inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                            Already Registered? Login Here
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="student-login" class="page">
-            <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
-                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Student Login</h2>
+            <div class="max-w-md mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg mt-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Student Login</h2>
                    <form id="student-login-form">
                         <div>
                             <label for="studentLoginEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
@@ -333,59 +306,56 @@
                               <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700">Sign In</button>
                           </div>
                    </form>
-                   <p class="text-center text-sm text-gray-600 mt-6">
-                        Don't have an account? <a href="#registration" class="nav-link font-medium text-indigo-600 hover:text-indigo-500">Register here</a>.
-                   </p>
             </div>
         </section>
         
         <section id="dashboard" class="page">
-            <h2 class="text-4xl font-bold text-center mb-4">Your Dashboard</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Your Dashboard</h2>
             <p id="welcome-message" class="text-center text-gray-600 mb-10">Welcome!</p>
 
-            <div id="student-dashboard-view" class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                   <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800">Your Registered Details</h3>
+            <div id="student-dashboard-view" class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                   <h3 class="text-xl md:text-2xl font-bold mb-6 border-b pb-4 text-gray-800">Your Registered Details</h3>
                    <div id="student-details-content" class="space-y-4">
                         <p>Loading your details...</p>
                    </div>
                    <div class="text-center mt-8">
-                       <a href="#idea-submission" class="nav-link inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Go to Idea Submission</a>
+                       <a href="#idea-submission" class="nav-link inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full text-base md:text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Go to Idea Submission</a>
                    </div>
             </div>
 
             <!-- Admin View -->
             <div id="admin-dashboard-view" class="hidden max-w-7xl mx-auto mt-8">
-                   <div class="bg-white p-8 rounded-2xl shadow-lg">
+                   <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
                        <div class="md:flex justify-between items-center mb-6 border-b pb-4">
-                           <h3 class="text-2xl font-bold text-gray-800">Admin Panel</h3>
-                           <div class="bg-indigo-50 p-4 rounded-lg text-center mt-4 md:mt-0">
+                           <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-0">Admin Panel</h3>
+                           <div class="bg-indigo-50 p-4 rounded-lg text-center">
                                <p class="text-md font-medium text-gray-600">Total Student Registrations</p>
-                               <p id="registration-count" class="text-4xl font-bold text-indigo-600 mt-1">0</p>
+                               <p id="registration-count" class="text-3xl md:text-4xl font-bold text-indigo-600 mt-1">0</p>
                            </div>
                        </div>
                        
-                       <!-- === NEW: SEARCH BAR === -->
                        <div class="mb-6">
                            <label for="admin-search-bar" class="block text-sm font-medium text-gray-700">Search Students</label>
                            <input type="text" id="admin-search-bar" class="mt-1 block w-full md:w-1/2 border-gray-300 rounded-md shadow-sm" placeholder="Search by name, email, or Katalyst UID...">
                        </div>
 
                        <div>
-                           <h3 class="text-xl font-bold mb-4 text-gray-800">Registered Students List</h3>
+                           <h3 class="text-lg md:text-xl font-bold mb-4 text-gray-800">Registered Students List</h3>
+                           <!-- === HORIZONTALLY SCROLLABLE TABLE WRAPPER === -->
                            <div class="overflow-x-auto bg-white rounded-lg shadow">
                                <table class="min-w-full">
                                    <thead class="bg-gray-50">
                                        <tr>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Katalyst UID</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">College</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stream</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Centre</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Batch</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CGPA</th>
-                                           <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Katalyst UID</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">College</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stream</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Centre</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Batch</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CGPA</th>
+                                           <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                        </tr>
                                    </thead>
                                    <tbody id="student-list-table" class="bg-white divide-y divide-gray-200">
@@ -399,11 +369,11 @@
         </section>
         
         <section id="rules" class="page">
-              <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                           <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
+              <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                           <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
                            <div class="space-y-8 text-gray-700">
                                <div>
-                                   <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
+                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
                                    <ul class="list-disc list-inside space-y-2">
                                        <li>Students must participate in teams.</li>
                                        <li>Group size should be a minimum of <b>3 members</b> and a maximum of <b>4 members</b>.</li>
@@ -414,10 +384,10 @@
                                    </ul>
                                </div>
                                
-                               <!-- === UPDATED SECTION START === -->
                                <div>
-                                   <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">SOP Review Criteria</h3>
+                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">SOP Review Criteria</h3>
                                    <p class="mb-4">Your initial SOP submission will be reviewed and shortlisted based on the following criteria. The final score will be the average of all judges’ evaluations.</p>
+                                   <!-- === HORIZONTALLY SCROLLABLE TABLE WRAPPER === -->
                                    <div class="overflow-x-auto">
                                        <table class="min-w-full bg-white rounded-lg shadow-sm">
                                            <thead class="bg-gray-100">
@@ -436,7 +406,7 @@
                                                <tr>
                                                    <td class="py-3 px-4 font-medium text-gray-800">Technical Feasibility</td>
                                                    <td class="py-3 px-4">50%</td>
-                                                   <td class="py-3 px-4">How well the solution is proposed, architecture, scalable, efficiency.</td>
+                                                   <td class="py-3 px-4">How well the solution is proposed, architecture, scalable, efficiency, Code and demo link will be encouraged.</td>
                                                </tr>
                                                <tr>
                                                    <td class="py-3 px-4 font-medium text-gray-800">Impact</td>
@@ -454,8 +424,9 @@
                                </div>
 
                                <div>
-                                   <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Final Evaluation Criteria</h3>
+                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Final Evaluation Criteria</h3>
                                    <p class="mb-4">Shortlisted teams presenting on the final day will be evaluated by judges on a 5-point scale for each category, which is then converted to the weighted score below. The final score will be the average of all judges’ evaluations.</p>
+                                   <!-- === HORIZONTALLY SCROLLABLE TABLE WRAPPER === -->
                                    <div class="overflow-x-auto">
                                        <table class="min-w-full bg-white rounded-lg shadow-sm">
                                            <thead class="bg-gray-100">
@@ -495,10 +466,9 @@
                                        </table>
                                    </div>
                                </div>
-                               <!-- === UPDATED SECTION END === -->
                                
                                <div>
-                                   <h3 class="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Submission Guidelines (SOP)</h3>
+                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Submission Guidelines (SOP)</h3>
                                    <p class="mb-4">Teams are required to submit their idea based on the parameters below. This is the main submission for the shortlisting process. Only one submission per team is required.</p>
                                    <p class="font-semibold mb-2">Submission Document (PDF, PPT, or DOC) Must Include:</p>
                                    <ul class="list-disc list-inside space-y-2">
@@ -515,9 +485,8 @@
         </section>
         
         <section id="problem-statements" class="page">
-            <h2 class="text-4xl font-bold text-center mb-6">Problem Statements</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Problem Statements</h2>
             
-            <!-- PDF Download Button -->
             <div class="text-center mb-10">
                 <button id="download-problems-pdf" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
                     Download Problem Statements (PDF)
@@ -526,7 +495,7 @@
             
             <div class="space-y-12">
                 <div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 1: Community Maps</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Theme 1: Community Maps</h3>
                     <p class="text-gray-600 mb-6 max-w-3xl">Empower people and communities through maps that connect, inform, and inspire collaboration. This theme focuses on using mapping technology to solve local problems, improve accessibility, and enhance daily life.</p>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="problem-card bg-white p-6 rounded-lg shadow-md">
@@ -548,7 +517,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 2: Traffic Management & Smart Mobility</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Theme 2: Traffic Management & Smart Mobility</h3>
                     <p class="text-gray-600 mb-6 max-w-3xl">Use geospatial intelligence to make cities move smarter. This theme focuses on optimizing traffic, improving safety, and promoting sustainable transport using real-time data and smart mapping.</p>
                     <div class="grid md:grid-cols-2 gap-8">
                             <div class="problem-card bg-white p-6 rounded-lg shadow-md">
@@ -570,7 +539,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Theme 3: Map Technology for Environmental Impact</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Theme 3: Map Technology for Environmental Impact</h3>
                     <p class="text-gray-600 mb-6 max-w-3xl">Harness mapping and geospatial data to monitor, preserve, and improve our environment. This theme encourages solutions for sustainability, awareness, and climate action through maps and data visualization.</p>
                     <div class="grid md:grid-cols-2 gap-8">
                             <div class="problem-card bg-white p-6 rounded-lg shadow-md">
@@ -595,8 +564,8 @@
         </section>
         
         <section id="idea-submission" class="page">
-                 <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-                           <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
+                 <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                           <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
                            <p class="text-center text-gray-600 mb-8">Ready to submit your innovative idea? Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
                                 <div class="text-center">
                                      <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
@@ -644,19 +613,7 @@
         let currentUserData = null;
         let userListener = null;
         let registrationCountListener = null;
-        let allStudents = []; // <<< NEW: To store all students for searching
-
-        // --- Dropdown Data ---
-        const streams = ["AI & ML", "AI/DS", "AI/ML", "Aerospace", "Agricultural", "Artificial Intelligence", "Artificial Intelligence and Machine Learning", "Artificial Intellegence and Machine Learning", "Automobile", "Biochemical and Biotechnology", "Biomedical", "Biomedical Engineering", "Biotechnology", "Ceramic Technology", "Chemical", "Chemical Engineering", "Civil", "Civil Engineering", "Computer Engineering", "Computer Engineering(Data science)", "Computer Science", "Data Science", "Digital Transformation", "Electrical", "Electrical Engineering", "Electrical and Electronic", "Electrical and electronics engineering", "Electronic and Computer science", "Electronics", "Electronics & Communication", "Electronics & Telecommunication", "Electronics Engineering", "Electronics and Communication", "Electronics and Instrumentation", "Electronics and communication engineering", "Environmental", "Geo Informatics", "Industrial", "Industrial Engineering", "Industrial Engineering and Management", "Information Science", "Information Science and Engineering", "Information Science of Engineering", "Information Technology", "Instrumentation", "Instrumentation Engineering", "Marine", "Materials Science", "Mechanical", "Mechanical Engineering", "Metallurgical", "Mining", "Nuclear", "Petroleum", "Printing and packaging technology", "Production", "Robotics Engineering", "Software Engineering", "Textile", "Other"];
-        
-        const collegesByCenter = {
-            "Mumbai": ["ACE","ACPC","BVCOM ","CSMU","DJ Sanghvi","DBIT Mumbai","FRCRCE","LTCE","MHSSCE","MTRGIT","PVPPCOE","RGIT","SCOEM","SPIT","SSVPS","UMIT","VJTI","VIT Mumbai","XIE"],
-            "Pune": ["AISSMSCOE","AIT","BVDUCOE","COEP","DIAT","DPCOE","DYPIT","GCOEARA","IIIT Pune","JSCOE","KSE","MESCOE","MIT","MITAOE","MKSSS CCEW","MMCOE","PCCOE","PES MCOE","PICT","RSCOE","SCOE","SIT","VIIT","VIT Pune"],
-            "Delhi": ["ASET","BVCOE Delhi","DTU","DU","GGSIPU","IGDTUW","IIIT Delhi","IIT Delhi","JIMS","JMI","JNU","MAIT","MSIT","NCU","NIT Delhi","NSUT","USICT"],
-            "Bangalore": ["ACSCE ","AIT","AIT Bangalore","ASE","BIT","BMSCE","BNMIT","CMRIT","CU","DSCE","Dr. AIT","EWIT","GAT","HKBK","IISc Bangalore","IIITB","MSRIT","MVJCE","NHCE","NMIT","PESU","PU","RIT","RNSIT","RU","RV","RVCE","RVCOE","SC ","SIT Bangalore","SKSIT","SKSJTI","SMVIT","SVCT","SVIT","VIT Bangalore","VVIT"],
-            "Chennai": ["ACT","AIHT","BSAU","CEG","CSE","EEC","HITS","IIT Madras","JCE","KCGCT","LICET","MSEC","PEC","REC","RMKEC","SEC","SIST","SNUCE","SSNCE","SVCE","VEC","VIT Chennai"],
-            "Hyderabad": ["CBIT","CMRCET","CVR","GRIET","IITH","JNTUH","KIIT-Hyderabad","MGIT","MREC","SNIST","VBIT","VCE","VNR VJIET"] 
-        };
+        let allStudents = [];
 
         const pages = document.querySelectorAll('.page');
         const loggedOutNav = document.getElementById('logged-out-nav');
@@ -779,77 +736,11 @@
                  }
             }
         });
-
-        async function handleStudentRegistration(e) {
-            e.preventDefault();
-            const form = e.target;
-            const password = form.regPassword.value;
-            const confirmPassword = form.regConfirmPassword.value;
-            const email = form.regEmail.value.trim();
-            const katalystUid = form.regUid.value.trim();
-
-            if (password !== confirmPassword) {
-                showNotification("Passwords do not match.", true);
-                return;
-            }
-            if (!email.endsWith('@katalystindia.org')) {
-                showNotification("Please use your official @katalystindia.org email.", true);
-                return;
-            }
-             if (!katalystUid) {
-                 showNotification("Katalyst UID cannot be empty.", true);
-                 return;
-             }
-
-            try {
-                // Check for existing Katalyst UID
-                const usersRef = collection(db, "users");
-                const q = query(usersRef, where("uid", "==", katalystUid));
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    showNotification("This Katalyst UID is already registered.", true);
-                    return;
-                }
-                
-                // Proceed to create user
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-
-                const userData = {
-                    fullName: form.regFullName.value.trim(),
-                    uid: katalystUid,
-                    email: email,
-                    contact: form.regContact.value.trim(),
-                    batch: form.regBatch.value,
-                    stream: form.regStream.value,
-                    centre: form.regCentre.value,
-                    college: form.regCollege.value,
-                    cgpa: form.regCgpa.value,
-                    role: 'student'
-                };
-                await setDoc(doc(db, "users", user.uid), userData);
-                
-                showNotification("Registration successful! Welcome.");
-                form.reset();
-                document.getElementById('regCentre').selectedIndex = 0;
-                populateColleges(document.getElementById('regCentre').value || Object.keys(collegesByCenter).sort()[0]);
-
-            } catch (error) {
-                 console.error("Registration Error:", error);
-                 if (error.code === 'auth/email-already-in-use') {
-                      showNotification("This email address is already registered. Please log in.", true);
-                 } else if (error.code === 'auth/weak-password') {
-                      showNotification("Password is too weak. Please use at least 6 characters.", true);
-                 } else {
-                      showNotification(`Registration failed: ${error.message}`, true);
-                 }
-            }
-        }
         
         async function handleStudentLogin(e) {
             e.preventDefault();
-            const email = e.target.studentLoginEmail.value.trim();
-            const password = e.target.studentLoginPassword.value;
+            const email = document.getElementById('studentLoginEmail').value.trim();
+            const password = document.getElementById('studentLoginPassword').value;
 
             if (!email || !password) {
                  showNotification("Please enter both email and password.", true);
@@ -884,9 +775,9 @@
                     }
                 } else {
                      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-email') {
-                           showNotification("Email address not found or invalid.", true);
+                           showNotification("User not found. Please check the email address or register.", true);
                      } else if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
-                           showNotification("Incorrect password.", true);
+                           showNotification("The password is wrong. Please try again.", true);
                      } else {
                            showNotification(`Login failed: ${error.message}`, true);
                      }
@@ -923,8 +814,8 @@
             loggedInNav.classList.add('hidden');
             loggedOutNav.classList.remove('hidden');
             if (homeCtaButton) {
-                homeCtaButton.textContent = 'Register Now!';
-                homeCtaButton.href = '#registration';
+                homeCtaButton.textContent = 'View Problem Statements';
+                homeCtaButton.href = '#problem-statements';
                 homeCtaButton.classList.add('nav-link');
             }
             document.getElementById('student-details-content').innerHTML = '<p>Loading your details...</p>';
@@ -949,7 +840,7 @@
                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
                          <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                         <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login/Register</a>`;
+                         <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login</a>`;
             }
             mobileMenu.innerHTML = links;
             attachNavListeners();
@@ -963,7 +854,7 @@
             }
             const container = document.getElementById('student-details-content');
             container.innerHTML = `
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm md:text-base">
                     <div><strong class="text-gray-500">Full Name:</strong> <span class="text-gray-800">${currentUserData.fullName || 'N/A'}</span></div>
                     <div><strong class="text-gray-500">Katalyst UID:</strong> <span class="text-gray-800">${currentUserData.uid || 'N/A'}</span></div>
                     <div><strong class="text-gray-500">Email:</strong> <span class="text-gray-800">${currentUserData.email || 'N/A'}</span></div>
@@ -977,8 +868,6 @@
         }
 
         // --- ADMIN SPECIFIC LOGIC ---
-
-        // <<< NEW: Renders the student table based on an array of students >>>
         function renderStudentTable(studentsToDisplay) {
             const studentListTable = document.getElementById('student-list-table');
             if (!studentListTable) return;
@@ -990,16 +879,16 @@
                 studentsToDisplay.forEach(student => {
                     tableRows += `
                          <tr id="student-row-${student.fbUid}">
-                             <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${student.fullName || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.uid || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.email || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.contact || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.college || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.stream || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.centre || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.batch || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${student.cgpa || 'N/A'}</td>
-                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                             <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${student.fullName || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.uid || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.email || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.contact || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.college || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.stream || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.centre || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.batch || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">${student.cgpa || 'N/A'}</td>
+                             <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                                  <button data-id="${student.fbUid}" class="delete-student-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-full text-xs">
                                      Delete
                                  </button>
@@ -1011,7 +900,6 @@
             studentListTable.innerHTML = tableRows;
         }
 
-        // <<< MODIFIED: Fetches all students, stores them, and calls the render function >>>
         async function displayAllStudents() {
             const studentListTable = document.getElementById('student-list-table');
             studentListTable.innerHTML = '<tr><td colspan="10" class="text-center py-4">Loading student data...</td></tr>';
@@ -1021,13 +909,11 @@
                 const q = query(usersCollection, where("role", "==", "student"));
                 const querySnapshot = await getDocs(q);
                 
-                // Store all students in the global array
                 allStudents = querySnapshot.docs.map(doc => ({
                     fbUid: doc.id,
                     ...doc.data()
                 }));
                 
-                // Render the full list initially
                 renderStudentTable(allStudents);
 
             } catch (error) {
@@ -1043,13 +929,10 @@
             try {
                 await deleteDoc(doc(db, "users", studentFbUid));
                 showNotification("Student record deleted successfully.");
-
-                // <<< MODIFIED: Remove student from the local array as well >>>
                 allStudents = allStudents.filter(student => student.fbUid !== studentFbUid);
-                // Re-render the table with the current search term
+                
                 const searchTerm = document.getElementById('admin-search-bar').value;
                 if (searchTerm) {
-                    // If a search is active, re-filter and render
                      const filtered = allStudents.filter(student =>
                         student.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                         student.uid.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -1057,7 +940,6 @@
                     );
                     renderStudentTable(filtered);
                 } else {
-                    // Otherwise, just render the updated full list
                     renderStudentTable(allStudents);
                 }
 
@@ -1072,7 +954,6 @@
                  displayAllStudents();
             }
         }
-
 
         function listenForRegistrationCount() {
             if (registrationCountListener) {
@@ -1095,48 +976,6 @@
                  if (adminCountElement) adminCountElement.textContent = 'Error';
                  if (homeCountElement) homeCountElement.textContent = 'Error';
             });
-        }
-        
-        // --- DROPDOWN POPULATION LOGIC ---
-        function populateStreams() {
-            const streamSelect = document.getElementById('regStream');
-             if (!streamSelect) return;
-            streamSelect.innerHTML = '<option value="" disabled selected>Select Stream</option>';
-            streams.sort().forEach(stream => {
-                const option = document.createElement('option');
-                option.value = stream;
-                option.textContent = stream;
-                streamSelect.appendChild(option);
-            });
-        }
-
-        function populateCentres() {
-            const centreSelect = document.getElementById('regCentre');
-             if (!centreSelect) return;
-            centreSelect.innerHTML = '<option value="" disabled selected>Select Centre</option>';
-            Object.keys(collegesByCenter).sort().forEach(centre => {
-                const option = document.createElement('option');
-                option.value = centre;
-                option.textContent = centre;
-                centreSelect.appendChild(option);
-            });
-        }
-
-        function populateColleges(center) {
-            const collegeSelect = document.getElementById('regCollege');
-             if (!collegeSelect) return;
-            collegeSelect.innerHTML = '<option value="" disabled selected>Select College</option>';
-            const colleges = collegesByCenter[center] || [];
-            colleges.sort().forEach(college => {
-                const option = document.createElement('option');
-                option.value = college;
-                option.textContent = college;
-                collegeSelect.appendChild(option);
-            });
-            const otherOption = document.createElement('option');
-            otherOption.value = 'Other';
-            otherOption.textContent = 'Other';
-            collegeSelect.appendChild(otherOption);
         }
         
          // --- PDF Generation ---
@@ -1191,17 +1030,11 @@
 
         // --- INITIALIZATION ---
         function initializeEventListeners() {
-            document.getElementById('registration-form')?.addEventListener('submit', handleStudentRegistration);
             document.getElementById('student-login-form')?.addEventListener('submit', handleStudentLogin);
             document.getElementById('logout-button')?.addEventListener('click', () => signOut(auth));
             document.getElementById('mobile-menu-button')?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
             document.getElementById('download-problems-pdf')?.addEventListener('click', generateProblemsPDF);
             
-            document.getElementById('regCentre')?.addEventListener('change', (e) => {
-                populateColleges(e.target.value || '');
-            });
-
-            // <<< NEW: Search bar event listener >>>
             const searchBar = document.getElementById('admin-search-bar');
             if (searchBar) {
                 searchBar.addEventListener('input', (e) => {
@@ -1289,9 +1122,6 @@
             initializeEventListeners();
 
             const initialPageId = window.location.hash ? window.location.hash.substring(1) : 'home';
-            populateStreams();
-            populateCentres();
-            populateColleges(document.getElementById('regCentre')?.value || Object.keys(collegesByCenter).sort()[0] || '');
             showPage(initialPageId);
 
             const timelineItems = document.querySelectorAll('.timeline-item');
