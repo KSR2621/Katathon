@@ -90,7 +90,7 @@
                     <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <a href="#idea-submission" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Submit Idea</a>
+                    <a href="#idea-submission" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Submit SOP</a>
                     <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
                 </div>
             </div>
@@ -319,7 +319,7 @@
                         <p>Loading your details...</p>
                    </div>
                    <div class="text-center mt-8">
-                       <a href="#idea-submission" class="nav-link inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full text-base md:text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Go to Idea Submission</a>
+                       <a href="#idea-submission" class="nav-link inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full text-base md:text-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">Go to SOP Submission</a>
                    </div>
             </div>
 
@@ -369,119 +369,143 @@
         </section>
         
         <section id="rules" class="page">
-              <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                           <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
-                           <div class="space-y-8 text-gray-700">
-                               <div>
-                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
-                                   <ul class="list-disc list-inside space-y-2">
-                                       <li>Students must participate in teams.</li>
-                                       <li>Group size should be a minimum of <b>3 members</b> and a maximum of <b>4 members</b>.</li>
-                                       <li>Each team must have a unique name and nominate a team leader as the primary contact.</li>
-                                       <li>Team formation is an offline process; teams must provide member information during the final submission.</li>
-                                       <li>Each team must select a problem statement based on the given theme and problem code. (e.g., Theme 1, Problem 2 = Code 102).</li>
-                                       <li><b>Diversity Bonus:</b> Teams with members from different centres and/or batches will receive bonus points, as specified in the evaluation criteria.</li>
-                                   </ul>
-                               </div>
-                               
-                               <div>
-                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">SOP Review Criteria</h3>
-                                   <p class="mb-4">Your initial SOP submission will be reviewed and shortlisted based on the following criteria. The final score will be the average of all judges’ evaluations.</p>
-                                   <!-- === HORIZONTALLY SCROLLABLE TABLE WRAPPER === -->
-                                   <div class="overflow-x-auto">
-                                       <table class="min-w-full bg-white rounded-lg shadow-sm">
-                                           <thead class="bg-gray-100">
-                                               <tr class="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                   <th class="py-3 px-4 rounded-tl-lg">Criterion</th>
-                                                   <th class="py-3 px-4">Weightage</th>
-                                                   <th class="py-3 px-4 rounded-tr-lg">Description</th>
-                                               </tr>
-                                           </thead>
-                                           <tbody class="divide-y divide-gray-200">
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Innovation & Novelty</td>
-                                                   <td class="py-3 px-4">20%</td>
-                                                   <td class="py-3 px-4">How original, creative, and forward-thinking is the idea? Does it bring a new concept, approach, or use of technology?</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Technical Feasibility</td>
-                                                   <td class="py-3 px-4">50%</td>
-                                                   <td class="py-3 px-4">How well the solution is proposed, architecture, scalable, efficiency, Code and demo link will be encouraged.</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Impact</td>
-                                                   <td class="py-3 px-4">20%</td>
-                                                   <td class="py-3 px-4">Does the solution solve a real problem or create meaningful positive impact for people, communities, or the environment?</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800 rounded-bl-lg">Difficulty level (Easy - 3, Medium - 4, Hard - 5)</td>
-                                                   <td class="py-3 px-4">10%</td>
-                                                   <td class="py-3 px-4 rounded-br-lg"></td>
-                                               </tr>
-                                           </tbody>
-                                       </table>
-                                   </div>
-                               </div>
+            <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Rules & Guidelines</h2>
+                <div class="space-y-8 text-gray-700">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Team Guidelines</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Students must participate in teams.</li>
+                            <li>A team can have a minimum of <b>4 members</b> and a maximum of <b>5 members</b>.</li>
+                            <li>Each team must have a unique name and nominate a team leader as the primary contact.</li>
+                            <li>Team formation is an offline process; students need to provide team information in the final submission form.</li>
+                            <li>Each team must select a problem statement based on the given theme and problem code (e.g., Theme 1, Problem 2 = Code 102).</li>
+                            <li>To avail Bonus Points during the Final Evaluation: Teams will be eligible for Bonus Points if they meet any of the following criteria: 1. Cross Centre – Members are from different Katalyst Centres, 2. Cross Batch – Members belong to different academic batches (e.g., 2026 and 2027).</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Evaluation Criteria</h3>
+                        <p class="mb-4">All submissions will be evaluated by multiple judges. The final score will be the average of all judges’ evaluations.</p>
+                        <!-- === HORIZONTALLY SCROLLABLE TABLE WRAPPER === -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white rounded-lg shadow-sm">
+                                <thead class="bg-gray-100">
+                                    <tr class="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        <th class="py-3 px-4 rounded-tl-lg">Criterion</th>
+                                        <th class="py-3 px-4">Weightage</th>
+                                        <th class="py-3 px-4 rounded-tr-lg">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium text-gray-800">Innovation</td>
+                                        <td class="py-3 px-4">25% (25 points)</td>
+                                        <td class="py-3 px-4">Originality and creativity of the idea.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium text-gray-800">Technical Design & Implementation</td>
+                                        <td class="py-3 px-4">40% (40 points)</td>
+                                        <td class="py-3 px-4">Technical depth, design, feasibility and execution quality.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium text-gray-800">Impact (Social/Environmental/User Value)</td>
+                                        <td class="py-3 px-4">25% (25 points)</td>
+                                        <td class="py-3 px-4">Real-world usefulness and positive contribution.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium text-gray-800 rounded-bl-lg">Design & Presentation</td>
+                                        <td class="py-3 px-4">10% (10 points)</td>
+                                        <td class="py-3 px-4 rounded-br-lg">Clarity, user experience, and visual appeal.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">A Sample Scoring:</h4>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full bg-white rounded-lg shadow-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr class="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            <th class="py-3 px-4 rounded-tl-lg">Category</th>
+                                            <th class="py-3 px-4">Judge's Score (out of 10)</th>
+                                            <th class="py-3 px-4 rounded-tr-lg">Weighted Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Innovation</td>
+                                            <td class="py-3 px-4">8</td>
+                                            <td class="py-3 px-4">8 x 2.5 = 20.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Technical Design & Implementation</td>
+                                            <td class="py-3 px-4">7</td>
+                                            <td class="py-3 px-4">7 × 4.0 = 28.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Impact</td>
+                                            <td class="py-3 px-4">9</td>
+                                            <td class="py-3 px-4">9 × 2.5 = 22.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 font-medium text-gray-800">Presentation</td>
+                                            <td class="py-3 px-4">8</td>
+                                            <td class="py-3 px-4">8 x 1.0 = 8.0</td>
+                                        </tr>
+                                        <tr class="bg-gray-50 font-bold">
+                                            <td class="py-3 px-4 rounded-bl-lg">Total Score</td>
+                                            <td class="py-3 px-4"></td>
+                                            <td class="py-3 px-4 rounded-br-lg">78.5 / 100</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-                               <div>
-                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Final Evaluation Criteria</h3>
-                                   <p class="mb-4">Shortlisted teams presenting on the final day will be evaluated by judges on a 5-point scale for each category, which is then converted to the weighted score below. The final score will be the average of all judges’ evaluations.</p>
-                                   <!-- === HORIZONTALLY SCROLLABLE TABLE WRAPPER === -->
-                                   <div class="overflow-x-auto">
-                                       <table class="min-w-full bg-white rounded-lg shadow-sm">
-                                           <thead class="bg-gray-100">
-                                               <tr class="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                   <th class="py-3 px-4 rounded-tl-lg">Criterion</th>
-                                                   <th class="py-3 px-4">Weightage</th>
-                                                   <th class="py-3 px-4 rounded-tr-lg">Description</th>
-                                               </tr>
-                                           </thead>
-                                           <tbody class="divide-y divide-gray-200">
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Innovation & Novelty</td>
-                                                   <td class="py-3 px-4">25% (25 points)</td>
-                                                   <td class="py-3 px-4">How original, creative, and forward-thinking is the idea? Does it bring a new concept, approach, or use of technology?</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Technical Design & Implementation</td>
-                                                   <td class="py-3 px-4">40% (40 points)</td>
-                                                   <td class="py-3 px-4">How well the solution is proposed, architecture, scalable, efficiency. Code and short demo link will be encouraged.</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Impact (Social/Environmental/User Value)</td>
-                                                   <td class="py-3 px-4">20% (20 points)</td>
-                                                   <td class="py-3 px-4">Does the solution solve a real problem or create meaningful positive impact for people, communities, or the environment?</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800">Presentation</td>
-                                                   <td class="py-3 px-4">10% (10 points)</td>
-                                                   <td class="py-3 px-4">Is the presentation and design intuitive, visually clear, and easy to use? Does it effectively communicate the solution's value?</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="py-3 px-4 font-medium text-gray-800 rounded-bl-lg">Bonus Points</td>
-                                                   <td class="py-3 px-4">5% (5 points)</td>
-                                                   <td class="py-3 px-4 rounded-br-lg">Awarded for working solutions, challenging problem selection, and cross-centre/batch teams.</td>
-                                               </tr>
-                                           </tbody>
-                                       </table>
-                                   </div>
-                               </div>
-                               
-                               <div>
-                                   <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Submission Guidelines (SOP)</h3>
-                                   <p class="mb-4">Teams are required to submit their idea based on the parameters below. This is the main submission for the shortlisting process. Only one submission per team is required.</p>
-                                   <p class="font-semibold mb-2">Submission Document (PDF, PPT, or DOC) Must Include:</p>
-                                   <ul class="list-disc list-inside space-y-2">
-                                       <li><b>Team Details:</b> Team Name, College, Leader & Member Names/Katalyst UIDs.</li>
-                                       <li><b>Problem Statement:</b> Selected problem code and title.</li>
-                                       <li><b>Idea Summary (150-250 words):</b> Clear explanation of your idea.</li>
-                                       <li><b>Technical Approach:</b> Tech Stack, APIs and a simple architecture diagram. Possibly (if only) add code Publicly accessible GitHub repo or Drive link. A short demo video (max 2 minutes) is highly encouraged.</li>
-                                       <li><b>Impact & Feasibility:</b> Social/environmental impact and scalability.</li>                          
-                                   </ul>
-                                   <p class="mt-4">Please see the <a href="#idea-submission" class="nav-link text-indigo-600 font-medium">Submit Idea</a> page for the official submission link. The deadline is <b>10th November 2025</b>.</p>
-                               </div>
-                           </div>
-              </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">Submission Format of SOP</h3>
+                        <p class="mb-4">Each team must submit a <b>google drive link</b> for a single document (PDF, PPT or DOC) following the structure below:</p>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Slide 1- Team Details</h4>
+                                <ul class="list-disc list-inside ml-4 space-y-1">
+                                    <li>Team Name</li>
+                                    <li>College Name</li>
+                                    <li>Team Leader Name, UID, Centre & Katalyst Email ID</li>
+                                    <li>Member Names, UID, Centre & Katalyst Email</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-gray-800">Slide 2- Problem Statement and Idea Summary (150-250 Words)</h4>
+                                <ul class="list-disc list-inside ml-4 space-y-1">
+                                    <li>Mention the selected problem code and title</li>
+                                    <li>In 2-3 lines, explain why your team chose this problem.</li>
+                                    <li>Clearly explain your idea: what it does, how it works, and its purpose.</li>
+                                    <li>Highlight what makes it unique or innovative compared to others.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-gray-800">Slide 3- Technical Approach</h4>
+                                <ul class="list-disc list-inside ml-4 space-y-1">
+                                    <li>Describe the technology stack, tools, APIs, and datasets you plan to use.</li>
+                                    <li>Outline key modules or system architecture (attach diagrams if applicable).</li>
+                                    <li>Include a simple technical workflow or architecture diagram for clarity.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-gray-800">Slide 4- Impact & Feasibility</h4>
+                                <ul class="list-disc list-inside ml-4 space-y-1">
+                                    <li>Explain the social, environmental, or user impact of your idea.</li>
+                                    <li>Mention its scalability and how it can be implemented in the real world.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-4">Please see the <a href="#idea-submission" class="nav-link text-indigo-600 font-medium">Submit SOP</a> page for the official submission link. The deadline is <b>10th November 2025</b>.</p>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section id="problem-statements" class="page">
@@ -565,8 +589,8 @@
         
         <section id="idea-submission" class="page">
                  <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                           <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-4">Idea Submission</h2>
-                           <p class="text-center text-gray-600 mb-8">Ready to submit your innovative idea? Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
+                           <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-4">SOP Submission</h2>
+                           <p class="text-center text-gray-600 mb-8">Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
                                 <div class="text-center">
                                      <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
                                 </div>
@@ -624,7 +648,7 @@
         // --- UTILITY FUNCTIONS ---
         function showPage(pageId) {
             if (!auth.currentUser && (pageId === 'dashboard' || pageId === 'idea-submission')) {
-                 if(pageId === 'idea-submission') showNotification("Please log in to submit an idea.", true);
+                 if(pageId === 'idea-submission') showNotification("Please log in to submit your SOP.", true);
                 history.pushState(null, '', '#student-login');
                 pageId = 'student-login';
             }
@@ -790,7 +814,7 @@
             loggedOutNav.classList.add('hidden');
             loggedInNav.classList.remove('hidden');
             if (homeCtaButton) {
-                homeCtaButton.textContent = 'Submit Your Idea!';
+                homeCtaButton.textContent = 'Submit Your SOP!';
                 homeCtaButton.href = '#idea-submission';
                 homeCtaButton.classList.remove('nav-link'); 
             }
@@ -834,7 +858,7 @@
                          <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
                          <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                         <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit Idea</a>
+                         <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit SOP</a>
                          <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
             } else {
                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
