@@ -553,22 +553,10 @@
         </section>
         
         <section id="idea-submission" class="page">
-                 <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                           <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-4">SOP Submission</h2>
-                           <p class="text-center text-gray-600 mb-8">Click the button below to access the final submission form. Make sure your submission follows all the guidelines mentioned in the Rules section.</p>
-                                <div class="text-center">
-                                     <a href="https://forms.office.com/e/MmcigxVyYx" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-green-600 hover:to-teal-700 transition duration-300 transform hover:scale-105 shadow-lg">Open Final Submission Form</a>
-                                </div>
-                           <div class="mt-10 border-t pt-6">
-                               <h3 class="text-xl font-semibold text-gray-800 mb-2">Submission Format Reminder:</h3>
-                               <p class="text-gray-600 mb-4">Each team must submit a link to a single document (PDF, PPT, or DOC) via the form, with the following structure:</p>
-                               <ul class="list-disc list-inside space-y-2 text-gray-700">
-                                   <li><b>Team Details:</b> Team Name, Team Leader's Name (with UID, Stream, Centre & Batch), and all other Member Names (with their UID, Stream, Centre & Batch).</li>
-                                   <li><b>Problem Statement and Idea Summary:</b> Your selected problem code and title, why you chose it, a clear explanation of your idea, and what makes it unique.</li>
-                                   <li><b>Technical Approach:</b> Your planned tech stack, system architecture/workflow diagrams, and key modules.</li>
-                                   <li><b>Impact & Feasibility:</b> The potential social/environmental impact and real-world scalability of your project.</li>
-                               </ul>
-                           </div>
+                 <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg text-center">
+                           <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Submissions Are Closed</h2>
+                           <p class="text-gray-600 text-lg">Thank you for your participation. Submissions are closed now.</p>
+                           <p class="text-gray-500 mt-4">We appreciate all the hard work and creativity that went into the SOPs. Shortlisted teams will be announced as per the event timeline.</p>
                  </div>
         </section>
 
@@ -612,7 +600,7 @@
         // --- UTILITY FUNCTIONS ---
         function showPage(pageId) {
             if (!auth.currentUser && (pageId === 'dashboard' || pageId === 'idea-submission')) {
-                 if(pageId === 'idea-submission') showNotification("Please log in to submit your SOP.", true);
+                 if(pageId === 'idea-submission') showNotification("Please log in to view this page.", true);
                 history.pushState(null, '', '#student-login');
                 pageId = 'student-login';
             }
@@ -778,7 +766,7 @@
             loggedOutNav.classList.add('hidden');
             loggedInNav.classList.remove('hidden');
             if (homeCtaButton) {
-                homeCtaButton.textContent = 'Submit Your SOP!';
+                homeCtaButton.textContent = 'Submissions Closed';
                 homeCtaButton.href = '#idea-submission';
                 homeCtaButton.classList.remove('nav-link'); 
             }
