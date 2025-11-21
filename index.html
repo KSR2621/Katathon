@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,20 +79,18 @@
                 <img src="Kadathon.png" alt="Katathon Logo" class="h-12 md:h-14 mr-2"  onerror="this.onerror=null; this.src='https://placehold.co/100x56/eeeeee/cccccc?text=Logo';">
             </a>
             <div class="hidden md:flex space-x-8 items-center">
-                <div id="logged-out-nav" class="space-x-8">
+                <div id="logged-out-nav" class="space-x-6">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <a href="#judges" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Judges</a>
                     <a href="#mentors" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Mentors</a>
                     <a href="#student-login" class="nav-link bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Student Login</a>
                 </div>
-                <div id="logged-in-nav" class="hidden space-x-8 items-center">
+                <div id="logged-in-nav" class="hidden space-x-6 items-center">
                     <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Home</a>
                     <a href="#dashboard" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Dashboard</a>
                     <a href="#rules" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Rules</a>
                     <a href="#problem-statements" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Problem Statements</a>
-                    <a href="#judges" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Judges</a>
                     <a href="#mentors" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Mentors</a>
                     <a href="#idea-submission" class="nav-link text-gray-300 hover:text-white transition duration-300 pb-1">Submit SOP</a>
                     <button id="logout-button" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-full font-semibold transition">Logout</button>
@@ -556,6 +553,32 @@
                 </div>
             </div>
         </section>
+
+        <!-- ADDED MENTORS SECTION HERE -->
+        <section id="mentors" class="page">
+            <div class="max-w-7xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Our Mentors</h2>
+                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+                    Meet the industry experts, researchers, and technology leaders who will be guiding you through your innovation journey.
+                </p>
+
+                <!-- Responsive Table Wrapper -->
+                <div class="overflow-x-auto bg-white rounded-lg border border-gray-200 shadow-sm">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-indigo-600 text-white">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider w-16">Sr. No</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider w-1/4">Name</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider">Bio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mentors-table-body" class="bg-white divide-y divide-gray-200">
+                            <!-- Mentor rows will be injected here via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
         
         <section id="idea-submission" class="page">
                  <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg text-center">
@@ -563,402 +586,6 @@
                            <p class="text-gray-600 text-lg">Thank you for your participation. Submissions are closed now.</p>
                            <p class="text-gray-500 mt-4">We appreciate all the hard work and creativity that went into the SOPs. Shortlisted teams will be announced as per the event timeline.</p>
                  </div>
-        </section>
-
-        <!-- NEW JUDGES SECTION -->
-        <section id="judges" class="page">
-            <div class="max-w-7xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Meet Our Judges</h2>
-                <div class="mb-6">
-                    <input type="text" id="judges-search-bar" class="mt-1 block w-full md:w-1/2 mx-auto border-gray-300 rounded-md shadow-sm p-3" placeholder="Search by name or keyword in bio...">
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white rounded-lg shadow-sm">
-                        <thead class="bg-gray-100">
-                            <tr class="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                <th class="py-3 px-4 w-1/4">Full Name</th>
-                                <th class="py-3 px-4 w-3/4">Short Professional Bio</th>
-                            </tr>
-                        </thead>
-                        <tbody id="judges-table-body" class="divide-y divide-gray-200">
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Jayant Dusane</td>
-                                <td class="py-4 px-4 text-gray-700">Strategic and hands-on cybersecurity leader with 20+ years of experience driving product and platform security across large-scale, high-impact software systems. I bring a unique blend of technical depth, cross-domain expertise, and executive-level leadership in building secure-by-design products, enabling compliance, and shaping robust security architectures.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Hareesh Rajasekharan</td>
-                                <td class="py-4 px-4 text-gray-700">Persuasive IT Leader having 25 years of hands-on experience in building Global IT teams in a Shared Service Environment. Expert in areas of IT Infrastructure, Project Management, IT services, IT budgeting and Digital transformation. Major Accomplishments: Modernized regional IT support model to Global One IT model by introducing Global Service Desk & SPOC. Orchestrated Command Center Team to act as a central hub for Infrastructure monitoring. Digitized IT support stream by introducing Chat-bots & RPAs.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Zainab Hyderi</td>
-                                <td class="py-4 px-4 text-gray-700">With more than 15 years of diverse experience, Zainab is a strategic leader specializing in business operations, program management (PMO), resource management, and process transformation. She has successfully led complex, multidisciplinary initiatives across industries including product engineering, digital ecosystems, mobility, fintech, and services — consistently driving efficiency, scalability, and measurable impact. A trusted partner to C-suite executives, she excels at translating vision into execution, leading cross-functional teams, and championing operational excellence.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Mahendra Kane</td>
-                                <td class="py-4 px-4 text-gray-700">With over two decades of experience, I have honed my expertise in Industrial Automation, specializing in PLC, Motion Control, Servo, VFD, and SCADA systems, complemented by a robust knowledge in Digitalization. My career has been marked by versatility, having embraced roles in application development, pre-sales support, product management, business development & Project Management each contributing to a rich tapestry of industry knowledge and leadership skills. Currently, I am part of the Project Management team at Siemens-Digital Industries, where I leverage my technical acumen & experience of last 21+ years to ensure that all the projects in Industrial Automation domain are executed first-time-right & are managed to deliver intended KPIs in desired timeframe.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Manoj R Patil</td>
-                                <td class="py-4 px-4 text-gray-700">"A versatile, accomplished, self-motivated & goal-oriented professional with 20 years of experience in Solution Architecture, Project Management, Big Data, BI, Risk Management, High & Low-Level System Architecture, Technical Design, and People Management with a proven track record of delivering consistent business results through adept leadership and application of sound management practice. ► Published author of a title ""Pentaho For Big Data Analytics"", and technical reviewer of tens of books from Packt and Apress. ► Managed entire Solution Architecture with proven skills in managing teams of Architects & Developers with complete life cycle for large scale projects ► Executed project & ensured timely deliveries in a timely manner involving seamless onsite/ offshore coordination and transparent communication with all stakeholders at all phases ► Worked with the Head of Delivery in bridging the gap between Architecture and Delivery to ensure value-driven product development of high-quality solutions employing Agile development techniques ► Published ""Pentaho for Big Data Analytics"" & also functioned as Technical Reviewer for the books such as Scalable Big Data Architecture, Beginning Apache Pig, Interview Questions in Business Analytics, MongoDB Recipes & others ► Vast exposure to JavaEE, Big Data with Hadoop Eco-System, Modern Data Warehouse, ETL using Pentaho Suite, Hive, Apache Spark, AWS Services, Serverless components, NoSQL Databases (HBase, Cassandra & Mongo), Virtualization (Docker, VM), Python, Web (Angular, ReactJS), DevOps & others"</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Christopher Rozario</td>
-                                <td class="py-4 px-4 text-gray-700">Christopher Rozario is an experienced Software Engineer with 8+ years in developing scalable data and mapping platforms. At TomTom India, he led the development of intelligent data platforms that automate and optimize global map production, accelerating delivery of high-quality location data. His expertise spans Java, big data, cloud (AWS, Azure), and infrastructure automation using Kubernetes and Terraform. With strong skills in system design, CI/CD, and API development, Christopher has been a key contributor to map intelligence and data-driven innovation, bringing deep expertise in geospatial data systems and a strong innovation mindset solving complex real-world challenges.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Anurag Srivastava</td>
-                                <td class="py-4 px-4 text-gray-700">An experienced software professional with over 11 years in the industry, specializing in Big Data technologies and large-scale data-driven systems. With more than 7 years at TomTom, I have contributed extensively to the Maps domains, focusing on building scalable, high-performance solutions. I’m passionate about technology, innovation, and mentoring, and I enjoy exploring new ways to apply data and engineering to solve real-world problems.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">ASAWARI UPADHYE</td>
-                                <td class="py-4 px-4 text-gray-700">As a Tech Manager in Engineering at NiCE, I bring a deep passion for innovation, customer-centric design, and cross-functional collaboration. My experience spans leading high-performing engineering teams and driving strategic initiatives that connect technology with real-world impact. I a hackathon, I look for ideas that blend creativity, technical excellence, and user empathy. I value solutions that not only solve problems but also inspire new ways of thinking. My approach is rooted in clarity, inclusion, and execution—whether mentoring teams, evaluating prototypes, or fostering a culture of experimentation.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Malay Sharma</td>
-                                <td class="py-4 px-4 text-gray-700">Passionate about continuous improvement and the adoption of new technologies to enhance service delivery and optimize performance. Acting as the key liaison between customers and internal teams, I strive to create strong, trusted partnerships built on reliability, responsiveness, and results.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Vrushali Kashikar</td>
-                                <td class="py-4 px-4 text-gray-700">Generating ideas based on data-driven insights, analyzing them from various perspectives for different stakeholders and developing them in an innovative manner is indeed a rewarding task. I have been engaged in this field for over 22 years with an enriched experience in data engineering, data interpretation and data visualization.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">navneet agarwal</td>
-                                <td class="py-4 px-4 text-gray-700">Sustainability is my passion and i follow the sustainability area in work and life. Looking forward to judge social and other sustainability aspects in this event</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Vibhor Bhatnagar</td>
-                                <td class="py-4 px-4 text-gray-700">" Managing portfolio of revenue spanning US $500k - $30 M (Fixed price, T&M, Fixed Capacity, Risk & Reward) projects for duration between 12 weeks to 36 months  Leading strategic initiative to early infuse MVPs with clients during Cloud Advisory Consultant Engagements by bringing all the Hybrid Cloud Transformation groups, Platform Engineering Services, Sustainability, FinOps, etc. teams under one roof to drive high value proposition and improve wining probability  Built Global Delivery Centers from scratch for Cloud Migration Factory to have optimal costing and better ability to fulfilment staffing with more diverse team. It helped us execute high pace round the clock Cloud Migrations projects  Possessing a proven ability to lead project teams to successfully deliver agreed upon solutions of the highest quality, often in complex and challenging customer environments.  Working closely with sales team especially and customer digital transformation team.  Working closely with Hyper scalar Google in presales stage.  Insightful experience in Cloud Computing environments as an Architect like Google, Microsoft Azure, AWS; strong technical understanding of Enterprise Application, Middleware, Cloud, Systems/Infrastructure and Design & Architecture  Digital Transformation, resourceful in implementing large-scale business application architecture & design efforts; resolving integration issues between various applications or systems with focus on optimizing application performance & scalability  Manage and coordinate proof of concepts (POC’s). Develop POC plans with agreed use cases."</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Amol Deogirakar</td>
-                                <td class="py-4 px-4 text-gray-700">SAP Project Manager with mechanical engineering background with diversifying fields like Production, Designing, vendor development and ERP</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Syeda Farhana Zaman</td>
-                                <td class="py-4 px-4 text-gray-700">20+ years of experience in the field of business analysis, IT business & landscape transformation, solutioning, client engagements, data migration, complex report design. Played multiple roles including Project Delivery Lead, SME in Data and People Analytics & Reporting Stream Well versed in Digital transformation and ERP products. Have worked on various deals as an SME and Solution Architect.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Nitin Dabli</td>
-                                <td class="py-4 px-4 text-gray-700">As a seasoned technology leader with over a decade of experience in cloud architecture, DevOps, and secure enterprise solutions, I specialize in driving digital transformation and aligning technology strategies with business goals. Certified in Azure, DevOps, and security, and recognized as a Senior Technology Architect at Accenture, I bring a track record of delivering scalable, secure, and high-performing systems. Passionate about innovation, AI tools, and agile practices, I aim to enable organizations to achieve operational excellence and sustainable growth through technology.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Sankalp Mishra</td>
-                                <td class="py-4 px-4 text-gray-700">Sankalp is an experienced & certified Cloud products Solutions Architect. He is a Coupa Practice Lead at Accenture India. With a proven track record in driving successful Coupa implementations and delivering innovative procurement solutions, He brings a wealth of expertise to the role.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Dibyendu Chattopadhyay</td>
-                                <td class="py-4 px-4 text-gray-700">Generative AI innovator (Patent US-11455161, 20250094146, India-572647, 202444063374, etc.), Tech & Automation Architect | Innovation Enthusiast | Ardent Collaborator | Business Value Alchemist using Automation & Tech. 16+ years of experience as a Developer and Architect in Python-Automation, DevOps, ML Ops with Generative AI, ML, BI & Data Integration, Data Analytics & Reporting, AWS, Azure and GCP Solution Architecting and currently working in Agentic architecture.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Jaibalaji Jayamani</td>
-                                <td class="py-4 px-4 text-gray-700">Senior Manager at Accenture with over a decade at the company, I leverage expertise in Software Development Life Cycle (SDLC), Spring Framework, Spring boot, Micro services, AWS and J2EE technologies to deliver impactful application development projects. Our team collaborates to implement end-to-end modernization solutions, aligning technology strategies with client goals to drive operational efficiency and sustainable transformation.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Ashwin Jena</td>
-                                <td class="py-4 px-4 text-gray-700">A delivery lead cum Program Manager , leading & delivering high profile, high risk cross-functional programs. In my current role, I bring 3 key skills: Excellent Knowledge of Technology, Adaptability with Growth mind-set and Strategic planning with attention to detail.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Aritra Basu</td>
-                                <td class="py-4 px-4 text-gray-700">Accomplished technical professional with nearly 16+ years of experience leading in Technology & AI Architect as a part of Accenture serving as one of top US Client in Digital Interactive Space from 2016 on-wards. Gained experience mainly into Resource Management, Test Strategy/Architect, Risk Based Testing, DevOps, Project Management and Test Execution and Planning. Successfully performed in one of the top U.S Bank client serving multiple locations across all technology from 2009 to 2016. Successful role of Cluster lead focusing into Business Analytics, Banking Fundamentals, Functional Testing Automation Testing, Estimation and Planning. Gained core banking knowledge and has become well versed with the client relationship building Management. Commitment towards service and quality excellence with the focus of delivering a trust based relationship and team work with client for a better outcome.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Adesh</td>
-                                <td class="py-4 px-4 text-gray-700">A results-driven IT Infrastructure and Cloud Operations Specialist with extensive hands-on experience in Workstation Management, Cloud Compliance, Server Administration, and Enterprise IT Design. Skilled in managing and optimizing complex IT ecosystems across Windows 11, Office 365, VMware, Active Directory, SCCM, SCOM, Nexthink, and enterprise antivirus platforms, ensuring seamless operations, compliance, and security. Expert in designing and maintaining end-to-end infrastructure solutions, driving system efficiency, and implementing proactive problem management and automation strategies to minimize downtime and enhance user experience. Adept at cloud integration, ITGC control adherence, and vulnerability remediation across multi-environment platforms.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Raj Bahadur</td>
-                                <td class="py-4 px-4 text-gray-700">20 Years experience in industry and Software, architecting complex problems of business. providing business consulting and process reengineering.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Rajesh Kumar</td>
-                                <td class="py-4 px-4 text-gray-700">Rajesh Kumar is a seasoned SAP S/4HANA Transformation Specialist and Automation Architect with 19+ years of experience leading complex global programs across Energy, Automotive, Chemicals, and Industrial Equipment industries. With deep expertise spanning strategic transformation leadership, solution architecture, agile delivery, and SAP clean-core modernization, he excels in driving large-scale initiatives from vision to execution. Rajesh is recognized for his strong client and C-suite engagement, delivery excellence, and capability to build high-performing global teams. Passionate about innovation, he champions the adoption of Generative AI and Agentic AI within SAP landscapes to accelerate value creation and operational efficiency. Known for his storytelling, governance rigor, and commitment to talent development, Rajesh consistently delivers measurable business outcomes while shaping next-generation digital capabilities.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Shyam Sunder</td>
-                                <td class="py-4 px-4 text-gray-700">A Mentor, SAP Consultant, AI Consultant with 15 years of technical expertise. Passionate to teach, want to bring a change in surrounding with whatever contribution is needed.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Lawanya Dhandapani</td>
-                                <td class="py-4 px-4 text-gray-700">Overall 23 years experience in IT industry working as Automation Lead</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Rajendra Prasad S</td>
-                                <td class="py-4 px-4 text-gray-700">Raj has over 20 years of experience in the IT industry and currently serves as a Technology Manager, specializing in Cloud infrastructure, Database Architecture and Administration. Raj has also held a Multinational Manager role, overseeing teams in both the USA and India. Raj possesses niche expertise in areas such as Clustering & Engineered System Management, Performance Engineering, Automation Maturity Assessment, Disaster Recovery as well as System Administration. Raj has extensive exposure to multi-database technologies, including Teradata and MongoDB. A certified Cloud Architect, Raj has worked with diverse range of clients across various domains, including Banking, Telecom, Life Sciences and Retail, and has a strong understanding of ITIL processes.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Bharath Machavarapu</td>
-                                <td class="py-4 px-4 text-gray-700">IT Professional with 16 years of experience in hiring, grooming teams and executing projects of complexity. Successfully delievered multi-million & multi-year engagements across the geographies</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Shamsuddin Malbari</td>
-                                <td class="py-4 px-4 text-gray-700">Results-driven Technical Architect Manager with over 18 years of experience in solution design, enterprise architecture, and full-stack development. Proven success in leading multimillion-dollar IT programs and large cross-functional teams across industries including automotive, manufacturing, healthcare, insurance, and banking. Expert in application, data, and integration architecture, Azure Cloud, and .NET technologies. Skilled in driving digital transformation, optimizing delivery, and maximizing ROI through innovative, scalable solutions. Adept at stakeholder management, cloud migration, and architectural governance to ensure performance, reliability, and business alignment.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Mandar Tillu</td>
-                                <td class="py-4 px-4 text-gray-700">I have over 17+ Years of experience in diversified global IT delivery, large scale transformation and complex SI implementation projects across multiple industries. I have extensive experience in Oracle – PeopleSoft, Salesforce and Workday in implementing transformative solutions in Public Services domain and across NEW IT skills of PowerApps, GEN AI, DevOps and has successfully integrating them with Industry expertise. I am also a SME for Public Services - Public Pensions.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Dr. Ravi Ranjan Prasad Karn</td>
-                                <td class="py-4 px-4 text-gray-700">Dr. Ravi Ranjan Prasad Karn is an accomplished AI/ML Architect and Data Scientist with over 20 years of experience in Machine Learning, Deep Learning, NLP, and Artificial Intelligence. He holds a Ph.D. in Computer Science and Engineering (Machine Learning) from IIIT Sricity. Dr. Karn has led data-driven transformations across global organizations like Accenture, BMC Software, HPE, and Mercedes-Benz R&D, architecting advanced AI solutions and frameworks. His expertise spans MLOps, AIOps, predictive modeling, and domain adaptation research, with multiple published papers and a US patent in the AI domain. A Senior IEEE member, he is passionate about bridging research and enterprise AI to drive innovation and measurable business impact.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Ajitesh Ranjan</td>
-                                <td class="py-4 px-4 text-gray-700">Technology Architect Manager based in Pune, India, leading solution deliveries and providing technical leadership for Utility clients across the UKIA markets. With over 18 years of experience in enterprise architecture and solution implementation, I'm specialise in data-driven transformation, IT strategy, and service delivery for mission-critical systems. My expertise spans Oracle, SAP, Cloud, and Data modernisation programmes, where I have successfully guided large-scale digital transformation and optimisation initiatives. Passionate about innovation, I am currently exploring the use of Generative AI and Intelligent Automation to reimagine Utility operations—enhancing decision-making, accelerating delivery, and driving sustainable outcomes.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Anand Sridharan</td>
-                                <td class="py-4 px-4 text-gray-700">I have over 2 decades of experience in iT with various roles in career, leading and driving digital transformation.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Puneet Luthra</td>
-                                <td class="py-4 px-4 text-gray-700">I am a technology leader with over 18 years of experience driving digital transformation through enterprise application development and integration across HR, Payroll, and Finance domains. My expertise spans solution architecture, platform implementation, and large-scale system integrations that enhance business performance and employee experience. Over the years, I have led cross-functional teams to deliver complex HR and Finance technology programs, partnering closely with global clients to align technology strategy with business objectives. I have deep experience in leveraging leading enterprise platforms and cloud ecosystems to build scalable, secure, and efficient solutions. Currently, my focus is on exploring the Agentic AI space to reimagine enterprise HR applications—using intelligent agents to automate decision-making, improve talent experiences, and unlock new efficiencies in workforce management. I am passionate about blending human-centric design with AI-driven innovation to shape the future of digital workplaces.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Shama Kayyum Baig</td>
-                                <td class="py-4 px-4 text-gray-700">I’m a Senior AI Solution Architect at Accenture, where I specialize in designing and solutioning large, complex deals across geographies. I bring more than technical expertise to the table, working closely with sales and delivery teams to create winning solutions that are both deliverable and risk-averse. I’m passionate about reading and love creating meaningful content for children. Outside of work, I bring the same focus and discipline to my personal pursuits—having proudly represented my state in NCC rifle shooting at the national level. I’m excited to be part of Katathon 5.0 and eager to share my few cents while learning from the bright young minds participating in this inspiring event.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Jeffrey Xavier</td>
-                                <td class="py-4 px-4 text-gray-700">Jeffrey has over 20 years of IT industry experience. In his current role with Growth & Strategy team, he has been working on formulating strategy for Accenture Technology leadership, engaging with Industry Analysts firms on defining and executing custom studies for business stakeholders as well as delivering leadership training modules within the firm. In his past, he has worked with Accenture Song to deliver seamless customer experiences for leading F500 customers in Marketing, Content, Sales & Commerce domains</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Sudhir Deshmukh</td>
-                                <td class="py-4 px-4 text-gray-700">Sudhir Deshmukh is a seasoned Technology Strategy and Transformation Leader with over two decades of global experience (US, Europe, India). He specializes in executing complex, AI-driven digital transformations, particularly within the BFSI and E&U sectors. His expertise encompasses strategic program management, multi-cloud architecture, DevSecOps, and cybersecurity. Currently, Sudhir is spearheading a multi-year strategic partnership to transform a leading US Recordkeeper's retirement platform. He is driving the integration of Generative AI to profoundly enhance participant experiences, while simultaneously embedding DevSecOps principles and building high-performing teams to ensure delivery excellence.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Harsh Vardhan Shukla</td>
-                                <td class="py-4 px-4 text-gray-700">With close to 20 years of experience in delivering mission-critical technology initiatives. Always participate in competitive progs to learn & share my experience.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Rashmi Rajesh</td>
-                                <td class="py-4 px-4 text-gray-700">With over 18 years of experience in SAP HCM and SuccessFactors, I have specialized in Employee Central Payroll (ECP) with strong expertise in Payroll Control Center (PCC) and AACT tool. I have handled payroll issues for US and Canada and led end-to-end functional testing for EC implementation, including RFP solutions for Australia and India Payroll. As a Data Conversion Lead, I managed a complete onshore implementation cycle and served as EC Payroll Lead for a Canada carve-out project. My expertise includes configuring PCC for both On-Premise and ECC systems, payroll basics, wage type evaluation, rules, and schemas, along with pre- and post-payroll audits using AACT. I have worked on multiple SuccessFactors implementation projects covering design, testing, and data migration, and served as EC Functional Lead in both implementation and support. I possess strong techno-functional skills with deep knowledge of US Payroll, PA, OM, Benefits, and HR domain processes.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Ramachandra Mouli Tallapragada</td>
-                                <td class="py-4 px-4 text-gray-700">Rama is a highly accomplished Delivery Lead with 24 years of expertise in driving business growth and transformation through Oracle Cloud applications. Specializing in strategic project management and innovative solutions, he consistently delivers impactful results. Currently leading Oracle Cloud Applications projects at Accenture, he leverages deep functional and technical expertise to ensure seamless delivery and client success. With extensive experience managing integrated ERP, analytics, and legacy application delivery for global clients across the USA and India, he has successfully spearheaded Oracle Cloud transformations for multiple clients.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Madhuri Gattu</td>
-                                <td class="py-4 px-4 text-gray-700">Experienced Technology Education Subject Matter Expert with a proven track record in the information technology and services industry. Expertise spans Learning and Development Strategy, Competency Management, Capability Building, Business Intelligence, and Team Leadership. Completed an Executive Program in Global Business Management from IIM Calcutta, gaining deep insights into global business challenges and opportunities while strengthening managerial capabilities and cultivating a global mindset.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Vanita Visvanath</td>
-                                <td class="py-4 px-4 text-gray-700">Vanita Visvanath has worn different hats in the course of her. As a market researcher, she met consumers across the length and breadth of India and conducted 2000+ focus group discussions. She then shifted gear to advertising and worked in international ad agencies like JWT and FCB Ulka and led marketing initiatives in Lavasa and Kalpataru. Currently she works at Accenture India and is part of the Microsoft Dynamics 365 Business Applications team and is involved in project management, Go-to-market content creation and thought leadership initiatives. She loves the world of theatre, films, Korean dramas and travel.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Venkatesh Girish</td>
-                                <td class="py-4 px-4 text-gray-700">A results-driven technology strategist with over 27 years of experience—including 10 years across Utilities, Government, and Service industries, and 17 years specializing in Dynamics AX / D365 implementation, presales, solution architecture, consulting, design, implementation, and support. Recognized as a subject matter expert in product development, product strategy, solution architecture, and project management, with a proven record of delivering complex enterprise technology initiatives. Beyond enterprise implementation, Girish has actively contributed to industry-specific solution positioning alongside D365 and collaborated with product development teams to build innovative solutions for Power Utilities, Water Utilities, and eGovernance projects on enterprise platforms.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Krishen Srivastav</td>
-                                <td class="py-4 px-4 text-gray-700">Krishen Kumar Srivastav is a seasoned technology leader with 25+ years of experience in techno-commercial operations, IT infrastructure, service delivery, and solution architecture. He specializes in long-term planning, cost optimization, and outsourcing strategies that drive organizational growth and profitability. Krishen excels in high-pressure environments, delivering results through business-centered strategies, robust project and program management, and effective stakeholder engagement. His expertise spans data center technologies, cloud platforms, and enterprise solutions, supported by certifications in PMP, ITIL®, Azure Fundamentals, and Oracle Cloud. Core strengths include IT infrastructure and managed services, cloud architecture, cost optimization, and vendor management. Beyond his professional role, Krishen is an active CSR volunteer with over 350 hours and 90+ events, a diversity advocate, and organizer of inclusion programs such as Deaf Culture Workshops and LGBT Ally Initiatives, fostering a culture of equity and innovation in global organizations.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Meenu Sharma</td>
-                                <td class="py-4 px-4 text-gray-700">IT Professional with 21 yrs experience. Currently leading OS Platforms teams, Vmware/Nutanix team, Storage and Backup teams. My Skills are Unix Administration - IBM AIX, Red Hat Enterprise Linux, SUSE Linux| Cloud Computing – Amazon Web Services (AWS), done associate training in Azure| Configuration Management Tools – Chef, DevOps with Jenkins, Python, Java| Virtualization Technologies –VMware, VIO, HMC Clustering – IBM GPFS, HACMP Hardware – IBM P-series| AI - Generative AI/Agentic AI/RAG</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Anand Shankar</td>
-                                <td class="py-4 px-4 text-gray-700">Anand Shankar is a seasoned Transformation and Delivery Manager with 19+ years of proven experience in leading end-to-end IT transformation programs, cloud strategy execution, and datacenter modernization initiatives. He specializes in Cloud Landscape Assessments and TO-BE State Architecture design, leveraging both open-source tools and enterprise cloud platforms (OpenStack, AWS, GCP, Azure). Anand combines technical depth in cloud-native architecture, DevOps, and open-source ecosystems with strong delivery leadership to ensure seamless large-scale transformations across global clients. His expertise spans legacy datacenter transitions, infrastructure consolidation, open-source-driven automation, and M&A-driven IT integrations. Anand is highly skilled in designing scalable, cost-optimized, and fault-tolerant architectures while ensuring business continuity, stakeholder alignment, and service excellence.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Bhavik Doshi</td>
-                                <td class="py-4 px-4 text-gray-700">Associated with Accenture since multiple years now, leading innovation and technology projects under my portfolio</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Jatin Verma</td>
-                                <td class="py-4 px-4 text-gray-700">I am an IT Delivery Manager based in Pune with 20 years of experience in the IT industry. I specialize in managing teams, delivering complex IT projects, and fostering strong client relationships. Recently, I have been deeply exploring generative AI and agentic AI technologies to understand their transformative potential for businesses and IT operations. I focus on integrating these AI advancements with cloud computing and data management strategies to drive innovation and efficiency.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Megha Jain</td>
-                                <td class="py-4 px-4 text-gray-700">With over 17 years of comprehensive experience in SAP innovation, SAP S/4 HANA solution architecture, business transformation, GenAI and IT strategy, I excel at driving large-scale digital transformation initiatives, optimizing business processes, and implementing innovative solutions for Fortune 500 clients. I am passionate about being a versatile technology leader. I have successfully played a variety of roles ranging from Asset engineering and innovation to Presales to Technology delivery.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Yogeswaran Shanmugam</td>
-                                <td class="py-4 px-4 text-gray-700">Seasoned and highly analytical IT Professional with over 20 years of progressive success driving critical projects and digital transformation initiatives across Life Sciences, Medical Devices, High-Tech, and Aerospace domains. Expert in Program and Project Management, specializing in large-scale, complex global deployments from inception to go-live, and managing contracts up to $23M. Proven Technical Manager and Data Architect with deep expertise in Salesforce (Sales/Service Cloud, CPQ), Veeva CRM, and ServiceMax, consistently delivering digital transformation projects for global clients. A certified professional who champions advanced process excellence, practices Servant Leadership, and excels at mentoring offshore/onshore teams into high-performance units using Agile and Scrum methodologies. Holds a co-inventor patent for a Test Script Evaluation System, reflecting a commitment to innovation.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Surya Rana</td>
-                                <td class="py-4 px-4 text-gray-700">I am Surya Rana, Senior Project Manager at TomTom, bringing over 15 years of expertise in Geospatial Technologies. I currently oversee the coverage and content of the Point of Interest (POI) layer, ensuring alignment with real-world data. Additionally, I assist our Automotive customers and Integration partners in defining optimal solutions that address their business needs and technical requirements in accordance with our product strategy.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Ashish Saxena</td>
-                                <td class="py-4 px-4 text-gray-700">Ashish Saxena is an experienced SAP professional with over 17 years of expertise in implementing SAP Customer Experience (CX) applications integrated with S/4HANA and ECC environments. As a Program Manager and Business Transformation Architect, he specializes in delivering innovative, business-focused SAP solutions that address complex challenges across multiple SAP and third-party platforms. His deep functional and technical expertise spans SAP Sales Cloud v2, SAP Service Cloud v2, SAP Cloud for Customer (C4C), SAP CRM, SAP Lead-to-Cash, SAP S/4HANA, SAP ECC, SAP BTP, SAP Build, SAP Cloud Integration, SAP CPQ, SAP FSM, and SAP CDC. In addition, Ashish leverages Generative AI (GenAI) capabilities to enhance process automation, customer engagement, and decision-making within SAP ecosystems. Recognized for his leadership, collaboration, and delivery management skills, Ashish has a proven track record of implementing cutting-edge technologies and pilot software modules. His unique blend of consulting, presales, and GenAI-driven innovation enables him to deliver measurable business value, foster consensus, and lead diverse, high-performing teams to success.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Vijayalakshmi Krishnamurthy</td>
-                                <td class="py-4 px-4 text-gray-700">With 20+ years of experience in Delivery Leadership, Telco CRM Architecture, Presales, Agile & DevOps, and Innovation, I bring deep expertise across Oracle and Salesforce CRM in the communications domain. As a Generative AI Lead across two regions, I drive automation, co-innovation, and digital transformation through hackathons and NextGen IT initiatives. I’ve led large-scale telecom programs (~USD 15M), architected enterprise CRM solutions (up to USD 70M deals), and delivered 50+ innovation initiatives. A passionate technologist and continuous learner with 14+ IT certifications, I thrive on nurturing creativity, collaboration, and real-world problem solving.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Ruchika Arya</td>
-                                <td class="py-4 px-4 text-gray-700">Experienced Technology Consultant adept in bringing forth expertise in design, implementation, testing and maintaining CRM cloud technologies. Strong experience in technology consulting and digital transformation across hair care, injection plastic moulding, alloy, elastomers, garment industry verticals. Proficient in interacting with key stakeholders, change management, communication and project management. Worked on RFPs for Green & Brown field implementation projects. Successfully led the team of SDK developers and CPI consultants. Led the development of Excel Macro Validation tool and reduced 50% of the time in resolving and catching errors in preparing Data Workbench CSV files under the Automation initiative. Proven sales and business development experience in software industry which helps in successfully understanding and implementing sales, marketing and service business processes of the clients.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Monika Malhotra</td>
-                                <td class="py-4 px-4 text-gray-700">Experienced Technology Delivery Leader with 17+ years in delivering innovative solutions and services across Engineering, Hi-Tech, Health, E-Commerce, and Travel domains. Skilled in client relationship management, partner engagement, and Scrum Master (PSM I) certified. Proficient in Microsoft technologies including C#, ASP.NET MVC, VB.NET, WPF, WCF, JQuery, HTML, and SQL Server 2012. Demonstrated expertise in managing projects, driving agile practices, and ensuring successful delivery of complex software solutions.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Jotiram Lad</td>
-                                <td class="py-4 px-4 text-gray-700">AI and Generative AI expert with strong experience in applying technology to real-world Supply Chain and Manufacturing challenges using SAP. With over two decades of experience in technology and business transformation, focuses on making AI concepts simple, practical, and impactful. As a mentor, aims to guide students in connecting ideas across technology and business, encouraging curiosity, creative problem-solving, and responsible use of AI</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">UdhayAnand AVB</td>
-                                <td class="py-4 px-4 text-gray-700">Lead Author for Microsoft Dynamics 365 Finance and Operations (D365 FO) with extensive experience in enterprise application architecture and development. As a seasoned Solution Architect, I specialize in designing and implementing scalable, industry-specific solutions that drive digital transformation and operational efficiency. My expertise spans across multiple domains, including the successful development of advanced applications for the cement manufacturing industry and an article management solution tailored for the catering and hotel management sector. Additionally, I have architected and delivered a comprehensive Middle East Payroll solution built on top of Microsoft Dynamics 365 for Finance and Operations, addressing complex regional compliance and payroll requirements. With a deep understanding of Microsoft’s technology stack and a commitment to innovation, I focus on creating intelligent, integrated solutions that align business goals with modern ERP capabilities.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Shiva Giragani</td>
-                                <td class="py-4 px-4 text-gray-700">I’m a Principal Test Engineer & Release Engineer with over 15 years of experience driving quality and innovation in Industrial Automation, IoT, and Test Automation. My journey spans hands-on engineering, agile leadership, and strategic release management across high-impact platforms like WinCC, SINUMERIK, and TIA Portal. I specialize in building scalable automation frameworks using tools like Python, Selenium, Squish, and Cypress, and integrating them into CI/CD pipelines on AWS and Kubernetes. My work has consistently reduced manual effort, accelerated release cycles, and improved product reliability. Beyond testing, I’ve led Agile transformations and collaborated with InfoSec to embed cybersecurity into QA workflows. I’m passionate about building solutions that blend technical excellence with user-centric design — from interactive bots to smart home simulations and cybersecurity awareness apps. "Beyond my professional endeavors, I am deeply passionate about education and giving back to the community. As an Education Mentor, I have had the privilege of guiding aspiring students and fostering their growth through structured CSR programs." I am eager to bring my technical expertise and leadership skills to the forefront, steering innovative product strategies that deliver measurable business value and customer satisfaction.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Sandhya Bankar</td>
-                                <td class="py-4 px-4 text-gray-700">I am a Lead Linux Kernel Engineer with 8 years of experience, currently working with NPCI on kernel upgrades, performance tuning, and stability improvements. Previously at Katalyst Technologies, I worked with clients like Rocket Software and IBM on kernel module development, debugging, and system programming, and I have also contributed 100+ patches to the mainline Linux kernel during my Outreachy internship with The Linux Foundation.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Bhavna Seshadri</td>
-                                <td class="py-4 px-4 text-gray-700">I am a passionate product manager with expertise in cloud computing, Devops and technology infrastructure. I currently work for Google and prior to that I worked for Goldman Sachs. I have a Masters in Engineering Management from Dartmouth College. I enjoy the journey of building products and strategizing for their growth. I actively mentor students and junior professionals across a variety of areas. When I am not working you can find me either gardening or curled up with my favorite book and a hot cup of tea 😊</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW MENTORS SECTION -->
-        <section id="mentors" class="page">
-            <div class="max-w-7xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Meet Our Mentors</h2>
-                <div class="mb-6">
-                    <input type="text" id="mentors-search-bar" class="mt-1 block w-full md:w-1/2 mx-auto border-gray-300 rounded-md shadow-sm p-3" placeholder="Search by name or keyword in bio...">
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white rounded-lg shadow-sm">
-                        <thead class="bg-gray-100">
-                            <tr class="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                <th class="py-3 px-4 w-1/4">Full Name</th>
-                                <th class="py-3 px-4 w-3/4">Short Professional Bio</th>
-                            </tr>
-                        </thead>
-                        <tbody id="mentors-table-body" class="divide-y divide-gray-200">
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Girishchandra Yendargaye</td>
-                                <td class="py-4 px-4 text-gray-700">I am a researcher and software developer at the Centre for Development of Advanced Computing (C-DAC), Pune. His work lies at the intersection of High-Performance Computing (HPC), Geographic Information Systems (GIS), and Artificial Intelligence (AI). He specializes in developing HPC-enabled frameworks for flood modeling, hydrodynamic simulations, and environmental monitoring. Girishchandra has contributed to the integration of physics-based models such as ANUGA and TRITON with AI-driven approaches like Graph Neural Networks (GNNs) to enhance the accuracy and lead time of flood prediction. He has also led the development of web-based and QGIS-integrated tools for automated domain boundary generation, real-time data assimilation, and simulation management. His research interests include data-driven environmental modeling, parallel computing for large-scale geospatial analysis, and sustainable water resource management through the use of advanced computational methods and remote sensing technologies.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Kusha Bhardwaj</td>
-                                <td class="py-4 px-4 text-gray-700">I am a compassionate Counsellor, Soft Skills & POSH Trainer, Image management & personal/professional branding Consultant.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Anil Dhaneshwar</td>
-                                <td class="py-4 px-4 text-gray-700">I’m a Senior Principal Software Engineer with over 14 years of experience in Linux, Linux Kernel, storage stack and file system development. I specialize in leading complex initiatives involving kernel modules development, storage stack support on new Linux operating systems. I’m passionate about technical leadership—mentoring engineers, fostering collaboration, and driving projects from design to delivery. I focus on building reliable, high-performance solutions while encouraging continuous learning and innovation within the team. My goal is to blend deep technical expertise with a strategic mindset to deliver lasting impact through technology.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Neeti Singh</td>
-                                <td class="py-4 px-4 text-gray-700">With over 18 years of experience driving AI innovation, SAP transformation, and enterprise digitalization, I have successfully delivered large-scale projects across multiple global MNCs. My expertise spans intelligent automation, agentic AI frameworks, cloud ERP, and strategic digital change enablement. Recognized through numerous hackathon victories and white-paper awards, I combine deep technical insight with creative storytelling — transforming ideas into high-impact business outcomes. Beyond consulting, I’m passionate about prompt-based content generation, video storytelling, and brand creation using Generative AI tools. I love crafting powerful narratives and product identities that merge technology with creativity — from concept to visual realization.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Puneet Luthra</td>
-                                <td class="py-4 px-4 text-gray-700">I am a technology leader with over 18 years of experience driving digital transformation through enterprise application development and integration across HR, Payroll, and Finance domains. My expertise spans solution architecture, platform implementation, and large-scale system integrations that enhance business performance and employee experience. Over the years, I have led cross-functional teams to deliver complex HR and Finance technology programs, partnering closely with global clients to align technology strategy with business objectives. I have deep experience in leveraging leading enterprise platforms and cloud ecosystems to build scalable, secure, and efficient solutions. Currently, my focus is on exploring the Agentic AI space to reimagine enterprise HR applications—using intelligent agents to automate decision-making, improve talent experiences, and unlock new efficiencies in workforce management. I am passionate about blending human-centric design with AI-driven innovation to shape the future of digital workplaces.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Paramaguru Selvanathan</td>
-                                <td class="py-4 px-4 text-gray-700">I am a dynamic and results-driven PMP and CSM certified professional with over 26 years of experience in Delivery Management, Portfolio, Program, and Project Management. I specialize in leading multi-faceted teams of over 85 members, navigating diverse domains and cultures with ease.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Remu Koul</td>
-                                <td class="py-4 px-4 text-gray-700">A results-driven leader with over two decades of diverse experience across the Telecommunications, Investment Banking, and IT industries. Proven track record in delivering complex programs across Consumer and Enterprise businesses, with expertise in business transformation, change management, product and portfolio delivery, architectural roadmap design, and large-scale technology rollouts. Adept at designing and implementing sustainable operating models and enabling tools that enhance efficiency, scalability, and long-term value. Recognized for driving strategic initiatives, fostering cross-functional collaboration, and delivering measurable business outcomes in dynamic and fast-paced environments.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">devjyoti nandy</td>
-                                <td class="py-4 px-4 text-gray-700">I have total exp of 18+ yrs in mainframes which includes COBOL,JCL,DB2 & CICS. Currently working as a snr mainframe designer and delivery lead for banking project since 2019. Prior to accenture,worked on core banking & health insurance projects.I have worked on life insurance project. Worked for pensions project & was at client location,edinburgh for standard life for 2.8 yrs.Managed knowledge transition & application support team.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Shailendra Tolambiya</td>
-                                <td class="py-4 px-4 text-gray-700">With 19 years of experience in SAP implementation and large-scale Systems Integration (SI) programs, I have led end-to-end delivery across SAP and Microsoft Dynamics D365 CRM landscapes. My expertise spans SAP CRM, SAP ISU ABAP, and data migration, with a proven track record in program and project management for complex, multi-technology environments. Over the years, I have successfully played diverse roles including SAP Developer, SAP CRM Techno-Functional Consultant, Technical Architect, Development Lead, Automation Lead, and Project Manager. My industry experience covers Utilities (7 years) and Financial Services (12 years), where I have consistently driven automation, solution design, and delivery excellence. I am passionate about leveraging technology to optimize business processes and ensure high-quality, scalable enterprise solutions.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Vinay Kumar</td>
-                                <td class="py-4 px-4 text-gray-700">I lead Gen AI project in Accenture which is in Data engineering space involving databricks, PySpark and Azure</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Ram CV</td>
-                                <td class="py-4 px-4 text-gray-700">Experienced Technical Program Manager and People Leader with years of success delivering enterprise-scale programs across Product Development, Go-to-Market (GTM) strategy, and Digital Transformation initiatives. Proven expertise in leading cross-functional global teams, aligning engineering, product, and design functions to drive strategy, execution, and measurable business impact. Adept at building and scaling Global Capability Centers (GCCs), leading multi-vendor environments, and managing end-to-end delivery—including financial oversight, resource planning, and executive stakeholder engagement. Recognized for operational excellence, change management leadership, and driving continuous improvement across complex, matrixed organizations. Holds industry-recognized certifications: SAFe POPM, PMP®, PRINCE2®, PRINCE2® Agile, MSP®, ITIL ®, CSOD, ASM®, RMP®, and Lean Six Sigma®. Demonstrated track record of leading strategic programs in technology, retail, energy, banking, telecom, and SaaS domains, with deep experience across both technical and functional leadership roles.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Bhuvaneshwari</td>
-                                <td class="py-4 px-4 text-gray-700">I’m a technology leader with hands-on experience across software engineering, AI integration, and product development. My work focuses on building scalable systems, driving engineering efficiency, and leveraging emerging technologies to deliver measurable business impact. I bridge strategy and execution—aligning teams, tools, and innovation to create real-world value.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Shashi Singh</td>
-                                <td class="py-4 px-4 text-gray-700">Shashi Kumar Singh is a seasoned IT professional with over 20 years of experience in IT infrastructure, specializing in cloud platforms such as Azure, GCP, and on-premises environments. Since joining Accenture in 2011, Shashi has excelled as a Cloud Ops Administration Manager, demonstrating expertise as a GCP Architect, Service Delivery Manager (SDM), and Microsoft SQL Server Architect. He has successfully led teams of over 100 professionals across diverse database technologies, including Azure, GCP, SQL, Oracle, PostgreSQL, MongoDB, and more. Shashi has a proven track record of managing critical issues (P1 & P2), stabilizing processes, resolving escalations, and ensuring seamless delivery for clients in financial, consumer goods, and healthcare domains. A strong advocate for process adherence and documentation, Shashi fosters high-performing teams and ensures timely delivery of client requirements. His leadership and problem-solving skills make him a trusted partner in driving operational excellence and innovation.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Nimish Nayak</td>
-                                <td class="py-4 px-4 text-gray-700">I bring 17 years of diverse IT experience, beginning with hands-on development across C, C++, Java, Python, Ruby, web technologies, and mobile platforms (Android & iOS). My career evolved through key roles in DevOps, Release & Configuration Management, and Automation Testing, where I built test frameworks from the ground up. Currently, I serve as a Program Manager specializing in Salesforce and Veeva Vault technologies, leading large-scale data and document migration initiatives across enterprise vaults</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Saurav Das</td>
-                                <td class="py-4 px-4 text-gray-700">For close to two decades, I've had the privilege of collaborating with visionary scientists committed to fundamentally reshaping scientific discovery across industries—from pharmaceuticals and medical devices to consumer goods and pure research. Our mission is to digitalize scientific and laboratory operations, unlocking human ingenuity and drastically accelerating the pace of innovation that ultimately elevates life globally. I champion genuine, trust-based partnerships as the crucible for achieving big, audacious goals in this complex domain. As a leader within Accenture's Scientific Informatics Services, my focus is on empowering our Consumer Goods and Services clients to embrace cutting-edge technology and data solutions. This revolutionizes their lab operations, driving superior decision-making, enhancing regulatory compliance, and delivering breakthrough products that profoundly improve consumer health and well-being.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Arindam Chakraborty</td>
-                                <td class="py-4 px-4 text-gray-700">Certified Senior Data Architect (IBM & Accenture), Databricks Data Engineer Certified, Generative AI delivery lead - LLM; Prompt Engineering; RAG, MongoDB & Kafka SME.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Brajesh Parwal</td>
-                                <td class="py-4 px-4 text-gray-700">With over 19 years of experience in scalable software development and design, a technology leader and a start-up mentor who is passionate about building and transforming teams. My focus has been on architecting innovative solutions for a leading US investment client, harnessing my expertise in cloud and data architectures. We have successfully transitioned legacy systems to a new policy center platform, integrating with applications to enhance data accessibility and reporting capabilities.My role extends to project management, ensuring agile delivery and guiding our team to meet strategic objectives. My technical acumen in Integration Architecture, Agile methodologies, and software development, fortified by AWS certifications, has been pivotal in driving the digital transformation of investment/Banking services. The design and implementation of responsive web applications have not only streamlined the quoting process but also empowered underwriters with a robust platform for Banking & Investment. This experience underscores my dedication to leveraging technology for operational excellence and client satisfaction. . Working in Pre-Sales as a Solution Architect for various opportunities in Cloud Transformation, App modernization and helping customers in their journey to Cloud . • 17 years of experience in Banking and Finance domain, working for reputed organizations like American Express, Barclays, Royal Bank of Canada, JPMC. • Excellent in external as well as internal stakeholder management and communication. • Worked on multiple Java/J2EE technologies as a Solution Architect , Application architect along with hands on experience in Low level design and application development based on these technologies • Adept in managing projects with end-to-end software development from requirement analysis to system study, designing, coding testing, de-bugging, documentation and implementation. • Also have worked as a Solution Architect in Pre-Sales handling multiple RFPs for both Application Development and Maintenance, along with significant transformations. • Produce a coherent technical proposal that meets the customer requirements. • Working with customers to provide consultancy to the offshore/onsite teams • Team management, mentoring and training over Next Gen technologies as well as domain understanding . Having experience to handle 200+ employees team handling.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Diksha Mishra</td>
-                                <td class="py-4 px-4 text-gray-700">With nearly 15 years of experience at Accenture, I have been deeply involved in driving digital transformation through SAP SuccessFactors and Generative AI solutions. My journey from a small village in Maharashtra to building a successful career in Bangalore reflects my passion for continuous learning and innovation. Over the years, I have contributed to several impactful projects, helping clients optimize their HR processes and leverage AI for smarter business outcomes. I’m deeply motivated by technology’s power to simplify complexity and create meaningful change. Beyond work, I take pride in being a lifelong learner and in inspiring others from humble beginnings to pursue big dreams with determination and purpose</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Jyotsna Dharmani</td>
-                                <td class="py-4 px-4 text-gray-700">25+ yrs of experience in IT industry helping business in digital transformation</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Bajarang Alugade</td>
-                                <td class="py-4 px-4 text-gray-700">Bajarang Alugade is an Advanced App Engineering Manager at Accenture, specializing in the design and delivery of modern enterprise applications. With strong expertise in Microservices, Java, and Spring Boot, he has led multiple strategic technology initiatives and played a key role in modernizing legacy architectures. He has successfully led the migration of over 10 enterprise services to cloud, improving scalability, reliability, and operational efficiency for global clients. Known for his structured problem-solving approach and collaborative leadership style, Bajarang partners closely with cross-functional teams to drive impactful solutions. He is committed to continuous learning, technology excellence, and fostering high-performing engineering cultures within the organization.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Rajesh Kumar</td>
-                                <td class="py-4 px-4 text-gray-700">Engineering Manager & Solution Architect with nearly 20 years of experience designing, building, and scaling enterprise-grade platforms across AI/ML, backend systems, and IoT. Proven expertise in distributed microservice architectures, IoT solution design, and cloud-native platforms. Skilled at leading global teams and collaborating with senior stakeholders (Product, Program, and Business Leaders across India, Europe & USA) to deliver large-scale, high-impact initiatives. Recognised innovator with a patent (WO2020002333) in automated map-making algorithms. Passionate about leveraging AI/ML, Generative AI, and IoT to solve real-world problems and drive business outcomes.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Harishkumar Ramkumar</td>
-                                <td class="py-4 px-4 text-gray-700">I bring to the table as an Information Security professional with over 21 years of experience. Throughout my career, I have had the privilege of working in various domains, including vulnerability assessments, penetration tests, system compliance audits, SIEM, and DLP. I have managed security reviews and risk assessments for complex network architectures, including DMZ, datacenters, and cloud-based offerings (SaaS, PaaS, IaaS) for a diverse range of customers. Additionally, I have been actively involved in product evaluations and providing recommendations from an information security perspective. In terms of risk management, I have managed InfoSec exceptions, been involved in project management, security metrics, and supplier security assessment tasks. Currently, my role involves setting technical direction, conducting architecture reviews, managing technical integration, reviewing technical service levels (SLA), and addressing any issues that arise within a group of technologies. I work closely with clients to understand their technical requirements and ensure that our designs support their business needs. This includes participating in client discussions, RFP reviews, and providing guidance and support to teams on security matters. I also ensure that our clients comply with Accenture's security architecture standards and that sound technical design decisions are made. My educational background includes a Master of Science in Computer Engineering from the Illinois Institute of Technology, USA.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Harsha Anjanappa</td>
-                                <td class="py-4 px-4 text-gray-700">Harsha brings a robust and diverse background in the realm of technology architecture and the Cloud Transformation journey, having worked with AWS, Google, and Azure and earned professional certifications across multiple Cloud platforms. With extensive hands-on experience in activities such as Discovery, Application readiness, Deep Dive Assessment, Infrastructure as Code (IaC), and Automation, Harsha has been involved in over 20 Cloud Transformation projects across various industries, accumulating a wealth of knowledge and skills over 18+ years. Harsha's educational foundation, anchored by a BTech in Electronics and Telecommunication, establishes a firm technical footing, further enriched by specialization in Architecting, Designing, Building, and Implementing high-performing cloud-based solutions. Possessing a profound understanding of contemporary cloud technologies and their practical applications. My strengths lie in orchestrating multiple facets of legacy technology transformation and migration, aiming to drive positive business outcomes. This entails adept management of components such as Compute, Storage, Networks, Communications, Workplace, and Service Management. This capability underscores a holistic approach to technology transformation, considering various interconnected components with a focus on best practices in IaaS, PaaS, CaaS, DBaaS. Harsha is a seasoned professional with a comprehensive skill set, poised to effectively lead and contribute to technology architecture, cloud transformation, and digital innovation initiatives.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Seshi Reddy Alla</td>
-                                <td class="py-4 px-4 text-gray-700">Having 17+ years of experience into development, architecture and operations, brings expertise in Integration, RESTful, Google Cloud and Application development.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Balaji Rajasekaran</td>
-                                <td class="py-4 px-4 text-gray-700">A people manager and seasoned HSE professional with government-approved HSE qualifications & competencies (in versatile industries); Working in a continuous learning era; Can grasp things faster, and accordingly acquire mutual growth, in a competitive scenario, and enjoy the job with the team along with the challenges.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Arun Raj</td>
-                                <td class="py-4 px-4 text-gray-700">Data Scientist and Engineering Lead with a Ph.D. in applied AI from IIT madras and 8 years of experience delivering ML solutions in industrial automation. Have led AI projects on safety monitoring, anomaly detection, semantic search, and language model fine-tuning for CNC assistants. Built 0 to 1 products at startups. Skilled in deep learning, GenAI, and time series modeling. Holds 25+ patent filings and multiple IEEE publications.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">ARPIT KUMAR AGARWAL</td>
-                                <td class="py-4 px-4 text-gray-700">Experienced software engineer with a demonstrated history of working in the Big tech companies . Skilled in Jenkins, Java, Algorithms, and DATABASE. Strong engineering professional.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">ANSHU THAKUR</td>
-                                <td class="py-4 px-4 text-gray-700">Myself an accomplished Computer Science educator with over 13 years of teaching experience in reputed CBSE schools. Currently serving as the Head of Department and Computer Science Teacher at NTPC-Bal Bharati Public School, Nabinagar (Bihar), he specializes in teaching Computer Science and Artificial Intelligence from Classes 1 to 12. A CBSE-certified Resource Person (RP-126387) and IBM Skilled Trainer, he has conducted numerous hands-on training sessions in AI, Python, Java, C++, App Development, and Digital Literacy. He is also the author of the Class 10 AI textbook published by Oswaal Publications. Recognized with awards like “Outstanding Faculty of the Year” and “Role Model Award in AI,” Anshu Thakur holds gold medals in B.E. (IT), M.Tech (CSE), and B.Ed., and is deeply passionate about fostering innovation through digital education.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900 align-top">Sachin Rama Devkate</td>
-                                <td class="py-4 px-4 text-gray-700">Core Supply Chain Professional with experience in Kinaxis Solution Deployment.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </section>
 
     </main>
@@ -1211,7 +838,6 @@
                          <a href="#dashboard" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Dashboard</a>
                          <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                         <a href="#judges" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Judges</a>
                          <a href="#mentors" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Mentors</a>
                          <a href="#idea-submission" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Submit SOP</a>
                          <button id="mobile-logout-button" class="w-full text-left nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Logout</button>`;
@@ -1219,7 +845,6 @@
                 links = `<a href="#home" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Home</a>
                          <a href="#rules" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Rules</a>
                          <a href="#problem-statements" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Problem Statements</a>
-                         <a href="#judges" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Judges</a>
                          <a href="#mentors" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Mentors</a>
                          <a href="#student-login" class="nav-link block text-gray-300 hover:text-white rounded-md px-3 py-2">Student Login</a>`;
             }
@@ -1408,33 +1033,54 @@
                 if (downloadButton) downloadButton.style.display = 'inline-block';
             });
         }
-        
-        // --- TABLE SEARCH FUNCTIONALITY ---
-        function setupTableSearch(inputId, tableBodyId) {
-            const searchInput = document.getElementById(inputId);
-            const tableBody = document.getElementById(tableBodyId);
-            if (!searchInput || !tableBody) return;
 
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase().trim();
-                const rows = tableBody.getElementsByTagName('tr');
+        // --- MENTORS DATA ---
+        const mentorsData = [
+            { name: "Girishchandra Yendargaye", bio: "I am a researcher and software developer at the Centre for Development of Advanced Computing (C-DAC) in Mumbai, where I contribute to the Biometrics group. My work focuses on fingerprint and iris recognition, and I have a keen interest in machine learning and image processing." },
+            { name: "Kusha Bhardwaj", bio: "I'm a compassionate Counsellor, Soft Skills & POSH Trainer, Image Consultant, and Emotional Intelligence Coach with 15 years of experience. I help individuals and organizations thrive through mental wellness and skill development." },
+            { name: "Anil Dhaneshwar", bio: "I'm a Senior Principal Software Engineer with over 14 years of experience. My journey began in the startup world, where I honed my skills in building scalable solutions. I'm passionate about coding, architecture, and mentoring young talent." },
+            { name: "Ajitesh Ranjan", bio: "Technology Architect Manager based in Pune, India, leading solution deliveries and providing technical leadership for Utility clients across the UKIA markets. With over 18 years of experience in enterprise architecture and solution implementation, I'm specialise in data-driven transformation, IT strategy, and service delivery for mission-critical systems.  My expertise spans Oracle, SAP, Cloud, and Data modernisation programmes, where I have successfully guided large-scale digital transformation and optimisation initiatives. Passionate about innovation, I am currently exploring the use of Generative AI and Intelligent Automation to reimagine Utility operations—enhancing decision-making, accelerating delivery, and driving sustainable outcomes." },
+            { name: "Puneet Luthra", bio: "I am a technology leader with over 18 years of experience driving digital transformation through enterprise application development and integration across HR, Payroll, and Finance domains. My expertise spans solution architecture, platform implementation, and large-scale system integrations that enhance business performance and employee experience.  Over the years, I have led cross-functional teams to deliver complex HR and Finance technology programs, partnering closely with global clients to align technology strategy with business objectives. I have deep experience in leveraging leading enterprise platforms and cloud ecosystems to build scalable, secure, and efficient solutions.  Currently, my focus is on exploring the Agentic AI space to reimagine enterprise HR applications—using intelligent agents to automate decision-making, improve talent experiences, and unlock new efficiencies in workforce management. I am passionate about blending human-centric design with AI-driven innovation to shape the future of digital workplaces." },
+            { name: "Raghavendra Shanbhag", bio: "With 20+ years experience in embedded systems, I specialize in turning emerging technologies into scalable, business-driven solutions.  Focus Areas :  - GenAI in Embedded Systems: design intelligent, low power, high performance devices.  - Smart IoT Solutions  : Building TDD-driven systems and Digital Twin ecosystems to enhance operational intelligence and user experience. - Smart Mobility : Developing real-time embedded solutions for smart mobility, ADAS, and connected vehicles. - Real-Time Embedded Systems: Engineering reliable, high-performance platforms using precision RTOS architectures. - Scaling Digital Solutions: Transforming prototypes into enterprise-grade platforms that deliver real-world business values.   I deliver at the intersection of technology, innovation, and execution — building the embedded systems and intelligent products." },
+            { name: "Devjyoti Nandy", bio: "I have total exp of 18+ yrs in mainframes which includes COBOL,JCL,DB2 & CICS.  Currently working as a snr mainframe designer and delivery lead for banking project since 2019.  Prior to accenture,worked on core banking & health insurance projects.I have worked on life insurance project. Worked for pensions project & was at client location,edinburgh for standard life for 2.8 yrs.Managed knowledge transition & application support team." },
+            { name: "Rashmi Rajesh", bio: "With over 18 years of experience in SAP HCM and SuccessFactors, I have specialized in Employee Central Payroll (ECP) with strong expertise in Payroll Control Center (PCC) and AACT tool. I have handled payroll issues for US and Canada and led end-to-end functional testing for EC implementation, including RFP solutions for Australia and India Payroll. As a Data Conversion Lead, I managed a complete onshore implementation cycle and served as EC Payroll Lead for a Canada carve-out project. My expertise includes configuring PCC for both On-Premise and ECC systems, payroll basics, wage type evaluation, rules, and schemas, along with pre- and post-payroll audits using AACT. I have worked on multiple SuccessFactors implementation projects covering design, testing, and data migration, and served as EC Functional Lead in both implementation and support. I possess strong techno-functional skills with deep knowledge of US Payroll, PA, OM, Benefits, and HR domain processes." },
+            { name: "Vanita Visvanath", bio: "Vanita Visvanath has worn different hats in the course of her. As a market researcher, she met consumers across the length and breadth of India and conducted 2000+ focus group discussions. She then shifted gear to advertising and worked in international ad agencies like JWT and FCB Ulka and led marketing initiatives in Lavasa and Kalpataru. Currently she works at Accenture India and is part of the Microsoft Dynamics 365 Business Applications team and is involved in project management, Go-to-market content creation and thought leadership initiatives.  She loves the world of theatre, films, Korean dramas and travel." },
+            { name: "Meenu Sharma", bio: "IT Professional with 21 yrs experience.  Currently leading OS Platforms teams, Vmware/Nutanix team, Storage and Backup teams. My Skills are Unix Administration -   IBM AIX, Red Hat Enterprise Linux, SUSE Linux| Cloud Computing – Amazon Web Services (AWS), done associate training in Azure| Configuration Management Tools – Chef, DevOps with Jenkins, Python, Java| Virtualization Technologies –VMware, VIO, HMC  Clustering – IBM GPFS, HACMP Hardware – IBM P-series| AI - Generative AI/Agentic AI/RAG" },
+            { name: "Yogeswaran Shanmugam", bio: "Seasoned and highly analytical IT Professional with over 20 years of progressive success driving critical projects and digital transformation initiatives across Life Sciences, Medical Devices, High-Tech, and Aerospace domains. Expert in Program and Project Management, specializing in large-scale, complex global deployments from inception to go-live, and managing contracts up to $23M. Proven Technical Manager and Data Architect with deep expertise in Salesforce (Sales/Service Cloud, CPQ), Veeva CRM, and ServiceMax, consistently delivering digital transformation projects for global clients. A certified professional who champions advanced process excellence, practices Servant Leadership, and excels at mentoring offshore/onshore teams into high-performance units using Agile and Scrum methodologies. Holds a co-inventor patent for a Test Script Evaluation System, reflecting a commitment to innovation." },
+            { name: "Surya Rana", bio: "I am Surya Rana, Senior Project Manager at TomTom, bringing over 15 years of expertise in Geospatial Technologies. I currently oversee the coverage and content of the Point of Interest (POI) layer, ensuring alignment with real-world data. Additionally, I assist our Automotive customers and Integration partners in defining optimal solutions that address their business needs and technical requirements in accordance with our product strategy." },
+            { name: "Nimish Nayak", bio: "I bring 17 years of diverse IT experience, beginning with hands-on development across C, C++, Java, Python, Ruby, web technologies, and mobile platforms (Android & iOS). My career evolved through key roles in DevOps, Release & Configuration Management, and Automation Testing, where I built test frameworks from the ground up. Currently, I serve as a Program Manager specializing in Salesforce and Veeva Vault technologies, leading large-scale data and document migration initiatives across enterprise vaults" },
+            { name: "Arindam Chakraborty", bio: "Certified Senior Data Architect (IBM & Accenture), Databricks Data Engineer Certified, Generative AI delivery lead - LLM; Prompt Engineering; RAG, MongoDB & Kafka SME." },
+            { name: "Jotiram Lad", bio: "AI and Generative AI expert with strong experience in applying technology to real-world Supply Chain and Manufacturing challenges using SAP. With over two decades of experience in technology and business transformation, focuses on making AI concepts simple, practical, and impactful. As a mentor, aims to guide students in connecting ideas across technology and business, encouraging curiosity, creative problem-solving, and responsible use of AI" },
+            { name: "Diksha Mishra", bio: "With nearly 15 years of experience at Accenture, I have been deeply involved in driving digital transformation through SAP SuccessFactors and Generative AI solutions. My journey from a small village in Maharashtra to building a successful career in Bangalore reflects my passion for continuous learning and innovation. Over the years, I have contributed to several impactful projects, helping clients optimize their HR processes and leverage AI for smarter business outcomes. I’m deeply motivated by technology’s power to simplify complexity and create meaningful change. Beyond work, I take pride in being a lifelong learner and in inspiring others from humble beginnings to pursue big dreams with determination and purpose" },
+            { name: "Bajarang Alugade", bio: "Bajarang Alugade is an Advanced App Engineering Manager at Accenture, specializing in the design and delivery of modern enterprise applications. With strong expertise in Microservices, Java, and Spring Boot, he has led multiple strategic technology initiatives and played a key role in modernizing legacy architectures. He has successfully led the migration of over 10 enterprise services to cloud, improving scalability, reliability, and operational efficiency for global clients. Known for his structured problem-solving approach and collaborative leadership style, Bajarang partners closely with cross-functional teams to drive impactful solutions. He is committed to continuous learning, technology excellence, and fostering high-performing engineering cultures within the organization." },
+            { name: "Rajesh Kumar", bio: "Engineering Manager & Solution Architect with nearly 20 years of experience designing, building, and scaling enterprise-grade platforms across AI/ML, backend systems, and IoT. Proven expertise in distributed microservice architectures, IoT solution design, and cloud-native platforms. Skilled at leading global teams and collaborating with senior stakeholders (Product, Program, and Business Leaders across India, Europe & USA) to deliver large-scale, high-impact initiatives. Recognised innovator with a patent (WO2020002333) in automated map-making algorithms. Passionate about leveraging AI/ML, Generative AI, and IoT to solve real-world problems and drive business outcomes." },
+            { name: "Harishkumar Ramkumar", bio: "I bring to the table as an Information Security professional with over 21 years of experience. Throughout my career, I have had the privilege of working in various domains, including vulnerability assessments, penetration tests, system compliance audits, SIEM, and DLP.  I have managed security reviews and risk assessments for complex network architectures, including DMZ, datacenters, and cloud-based offerings (SaaS, PaaS, IaaS) for a diverse range of customers. Additionally, I have been actively involved in product evaluations and providing recommendations from an information security perspective.  In terms of risk management, I have managed InfoSec exceptions, been involved in project management, security metrics, and supplier security assessment tasks. Currently, my role involves setting technical direction, conducting architecture reviews, managing technical integration, reviewing technical service levels (SLA), and addressing any issues that arise within a group of technologies.  I work closely with clients to understand their technical requirements and ensure that our designs support their business needs. This includes participating in client discussions, RFP reviews, and providing guidance and support to teams on security matters. I also ensure that our clients comply with Accenture's security architecture standards and that sound technical design decisions are made.  My educational background includes a Master of Science in Computer Engineering from the Illinois Institute of Technology, USA." },
+            { name: "Harsha Anjanappa", bio: "Harsha brings a robust and diverse background in the realm of technology architecture and the Cloud Transformation journey, having worked with AWS, Google, and Azure and earned professional certifications across multiple Cloud platforms. With extensive hands-on experience in activities such as Discovery, Application readiness, Deep Dive Assessment, Infrastructure as Code (IaC), and Automation, Harsha has been involved in over 20 Cloud Transformation projects across various industries, accumulating a wealth of knowledge and skills over 18+ years.  Harsha's educational foundation, anchored by a BTech in Electronics and Telecommunication, establishes a firm technical footing, further enriched by specialization in Architecting, Designing, Building, and Implementing high-performing cloud-based solutions. Possessing a profound understanding of contemporary cloud technologies and their practical applications.  My strengths lie in orchestrating multiple facets of legacy technology transformation and migration, aiming to drive positive business outcomes. This entails adept management of components such as Compute, Storage, Networks, Communications, Workplace, and Service Management. This capability underscores a holistic approach to technology transformation, considering various interconnected components with a focus on best practices in IaaS, PaaS, CaaS, DBaaS.  Harsha is a seasoned professional with a comprehensive skill set, poised to effectively lead and contribute to technology architecture, cloud transformation, and digital innovation initiatives." },
+            { name: "Seshi Reddy Alla", bio: "Having 17+ years of experience into development, architecture and operations, brings expertise in Integration, RESTful, Google Cloud and Application development." },
+            { name: "Balaji Rajasekaran", bio: "A people manager and seasoned HSE professional with government-approved HSE qualifications & competencies (in versatile industries); Working in a continuous learning era; Can grasp things faster, and accordingly acquire mutual growth, in a competitive scenario, and enjoy the job with the team along with the challenges." },
+            { name: "Arun Raj", bio: "Data Scientist and Engineering Lead with a Ph.D. in applied AI from IIT madras and 8 years of experience delivering ML solutions in industrial automation. Have led AI projects on safety monitoring, anomaly detection, semantic search, and language model fine-tuning for CNC assistants. Built 0 to 1 products at startups. Skilled in deep learning, GenAI, and time series modeling. Holds 25+ patent filings and multiple IEEE publications." },
+            { name: "Arpit Kumar Agarwal", bio: "Experienced software engineer with a demonstrated history of working in the Big tech companies . Skilled in Jenkins, Java, Algorithms, and DATABASE. Strong engineering professional. " },
+            { name: "Anshu Thakur", bio: "Myself an accomplished Computer Science educator with over 13 years of teaching experience in reputed CBSE schools. Currently serving as the Head of Department and Computer Science Teacher at NTPC-Bal Bharati Public School, Nabinagar (Bihar), he specializes in teaching Computer Science and Artificial Intelligence from Classes 1 to 12. A CBSE-certified Resource Person (RP-126387) and IBM Skilled Trainer, he has conducted numerous hands-on training sessions in AI, Python, Java, C++, App Development, and Digital Literacy. He is also the author of the Class 10 AI textbook published by Oswaal Publications. Recognized with awards like “Outstanding Faculty of the Year” and “Role Model Award in AI,” Anshu Thakur holds gold medals in B.E. (IT), M.Tech (CSE), and B.Ed., and is deeply passionate about fostering innovation through digital education." },
+            { name: "Sachin Rama Devkate", bio: "Core Supply Chain Professional with experience in Kinaxis Solution Deployment." },
+            { name: "Shiva Giragani", bio: "I’m a Principal Test Engineer & Release Engineer with over 15 years of experience driving quality and innovation in Industrial Automation, IoT, and Test Automation. My journey spans hands-on engineering, agile leadership, and strategic release management across high-impact platforms like WinCC, SINUMERIK, and TIA Portal.  I specialize in building scalable automation frameworks using tools like Python, Selenium, Squish, and Cypress, and integrating them into CI/CD pipelines on AWS and Kubernetes. My work has consistently reduced manual effort, accelerated release cycles, and improved product reliability.  Beyond testing, I’ve led Agile transformations and collaborated with InfoSec to embed cybersecurity into QA workflows. I’m passionate about building solutions that blend technical excellence with user-centric design — from interactive bots to smart home simulations and cybersecurity awareness apps.  Beyond my professional endeavors, I am deeply passionate about education and giving back to the community. As an Education Mentor, I have had the privilege of guiding aspiring students and fostering their growth through structured CSR programs. I am eager to bring my technical expertise and leadership skills to the forefront, steering innovative product strategies that deliver measurable business value and customer satisfaction." },
+            { name: "Sandhya Bankar", bio: "I am a Lead Linux Kernel Engineer with 8 years of experience, currently working with NPCI on kernel upgrades, performance tuning, and stability improvements. Previously at Katalyst Technologies, I worked with clients like Rocket Software and IBM on kernel module development, debugging, and system programming, and I have also contributed 100+ patches to the mainline Linux kernel during my Outreachy internship with The Linux Foundation." }
+        ];
 
-                for (let i = 0; i < rows.length; i++) {
-                    const row = rows[i];
-                    const cells = row.getElementsByTagName('td');
-                    if (cells.length > 0) {
-                        const nameText = cells[0].textContent || cells[0].innerText;
-                        const bioText = cells[1].textContent || cells[1].innerText;
-                        const rowText = (nameText + ' ' + bioText).toLowerCase();
+        function renderMentors() {
+            const tableBody = document.getElementById('mentors-table-body');
+            if (!tableBody) return;
 
-                        if (rowText.includes(searchTerm)) {
-                            row.style.display = '';
-                        } else {
-                            row.style.display = 'none';
-                        }
-                    }
-                }
+            let html = '';
+            mentorsData.forEach((mentor, index) => {
+                html += `
+                    <tr class="hover:bg-indigo-50 transition duration-150 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-100">${index + 1}</td>
+                        <td class="px-6 py-4 text-sm font-semibold text-indigo-700 border-r border-gray-100">${mentor.name}</td>
+                        <td class="px-6 py-4 text-sm text-gray-600 leading-relaxed">${mentor.bio}</td>
+                    </tr>
+                `;
             });
+            tableBody.innerHTML = html;
         }
 
         // --- INITIALIZATION ---
@@ -1465,10 +1111,6 @@
                     }
                 }
             });
-
-            // Setup search for new tables
-            setupTableSearch('judges-search-bar', 'judges-table-body');
-            setupTableSearch('mentors-search-bar', 'mentors-table-body');
 
             attachNavListeners();
         }
@@ -1531,6 +1173,7 @@
                 }
             }, 1000);
 
+            renderMentors();
             listenForRegistrationCount();
             initializeEventListeners();
 
